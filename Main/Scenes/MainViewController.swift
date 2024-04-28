@@ -15,7 +15,7 @@ class MainViewController: SceneViewController<MainView> {
   }
 
   override func setupLayout() {
-    contentView.backgroundColor = .white
+    contentView.backgroundColor = .Cora.secondaryBgColor
   }
 }
 

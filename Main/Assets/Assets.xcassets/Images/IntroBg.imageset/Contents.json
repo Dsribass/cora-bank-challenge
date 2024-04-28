@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "into-bg.png",
+      "filename" : "Mask Group.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "into-bg@2x.png",
+      "filename" : "Mask Group@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "into-bg@3x.png",
+      "filename" : "Mask Group@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

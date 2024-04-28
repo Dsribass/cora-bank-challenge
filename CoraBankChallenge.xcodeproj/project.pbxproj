@@ -16,6 +16,11 @@
 		95628ACA2BDC57870088519C /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628AC92BDC57870088519C /* ViewCodable.swift */; };
 		95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628ACB2BDC58CB0088519C /* SceneViewController.swift */; };
 		95628ACE2BDC593F0088519C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628ACD2BDC593F0088519C /* MainView.swift */; };
+		95B433712BDD44D2007B238C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433702BDD44D2007B238C /* Colors.swift */; };
+		95B433732BDD45BD007B238C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433722BDD45BD007B238C /* UIColor+Hex.swift */; };
+		95B433752BDDC145007B238C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433742BDDC145007B238C /* Fonts.swift */; };
+		95B4337C2BDDC638007B238C /* TTNorms-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95B4337A2BDDC638007B238C /* TTNorms-Bold.otf */; };
+		95B4337D2BDDC638007B238C /* TTNorms-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95B4337B2BDDC638007B238C /* TTNorms-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		95628AC92BDC57870088519C /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		95628ACB2BDC58CB0088519C /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		95628ACD2BDC593F0088519C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		95B433702BDD44D2007B238C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		95B433722BDD45BD007B238C /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		95B433742BDDC145007B238C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		95B4337A2BDDC638007B238C /* TTNorms-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Bold.otf"; sourceTree = "<group>"; };
+		95B4337B2BDDC638007B238C /* TTNorms-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,26 +72,17 @@
 		95628AAC2BDC4FB70088519C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				95B433762BDDC53F007B238C /* Assets */,
 				95628AC52BDC57450088519C /* Scenes */,
 				95628AC42BDC57350088519C /* Application */,
-				95628AC12BDC51870088519C /* XcodeContent */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		95628AC12BDC51870088519C /* XcodeContent */ = {
-			isa = PBXGroup;
-			children = (
-				95628ABB2BDC4FB90088519C /* Info.plist */,
-				95628AB62BDC4FB90088519C /* Assets.xcassets */,
-				95628AB82BDC4FB90088519C /* LaunchScreen.storyboard */,
-			);
-			name = XcodeContent;
 			sourceTree = "<group>";
 		};
 		95628AC42BDC57350088519C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				95628ABB2BDC4FB90088519C /* Info.plist */,
 				95628AAD2BDC4FB70088519C /* AppDelegate.swift */,
 				95628AAF2BDC4FB70088519C /* SceneDelegate.swift */,
 			);
@@ -101,11 +102,41 @@
 		95628AC62BDC574C0088519C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				95B4336D2BDD4152007B238C /* Theme */,
 				95628AC72BDC57830088519C /* UIViewCodable.swift */,
 				95628AC92BDC57870088519C /* ViewCodable.swift */,
 				95628ACB2BDC58CB0088519C /* SceneViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		95B4336D2BDD4152007B238C /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				95B433702BDD44D2007B238C /* Colors.swift */,
+				95B433742BDDC145007B238C /* Fonts.swift */,
+				95B433722BDD45BD007B238C /* UIColor+Hex.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		95B433762BDDC53F007B238C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				95B433792BDDC5B9007B238C /* Fonts */,
+				95628AB62BDC4FB90088519C /* Assets.xcassets */,
+				95628AB82BDC4FB90088519C /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		95B433792BDDC5B9007B238C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				95B4337A2BDDC638007B238C /* TTNorms-Bold.otf */,
+				95B4337B2BDDC638007B238C /* TTNorms-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +198,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B4337D2BDDC638007B238C /* TTNorms-Regular.otf in Resources */,
+				95B4337C2BDDC638007B238C /* TTNorms-Bold.otf in Resources */,
 				95628AB72BDC4FB90088519C /* Assets.xcassets in Resources */,
 				95628ABA2BDC4FB90088519C /* Base in Resources */,
 			);
@@ -206,7 +239,10 @@
 				95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
+				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
+				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
 				95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */,
+				95B433732BDD45BD007B238C /* UIColor+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +388,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GQM2834P54;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Main/Info.plist;
+				INFOPLIST_FILE = Main/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoreBankChallenge;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -384,7 +420,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GQM2834P54;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Main/Info.plist;
+				INFOPLIST_FILE = Main/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoreBankChallenge;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -4,7 +4,7 @@ class MainView: UIViewCodable {
   private lazy var title: UILabel = {
     let label = UILabel()
     label.text = "Hello World"
-    label.font = UIFont.preferredFont(forTextStyle: .title1)
+    label.font = UIFont.coraFont(for: .title1, weight: .regular)
     label.translatesAutoresizingMaskIntoConstraints = false
 
     return label
