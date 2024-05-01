@@ -21,12 +21,12 @@
 		95B433842BE08B70007B238C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433832BE08B70007B238C /* Constants.swift */; };
 		95B433872BE11B70007B238C /* Avenir-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95B433852BE11B70007B238C /* Avenir-Roman.ttf */; };
 		95B433882BE11B70007B238C /* Avenir-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95B433862BE11B70007B238C /* Avenir-Heavy.ttf */; };
-		95B4338A2BE15C38007B238C /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433892BE15C38007B238C /* UIView+Constraints.swift */; };
 		95B4338C2BE1676C007B238C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4338B2BE1676C007B238C /* Assets.swift */; };
 		95B433932BE193EE007B238C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 95B433922BE193EE007B238C /* Localizable.xcstrings */; };
 		95B433952BE19442007B238C /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433942BE19442007B238C /* LocalizedStrings.swift */; };
 		95B433982BE1C110007B238C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433972BE1C110007B238C /* Button.swift */; };
-		95B4339A2BE27FE6007B238C /* UIColor+Darker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433992BE27FE6007B238C /* UIColor+Darker.swift */; };
+		95B4339C2BE288F2007B238C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4339B2BE288F2007B238C /* Extensions.swift */; };
+		95B4339F2BE28970007B238C /* ButtonProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4339E2BE28970007B238C /* ButtonProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,12 +46,12 @@
 		95B433832BE08B70007B238C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		95B433852BE11B70007B238C /* Avenir-Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Roman.ttf"; sourceTree = "<group>"; };
 		95B433862BE11B70007B238C /* Avenir-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Heavy.ttf"; sourceTree = "<group>"; };
-		95B433892BE15C38007B238C /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		95B4338B2BE1676C007B238C /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		95B433922BE193EE007B238C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		95B433942BE19442007B238C /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		95B433972BE1C110007B238C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		95B433992BE27FE6007B238C /* UIColor+Darker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Darker.swift"; sourceTree = "<group>"; };
+		95B4339B2BE288F2007B238C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		95B4339E2BE28970007B238C /* ButtonProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProperties.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +119,8 @@
 				95628AC92BDC57870088519C /* ViewCodable.swift */,
 				95628ACB2BDC58CB0088519C /* SceneViewController.swift */,
 				95B433832BE08B70007B238C /* Constants.swift */,
-				95B433892BE15C38007B238C /* UIView+Constraints.swift */,
 				95B433942BE19442007B238C /* LocalizedStrings.swift */,
-				95B433992BE27FE6007B238C /* UIColor+Darker.swift */,
+				95B4339B2BE288F2007B238C /* Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -168,9 +167,18 @@
 		95B433962BE19757007B238C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				95B433972BE1C110007B238C /* Button.swift */,
+				95B4339D2BE28962007B238C /* Button */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		95B4339D2BE28962007B238C /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				95B433972BE1C110007B238C /* Button.swift */,
+				95B4339E2BE28970007B238C /* ButtonProperties.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,17 +280,17 @@
 				95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
 				95B433822BE07AB2007B238C /* IntroView.swift in Sources */,
-				95B4338A2BE15C38007B238C /* UIView+Constraints.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
 				95B433842BE08B70007B238C /* Constants.swift in Sources */,
 				95B433982BE1C110007B238C /* Button.swift in Sources */,
 				95B433952BE19442007B238C /* LocalizedStrings.swift in Sources */,
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
-				95B4339A2BE27FE6007B238C /* UIColor+Darker.swift in Sources */,
+				95B4339C2BE288F2007B238C /* Extensions.swift in Sources */,
 				95B433802BE07AAE007B238C /* IntroViewController.swift in Sources */,
 				95B4338C2BE1676C007B238C /* Assets.swift in Sources */,
 				95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */,
+				95B4339F2BE28970007B238C /* ButtonProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

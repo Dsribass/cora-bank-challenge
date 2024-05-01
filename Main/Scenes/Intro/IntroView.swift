@@ -63,7 +63,7 @@ class IntroView: UIViewCodable {
     CoraButton(
       title: LocalizedStrings.introSecondaryButton,
       size: .small,
-      variation: .secondary,
+      variation: .primary,
       color: .brand)
   }()
 
