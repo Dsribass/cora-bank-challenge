@@ -22,6 +22,10 @@ class CoraButton: UIButton {
   var color: Color
   var image: UIImage?
 
+  func handleButtonTap(_ completion: @escaping UIActionHandler) {
+    addAction(UIAction(title: "", handler: completion), for: .touchUpInside)
+  }
+
   override func updateConfiguration() {
     guard let configuration = configuration else {
       return

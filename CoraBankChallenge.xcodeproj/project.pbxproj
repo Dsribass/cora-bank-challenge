@@ -27,6 +27,12 @@
 		95B433982BE1C110007B238C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433972BE1C110007B238C /* Button.swift */; };
 		95B4339C2BE288F2007B238C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4339B2BE288F2007B238C /* Extensions.swift */; };
 		95B4339F2BE28970007B238C /* ButtonProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4339E2BE28970007B238C /* ButtonProperties.swift */; };
+		95B433A32BE299DF007B238C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433A22BE299DF007B238C /* LoginViewController.swift */; };
+		95B433A52BE299FF007B238C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433A42BE299FF007B238C /* LoginView.swift */; };
+		95B433A72BE29A3A007B238C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433A62BE29A3A007B238C /* ApplicationCoordinator.swift */; };
+		95B433AA2BE29AC8007B238C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433A92BE29AC8007B238C /* Coordinator.swift */; };
+		95B433AC2BE29CD6007B238C /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433AB2BE29CD6007B238C /* LoginCoordinator.swift */; };
+		95B433AE2BE29CDB007B238C /* IntroCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433AD2BE29CDB007B238C /* IntroCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +58,12 @@
 		95B433972BE1C110007B238C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		95B4339B2BE288F2007B238C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95B4339E2BE28970007B238C /* ButtonProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProperties.swift; sourceTree = "<group>"; };
+		95B433A22BE299DF007B238C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		95B433A42BE299FF007B238C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		95B433A62BE29A3A007B238C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		95B433A92BE29AC8007B238C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		95B433AB2BE29CD6007B238C /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		95B433AD2BE29CDB007B238C /* IntroCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 		95628AAC2BDC4FB70088519C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				95B433A82BE29AC2007B238C /* Utils */,
 				95B433762BDDC53F007B238C /* Assets */,
 				95628AC52BDC57450088519C /* Scenes */,
 				95628AC42BDC57350088519C /* Application */,
@@ -97,6 +110,7 @@
 				95628ABB2BDC4FB90088519C /* Info.plist */,
 				95628AAD2BDC4FB70088519C /* AppDelegate.swift */,
 				95628AAF2BDC4FB70088519C /* SceneDelegate.swift */,
+				95B433A62BE29A3A007B238C /* ApplicationCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -104,6 +118,7 @@
 		95628AC52BDC57450088519C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				95B433A02BE299AD007B238C /* Login */,
 				95B4337E2BE07A99007B238C /* Intro */,
 				95628AC62BDC574C0088519C /* Common */,
 			);
@@ -160,6 +175,7 @@
 			children = (
 				95B4337F2BE07AAE007B238C /* IntroViewController.swift */,
 				95B433812BE07AB2007B238C /* IntroView.swift */,
+				95B433AD2BE29CDB007B238C /* IntroCoordinator.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -179,6 +195,24 @@
 				95B4339E2BE28970007B238C /* ButtonProperties.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		95B433A02BE299AD007B238C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				95B433A22BE299DF007B238C /* LoginViewController.swift */,
+				95B433A42BE299FF007B238C /* LoginView.swift */,
+				95B433AB2BE29CD6007B238C /* LoginCoordinator.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		95B433A82BE29AC2007B238C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				95B433A92BE29AC8007B238C /* Coordinator.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,19 +312,25 @@
 			files = (
 				95628ACA2BDC57870088519C /* ViewCodable.swift in Sources */,
 				95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */,
+				95B433AC2BE29CD6007B238C /* LoginCoordinator.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
 				95B433822BE07AB2007B238C /* IntroView.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
+				95B433A72BE29A3A007B238C /* ApplicationCoordinator.swift in Sources */,
+				95B433AA2BE29AC8007B238C /* Coordinator.swift in Sources */,
 				95B433842BE08B70007B238C /* Constants.swift in Sources */,
 				95B433982BE1C110007B238C /* Button.swift in Sources */,
 				95B433952BE19442007B238C /* LocalizedStrings.swift in Sources */,
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
+				95B433A52BE299FF007B238C /* LoginView.swift in Sources */,
 				95B4339C2BE288F2007B238C /* Extensions.swift in Sources */,
 				95B433802BE07AAE007B238C /* IntroViewController.swift in Sources */,
+				95B433A32BE299DF007B238C /* LoginViewController.swift in Sources */,
 				95B4338C2BE1676C007B238C /* Assets.swift in Sources */,
 				95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */,
 				95B4339F2BE28970007B238C /* ButtonProperties.swift in Sources */,
+				95B433AE2BE29CDB007B238C /* IntroCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

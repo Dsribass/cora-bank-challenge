@@ -50,7 +50,7 @@ class IntroView: UIViewCodable {
     return label
   }()
 
-  lazy var primaryButton: UIButton = {
+  lazy var primaryButton: CoraButton = {
     CoraButton(
       title: LocalizedStrings.introPrimaryButton,
       size: .medium,
@@ -59,7 +59,7 @@ class IntroView: UIViewCodable {
       image: UIImage(named: .icArrowRight))
   }()
 
-  lazy var secondaryButton: UIButton = {
+  lazy var secondaryButton: CoraButton = {
     CoraButton(
       title: LocalizedStrings.introSecondaryButton,
       size: .small,
