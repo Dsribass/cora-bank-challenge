@@ -1,8 +1,8 @@
-//
-//  IntroViewController.swift
-//  Main
-//
-//  Created by Daniel de Souza Ribas on 29/04/24.
-//
+import UIKit
 
-import Foundation
+final class IntroViewController: SceneViewController<IntroView> {
+  override func setupLayout() {
+    super.setupLayout()
+    navigationController?.navigationBar.isHidden = true
+  }
+}

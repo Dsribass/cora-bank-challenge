@@ -1,19 +1,21 @@
-//
-//  Fonts.swift
-//  Main
-//
-//  Created by Daniel de Souza Ribas on 27/04/24.
-//
-
 import UIKit.UIFont
 
 enum CoraFont {
   case title1, title2
-  case body
+  case body1, body2
 
   static let fontName = "Avenir"
 
   fileprivate func buildFontName(weight: Weight) -> String { "\(CoraFont.fontName)-\(weight.rawValue)" }
+
+  fileprivate func buildFont(weight: Weight) -> UIFont? {
+    switch self {
+    case .title1: UIFont(name: buildFontName(weight: weight), size: 28.0)
+    case .title2: UIFont(name: buildFontName(weight: weight), size: 22.0)
+    case .body1: UIFont(name: buildFontName(weight: weight), size: 16.0)
+    case .body2: UIFont(name: buildFontName(weight: weight), size: 14.0)
+    }
+  }
 }
 
 extension CoraFont {
@@ -35,12 +37,6 @@ extension UIFont {
   ///
   /// - Note: Ensure that the custom fonts are correctly configured and included in the project.
   static func coraFont(for style: CoraFont, weight: CoraFont.Weight) -> UIFont {
-    let coraFont = switch style {
-    case .title1: UIFont(name: style.buildFontName(weight: weight), size: 28.0)
-    case .title2: UIFont(name: style.buildFontName(weight: weight), size: 22.0)
-    case .body: UIFont(name: style.buildFontName(weight: weight), size: 16.0)
-    }
-
-    return coraFont ?? UIFont.systemFont(ofSize: systemFontSize, weight: .regular)
+    style.buildFont(weight: weight) ?? UIFont.systemFont(ofSize: systemFontSize, weight: .regular)
   }
 }

@@ -1,8 +1,5 @@
-//
-//  Constants.swift
-//  Main
-//
-//  Created by Daniel de Souza Ribas on 29/04/24.
-//
 
-import Foundation
+enum Constants {
+  static let defaultSpacing = 24.0
+  static let smallSpacing = 16.0
+}

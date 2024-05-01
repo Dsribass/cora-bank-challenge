@@ -1,0 +1,61 @@
+{
+  "sourceLanguage" : "pt-BR",
+  "strings" : {
+    "IntroPageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sua empresa livre burocracias e de taxas para gerar boletos, fazer transferências e pagamentos."
+          }
+        }
+      }
+    },
+    "IntroPagePrimaryButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quero fazer parte!"
+          }
+        }
+      }
+    },
+    "IntroPageSecondaryButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Já sou cliente"
+          }
+        }
+      }
+    },
+    "IntroPageSubtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poderosamente simples"
+          }
+        }
+      }
+    },
+    "IntroPageTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conta Digital PJ"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
