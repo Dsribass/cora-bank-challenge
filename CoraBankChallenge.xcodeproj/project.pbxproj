@@ -33,6 +33,7 @@
 		95B433AA2BE29AC8007B238C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433A92BE29AC8007B238C /* Coordinator.swift */; };
 		95B433AC2BE29CD6007B238C /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433AB2BE29CD6007B238C /* LoginCoordinator.swift */; };
 		95B433AE2BE29CDB007B238C /* IntroCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433AD2BE29CDB007B238C /* IntroCoordinator.swift */; };
+		95B433B12BE3328A007B238C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433B02BE3328A007B238C /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		95B433A92BE29AC8007B238C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		95B433AB2BE29CD6007B238C /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		95B433AD2BE29CDB007B238C /* IntroCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCoordinator.swift; sourceTree = "<group>"; };
+		95B433B02BE3328A007B238C /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +132,6 @@
 			children = (
 				95B433962BE19757007B238C /* Components */,
 				95B4336D2BDD4152007B238C /* Theme */,
-				95628AC72BDC57830088519C /* UIViewCodable.swift */,
-				95628AC92BDC57870088519C /* ViewCodable.swift */,
-				95628ACB2BDC58CB0088519C /* SceneViewController.swift */,
 				95B433832BE08B70007B238C /* Constants.swift */,
 				95B433942BE19442007B238C /* LocalizedStrings.swift */,
 				95B4339B2BE288F2007B238C /* Extensions.swift */,
@@ -183,6 +182,8 @@
 		95B433962BE19757007B238C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95B433B22BE33400007B238C /* ViewController */,
+				95B433AF2BE33277007B238C /* NavigationController */,
 				95B4339D2BE28962007B238C /* Button */,
 			);
 			path = Components;
@@ -213,6 +214,24 @@
 				95B433A92BE29AC8007B238C /* Coordinator.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		95B433AF2BE33277007B238C /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				95B433B02BE3328A007B238C /* NavigationController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		95B433B22BE33400007B238C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				95628AC72BDC57830088519C /* UIViewCodable.swift */,
+				95628AC92BDC57870088519C /* ViewCodable.swift */,
+				95628ACB2BDC58CB0088519C /* SceneViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +333,7 @@
 				95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */,
 				95B433AC2BE29CD6007B238C /* LoginCoordinator.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
+				95B433B12BE3328A007B238C /* NavigationController.swift in Sources */,
 				95B433822BE07AB2007B238C /* IntroView.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
 				95B433A72BE29A3A007B238C /* ApplicationCoordinator.swift in Sources */,

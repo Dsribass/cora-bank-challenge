@@ -24,7 +24,7 @@ class IntroView: UIViewCodable {
   lazy var title: UILabel = {
     let label = UILabel()
     label.font = UIFont.coraFont(for: .title1, weight: .bold)
-    label.textColor = .Cora.onPrimaryColor
+    label.textColor = .Cora.white
     label.text = LocalizedStrings.introTitle
 
     return label
@@ -33,7 +33,7 @@ class IntroView: UIViewCodable {
   lazy var subtitle: UILabel = {
     let label = UILabel()
     label.font = UIFont.coraFont(for: .title1, weight: .regular)
-    label.textColor = .Cora.onPrimaryColor
+    label.textColor = .Cora.white
     label.text = LocalizedStrings.introSubtitle
 
     return label
@@ -44,7 +44,7 @@ class IntroView: UIViewCodable {
     label.lineBreakMode = .byWordWrapping
     label.numberOfLines = 0
     label.font = UIFont.coraFont(for: .body1, weight: .regular)
-    label.textColor = .Cora.onPrimaryColor
+    label.textColor = .Cora.white
     label.text = LocalizedStrings.introDescription
 
     return label

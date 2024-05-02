@@ -47,9 +47,9 @@ class CoraButton: UIButton {
       switch color {
       case .brand:
         updatedConfiguration.baseBackgroundColor = .Cora.primaryColor
-        updatedConfiguration.baseForegroundColor = .Cora.onPrimaryColor
+        updatedConfiguration.baseForegroundColor = .Cora.white
       case .white:
-        updatedConfiguration.baseBackgroundColor = .Cora.onPrimaryColor
+        updatedConfiguration.baseBackgroundColor = .Cora.white
         updatedConfiguration.baseForegroundColor = .Cora.primaryColor
       }
     } else {
@@ -62,8 +62,8 @@ class CoraButton: UIButton {
         updatedConfiguration.background.strokeColor = .Cora.primaryColor
       case .white:
         updatedConfiguration.baseBackgroundColor = .clear
-        updatedConfiguration.baseForegroundColor = .Cora.onPrimaryColor
-        updatedConfiguration.background.strokeColor = .Cora.onPrimaryColor
+        updatedConfiguration.baseForegroundColor = .Cora.white
+        updatedConfiguration.background.strokeColor = .Cora.white
       }
     }
 

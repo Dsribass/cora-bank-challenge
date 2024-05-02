@@ -5,6 +5,7 @@ extension UIImage {
     case logo = "logo"
     case introBg = "intro-bg"
     case icArrowRight = "arrow.right"
+    case icChevronLeft = "chevron.left"
   }
   
   convenience init?(named: CoraImages) {

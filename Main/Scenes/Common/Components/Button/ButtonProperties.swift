@@ -35,20 +35,6 @@ extension CoraButton {
 
   enum Color {
     case brand, white
-
-    func background() -> UIColor {
-      switch self {
-      case .brand: .Cora.primaryColor
-      case .white: .white
-      }
-    }
-
-    func foreground() -> UIColor {
-      switch self {
-      case .brand: .white
-      case .white: .Cora.primaryColor
-      }
-    }
   }
 }
 

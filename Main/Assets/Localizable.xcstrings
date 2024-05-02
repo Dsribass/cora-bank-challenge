@@ -55,6 +55,17 @@
           }
         }
       }
+    },
+    "LoginNavBarTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login Cora"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

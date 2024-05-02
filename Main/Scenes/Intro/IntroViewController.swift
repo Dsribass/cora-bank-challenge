@@ -12,6 +12,16 @@ final class IntroViewController: SceneViewController<IntroView> {
 
   let router: IntroViewRouter
 
+  override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      navigationController?.setNavigationBarHidden(true, animated: animated)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      navigationController?.setNavigationBarHidden(false, animated: animated)
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -22,7 +32,6 @@ final class IntroViewController: SceneViewController<IntroView> {
 
   override func setupLayout() {
     super.setupLayout()
-    navigationController?.navigationBar.isHidden = true
   }
 }
 

@@ -6,7 +6,7 @@ class ApplicationCoordinator: Coordinator {
 
   init(window: UIWindow) {
     self.window = window
-    self.navigationController = UINavigationController()
+    self.navigationController = CoraNavigationController()
   }
 
   func start() {

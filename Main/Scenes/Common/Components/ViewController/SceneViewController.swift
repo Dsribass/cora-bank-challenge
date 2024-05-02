@@ -5,6 +5,7 @@ class SceneViewController<View: UIView>: UIViewController, ViewCodable {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationItem.backButtonDisplayMode = .minimal
     setupView()
   }
 
