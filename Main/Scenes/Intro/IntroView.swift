@@ -81,7 +81,7 @@ class IntroView: UIViewCodable {
     content.addArrangedSubview(subtitle)
     content.setCustomSpacing(Constants.smallSpacing, after: subtitle)
     content.addArrangedSubview(information)
-    content.setCustomSpacing(Constants.defaultSpacing, after: information)
+    content.setCustomSpacing(Constants.mediumSpacing, after: information)
     content.addArrangedSubview(primaryButton)
     content.setCustomSpacing(Constants.smallSpacing, after: primaryButton)
     content.addArrangedSubview(secondaryButton)
@@ -99,15 +99,15 @@ class IntroView: UIViewCodable {
 
     logo.makeConstraints { view in
       [
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.defaultSpacing),
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
         view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
       ]
     }
 
     content.makeConstraints { view in
       [
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.defaultSpacing),
-        view.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.defaultSpacing),
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
+        view.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.mediumSpacing),
         view.topAnchor.constraint(equalTo: centerYAnchor, constant: Constants.smallSpacing)
       ]
     }

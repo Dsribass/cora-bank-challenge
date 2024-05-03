@@ -8,6 +8,6 @@ class LoginCoordinator: Coordinator {
   }
 
   func start() {
-    navigationController.pushViewController(LoginViewController(), animated: true)
+    navigationController.pushViewController(IdentificationViewController(), animated: true)
   }
 }

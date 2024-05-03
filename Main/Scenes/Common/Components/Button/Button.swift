@@ -68,7 +68,7 @@ class CoraButton: UIButton {
     }
 
     updatedConfiguration.background.cornerRadius = size.cornerRadius()
-    updatedConfiguration.image = image
+    updatedConfiguration.image = image?.withTintColor(updatedConfiguration.baseForegroundColor!)
     updatedConfiguration.imagePlacement = .trailing
 
     self.configuration = updatedConfiguration

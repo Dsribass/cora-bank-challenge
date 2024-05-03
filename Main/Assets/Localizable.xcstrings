@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "pt-BR",
   "strings" : {
+    "IdentificationPageCpf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qual seu CPF?"
+          }
+        }
+      }
+    },
+    "IdentificationPageGreetings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bem-vindo de volta!"
+          }
+        }
+      }
+    },
     "IntroPageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -63,6 +85,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Login Cora"
+          }
+        }
+      }
+    },
+    "LoginNextStepButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo"
           }
         }
       }
