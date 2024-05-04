@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 class LoginCoordinator: Coordinator {
   var navigationController: UINavigationController
@@ -8,6 +9,8 @@ class LoginCoordinator: Coordinator {
   }
 
   func start() {
-    navigationController.pushViewController(IdentificationViewController(), animated: true)
+    navigationController.pushViewController(IdentificationViewController(
+      viewModel: IdentificationViewModel(validateCpf: ValidateCpfUseCase())
+    ), animated: true)
   }
 }

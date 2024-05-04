@@ -15,7 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
 
-
     let applicationCoordinator = ApplicationCoordinator(window: window)
     applicationCoordinator.start()
     
