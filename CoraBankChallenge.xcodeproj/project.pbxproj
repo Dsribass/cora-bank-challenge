@@ -12,7 +12,8 @@
 		954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8F12BE46C04007299F5 /* IdentificationViewController.swift */; };
 		954AF8F62BE47ACF007299F5 /* ValidateCpfUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8F52BE47ACF007299F5 /* ValidateCpfUseCase.swift */; };
 		954AF9002BE659F5007299F5 /* IdentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8FF2BE659F5007299F5 /* IdentificationViewModel.swift */; };
-		954AF9022BE67B6A007299F5 /* UITextField+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF9012BE67B6A007299F5 /* UITextField+Publisher.swift */; };
+		954AF9042BE695A6007299F5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF9032BE695A6007299F5 /* ViewModel.swift */; };
+		954AF9062BE7E1D0007299F5 /* CombineExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF9052BE7E1D0007299F5 /* CombineExtensions.swift */; };
 		95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628AAD2BDC4FB70088519C /* AppDelegate.swift */; };
 		95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628AAF2BDC4FB70088519C /* SceneDelegate.swift */; };
 		95628AB72BDC4FB90088519C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95628AB62BDC4FB90088519C /* Assets.xcassets */; };
@@ -64,7 +65,8 @@
 		954AF8F12BE46C04007299F5 /* IdentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
 		954AF8F52BE47ACF007299F5 /* ValidateCpfUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCpfUseCase.swift; sourceTree = "<group>"; };
 		954AF8FF2BE659F5007299F5 /* IdentificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationViewModel.swift; sourceTree = "<group>"; };
-		954AF9012BE67B6A007299F5 /* UITextField+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Publisher.swift"; sourceTree = "<group>"; };
+		954AF9032BE695A6007299F5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		954AF9052BE7E1D0007299F5 /* CombineExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensions.swift; sourceTree = "<group>"; };
 		95628AAA2BDC4FB70088519C /* Main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Main.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95628AAD2BDC4FB70088519C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95628AAF2BDC4FB70088519C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,7 +241,8 @@
 				95B433832BE08B70007B238C /* Constants.swift */,
 				95B433942BE19442007B238C /* LocalizedStrings.swift */,
 				95B4339B2BE288F2007B238C /* Extensions.swift */,
-				954AF9012BE67B6A007299F5 /* UITextField+Publisher.swift */,
+				954AF9032BE695A6007299F5 /* ViewModel.swift */,
+				954AF9052BE7E1D0007299F5 /* CombineExtensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -553,10 +556,11 @@
 				95628ACA2BDC57870088519C /* ViewCodable.swift in Sources */,
 				95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */,
 				95B433AC2BE29CD6007B238C /* LoginCoordinator.swift in Sources */,
+				954AF9062BE7E1D0007299F5 /* CombineExtensions.swift in Sources */,
 				954AF8F02BE46BFE007299F5 /* IdentificationView.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
+				954AF9042BE695A6007299F5 /* ViewModel.swift in Sources */,
 				95B433B12BE3328A007B238C /* NavigationController.swift in Sources */,
-				954AF9022BE67B6A007299F5 /* UITextField+Publisher.swift in Sources */,
 				95B433822BE07AB2007B238C /* IntroView.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
 				95B433A72BE29A3A007B238C /* ApplicationCoordinator.swift in Sources */,

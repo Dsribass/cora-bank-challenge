@@ -3,7 +3,6 @@ import Combine
 
 class IdentificationViewController: SceneViewController<IdentificationView> {
   let viewModel: IdentificationViewModel
-  var subscriptions = Set<AnyCancellable>()
 
   init(viewModel: IdentificationViewModel) {
     self.viewModel = viewModel
@@ -14,28 +13,23 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupBindings()
   }
 
-  func setupBindings() {
+  override func setupBindings() {
     func bindViewToViewModel() {
-      viewModel.sendEvent {
-        contentView.textField.textPublisher(for: UITextField.textDidEndEditingNotification)
-          .map { cpf ->  IdentificationViewModel.Event in
-            .submitCpfValue(value: cpf)
-          }.eraseToAnyPublisher()
-      }
+      contentView.textField.textPublisher(for: UITextField.textDidEndEditingNotification)
+        .map { cpf -> IdentificationViewModel.E in .submitCpfValue(value: cpf) }
+        .eraseToAnyPublisher()
+        .sendEvent(to: viewModel)
 
-      viewModel.sendEvent {
-        contentView.textField.textPublisher(for: UITextField.textDidChangeNotification)
-          .map { cpf ->  IdentificationViewModel.Event in
-            .changeCpfValue(value: cpf)
-          }.eraseToAnyPublisher()
-      }
+      contentView.textField.textPublisher(for: UITextField.textDidChangeNotification)
+        .map { cpf -> IdentificationViewModel.E in .changeCpfValue(value: cpf) }
+        .eraseToAnyPublisher()
+        .sendEvent(to: viewModel)
     }
 
     func bindViewModelToView() {
-      viewModel.state.receive(on: DispatchQueue.main)
+      viewModel.stateSubject.receive(on: DispatchQueue.main)
         .sink { [weak contentView] state in
           switch state {
           case .cpfFormatted(let value):
@@ -43,7 +37,7 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
           default: break
           }
         }
-        .store(in: &subscriptions)
+        .store(in: &bindings)
     }
 
     bindViewToViewModel()

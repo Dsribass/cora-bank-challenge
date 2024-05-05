@@ -2,37 +2,51 @@ import Foundation
 import Domain
 import Combine
 
-class IdentificationViewModel {
-  enum Event {
-    case submitCpfValue(value: String), changeCpfValue(value: String)
-  }
-
-  enum State {
-    case cpfValid, cpfInvalid, cpfEmpty
-    case cpfFormatted(value: String)
-  }
-
+class IdentificationViewModel: ViewModel {
+  // MARK: - Initializer
   init(validateCpf: ValidateCpfUseCase) {
     self.validateCpf = validateCpf
   }
 
-
   private let validateCpf: ValidateCpfUseCase
-  private let stateSubject = PassthroughSubject<State, Never>()
-  private var subscriptions = Set<AnyCancellable>()
 
-  var state: AnyPublisher<State, Never> { stateSubject.eraseToAnyPublisher() }
-
-  func sendEvent(_ publisher: () -> AnyPublisher<Event, Never>) {
-    publisher().sink { [weak self] event in
-      switch event {
-      case .submitCpfValue(let cpf): self?.validateCpfInput(cpf)
-      case .changeCpfValue(let cpf): self?.formatCpf(cpf)
-      }
-    }
-    .store(in: &subscriptions)
+  // MARK: - Event and States
+  enum IdentificationEvent: Event {
+    case submitCpfValue(value: String), changeCpfValue(value: String)
   }
 
+  enum IdentificationState: State {
+    case idle
+    case cpfValid, cpfInvalid, cpfEmpty
+    case cpfFormatted(value: String)
+  }
+
+  typealias S = IdentificationState
+  typealias E = IdentificationEvent
+
+  // MARK: - Publisher and Subscriptions
+  private(set) var subscriptions: Set<AnyCancellable> = .init()
+  private(set) var stateSubject: CurrentValueSubject<IdentificationState, Never> = .init(.idle)
+
+  func sendEvent(_ event: IdentificationEvent) {
+    switch event {
+    case .submitCpfValue(let cpf): validateCpfInput(cpf)
+    case .changeCpfValue(let cpf): formatCpf(cpf)
+    }
+  }
+
+  func sendEvent(by publisher: () -> AnyPublisher<IdentificationEvent, Never>) {
+    publisher().sink { [weak self] event in self?.sendEvent(event) }
+      .store(in: &subscriptions)
+  }
+
+  func sendEvent(by publisher: AnyPublisher<IdentificationEvent, Never>) {
+    publisher.sink { [weak self] event in self?.sendEvent(event) }
+      .store(in: &subscriptions)
+  }
+}
+
+extension IdentificationViewModel {
   private func validateCpfInput(_ value: String) {
     validateCpf.execute(ValidateCpfUseCase.Request(cpf: value))
       .sink { [weak self] completion in
@@ -52,12 +66,12 @@ class IdentificationViewModel {
 
     if value.count <= 14 {
       switch value.count {
-        case 3, 7:
-          appendString = "."
-        case 11:
-          appendString = "-"
-        default:
-          break
+      case 3, 7:
+        appendString = "."
+      case 11:
+        appendString = "-"
+      default:
+        break
       }
     }
 
