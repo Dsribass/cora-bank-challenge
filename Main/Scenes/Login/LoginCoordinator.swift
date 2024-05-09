@@ -10,7 +10,14 @@ class LoginCoordinator: Coordinator {
 
   func start() {
     navigationController.pushViewController(IdentificationViewController(
-      viewModel: IdentificationViewModel(validateCpf: ValidateCpfUseCase())
+      viewModel: IdentificationViewModel(validateCpf: ValidateCpfUseCase()),
+      router: self
     ), animated: true)
+  }
+}
+
+extension LoginCoordinator: IdentificationViewRouter {
+  func navigateToPasswordView() {
+    navigationController.pushViewController(PasswordViewController(), animated: true)
   }
 }

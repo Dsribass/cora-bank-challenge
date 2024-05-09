@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7152BED7043006563CD /* PasswordViewController.swift */; };
+		9518D7182BED705E006563CD /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7172BED705E006563CD /* PasswordView.swift */; };
 		954AF8E42BE46A21007299F5 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954AF8D12BE46A21007299F5 /* Data.framework */; };
 		954AF8F02BE46BFE007299F5 /* IdentificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8EF2BE46BFE007299F5 /* IdentificationView.swift */; };
 		954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8F12BE46C04007299F5 /* IdentificationViewController.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9518D7152BED7043006563CD /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		9518D7172BED705E006563CD /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		954AF8D12BE46A21007299F5 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954AF8EF2BE46BFE007299F5 /* IdentificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationView.swift; sourceTree = "<group>"; };
 		954AF8F12BE46C04007299F5 /* IdentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 		954AF8EE2BE46BEF007299F5 /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				9518D7152BED7043006563CD /* PasswordViewController.swift */,
+				9518D7172BED705E006563CD /* PasswordView.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -554,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95628ACA2BDC57870088519C /* ViewCodable.swift in Sources */,
+				9518D7182BED705E006563CD /* PasswordView.swift in Sources */,
 				95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */,
 				95B433AC2BE29CD6007B238C /* LoginCoordinator.swift in Sources */,
 				954AF9062BE7E1D0007299F5 /* CombineExtensions.swift in Sources */,
@@ -572,6 +579,7 @@
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
 				954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
+				9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */,
 				95B4339C2BE288F2007B238C /* Extensions.swift in Sources */,
 				95B433802BE07AAE007B238C /* IntroViewController.swift in Sources */,
 				95B4338C2BE1676C007B238C /* Assets.swift in Sources */,

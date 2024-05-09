@@ -9,6 +9,10 @@ protocol Event {}
 /// Implement this protocol to add custom states to your view model.
 protocol State {}
 
+/// A protocol representing an action triggered by the view model.
+/// Implement this protocol to add custom actions to your view model.
+protocol Action {}
+
 /// A protocol representing a view model, which mediates between the view and the model(s), handling user inputs and updating the UI.
 ///
 /// View models encapsulate the presentation logic of your application. They manage the state of the UI and handle user interactions, abstracting away the details of data manipulation and business logic.
@@ -19,10 +23,18 @@ protocol ViewModel {
   /// The associated type representing the events that can be handled by the view model.
   associatedtype E: Event
 
+  /// The associated type representing the actions that can be triggered by the view model.
+  associatedtype A: Action
+
   /// A subject that publishes the current state of the view model.
   ///
   /// Subscribe to this subject to receive updates about changes in the state of the view model. Use the published state to update the UI accordingly.
   var stateSubject: CurrentValueSubject<S, Never> { get }
+
+  /// A subject that emits actions to trigger state updates in the view model.
+  ///
+  /// Subscribe to this subject to receive actions that represent user interactions or other events. Use these actions to update the state of the view model, which in turn may trigger updates to the UI.
+  var actionSubject: PassthroughSubject<A, Never> { get }
 
   /// A set to keep track of subscriptions to Combine publishers.
   ///

@@ -28,15 +28,22 @@ class SceneViewController<View: UIView>: UIViewController, ViewCodable {
 }
 
 extension SceneViewController {
-  func updateUI<S: State>(
-    with stateSubject: AnyPublisher<S, Never>,
+  func listenState<S: State>(
+    of stateSubject: AnyPublisher<S, Never>,
     _ completion: @escaping (S) -> ()
   ) -> AnyCancellable {
     stateSubject
       .receive(on: DispatchQueue.main)
-      .sink { state in
-        completion(state)
-      }
+      .sink { completion($0) }
+  }
+
+  func listenAction<A: Action>(
+    of actionSubject: AnyPublisher<A, Never>,
+    _ completion: @escaping (A) -> ()
+  ) -> AnyCancellable {
+    actionSubject
+      .receive(on: DispatchQueue.main)
+      .sink { completion($0) }
   }
 }
 

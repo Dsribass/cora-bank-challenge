@@ -121,6 +121,28 @@
           }
         }
       }
+    },
+    "PasswordPageForgotPassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esqueci minha senha"
+          }
+        }
+      }
+    },
+    "PasswordPageTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite sua senha de acesso"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

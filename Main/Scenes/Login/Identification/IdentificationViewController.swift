@@ -2,11 +2,13 @@ import UIKit
 import Combine
 
 class IdentificationViewController: SceneViewController<IdentificationView> {
-  typealias VM =  IdentificationViewModel
-  let viewModel: IdentificationViewModel
+  private typealias VM =  IdentificationViewModel
+  private let viewModel: IdentificationViewModel
+  private let router: IdentificationViewRouter
 
-  init(viewModel: IdentificationViewModel) {
+  init(viewModel: IdentificationViewModel, router: IdentificationViewRouter) {
     self.viewModel = viewModel
+    self.router = router
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -43,8 +45,8 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
     }
 
     func bindViewModelToView() {
-      updateUI(
-        with: viewModel.stateSubject.eraseToAnyPublisher()
+      listenState(
+        of: viewModel.stateSubject.eraseToAnyPublisher()
       ) { [weak contentView] state in
         if state is VM.Idle {
           let idle = state as! VM.Idle
@@ -57,6 +59,14 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
           case .invalid: LocalizedStrings.identificationCpfInvalid
           default: ""
           }
+        }
+      }
+      .store(in: &bindings)
+
+      listenAction(of: viewModel.actionSubject.eraseToAnyPublisher()) { [weak self] action in
+        switch action {
+        case .goToNextStep:
+          self?.router.navigateToPasswordView()
         }
       }
       .store(in: &bindings)
@@ -74,4 +84,8 @@ extension IdentificationViewController: UITextFieldDelegate {
     }
     return true
   }
+}
+
+protocol IdentificationViewRouter {
+  func navigateToPasswordView()
 }

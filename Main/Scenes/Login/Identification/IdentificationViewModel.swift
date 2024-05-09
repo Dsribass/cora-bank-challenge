@@ -13,6 +13,7 @@ class IdentificationViewModel: ViewModel {
   // MARK: - Publisher and Subscriptions
   private(set) var subscriptions: Set<AnyCancellable> = .init()
   private(set) var stateSubject: CurrentValueSubject<IdentificationState, Never> = .init(Idle())
+  private(set) var actionSubject: PassthroughSubject<A, Never> = .init()
 
   private var currentState: IdentificationState { stateSubject.value }
 
@@ -34,6 +35,7 @@ class IdentificationViewModel: ViewModel {
   }
 }
 
+// MARK: - Methods
 extension IdentificationViewModel {
   private func validateCpfInput(_ value: String) {
     func handleFailure(_ error: ValidationError) {
@@ -45,8 +47,7 @@ extension IdentificationViewModel {
     }
 
     func handleSuccess() {
-      let newState = (currentState as! Idle).copyWith(shouldEnableNextStepButton: true)
-      stateSubject.send(newState)
+      actionSubject.send(.goToNextStep)
     }
 
     validateCpf.execute(ValidateCpfUseCase.Request(cpf: value))
@@ -85,14 +86,23 @@ extension IdentificationViewModel {
   var cpfMaxLenght: Int { 14 }
 }
 
+// MARK: - Events, States and Actions
 extension IdentificationViewModel {
   typealias S = IdentificationState
   typealias E = IdentificationEvent
+  typealias A = IdentificationAction
 
+  // MARK: - Action
+  enum IdentificationAction: Action {
+    case goToNextStep
+  }
+
+  // MARK: - Event
   enum IdentificationEvent: Event {
     case submitCpfValue(value: String), changeCpfValue(value: String)
   }
 
+  // MARK: - State
   class IdentificationState: State {}
 
   class Idle: IdentificationState {

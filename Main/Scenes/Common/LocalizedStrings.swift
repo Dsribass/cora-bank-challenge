@@ -12,4 +12,6 @@ enum LocalizedStrings {
   static let identificationCpf = String(localized: "IdentificationPageCpf")
   static let identificationCpfInvalid = String(localized: "IdentificationPageCpfInvalid")
   static let identificationCpfEmpty = String(localized: "IdentificationPageCpfEmpty")
+  static let passwordTitle = String(localized: "PasswordPageTitle")
+  static let passwordForgotPassword = String(localized: "PasswordPageForgotPassword")
 }
