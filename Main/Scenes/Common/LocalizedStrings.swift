@@ -10,4 +10,6 @@ enum LocalizedStrings {
   static let loginNextStepButton = String(localized: "LoginNextStepButton")
   static let identificationPageGreetings = String(localized: "IdentificationPageGreetings")
   static let identificationCpf = String(localized: "IdentificationPageCpf")
+  static let identificationCpfInvalid = String(localized: "IdentificationPageCpfInvalid")
+  static let identificationCpfEmpty = String(localized: "IdentificationPageCpfEmpty")
 }

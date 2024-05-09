@@ -18,7 +18,7 @@ protocol ViewModel {
 
   /// The associated type representing the events that can be handled by the view model.
   associatedtype E: Event
-  
+
   /// A subject that publishes the current state of the view model.
   ///
   /// Subscribe to this subject to receive updates about changes in the state of the view model. Use the published state to update the UI accordingly.

@@ -12,6 +12,28 @@
         }
       }
     },
+    "IdentificationPageCpfEmpty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencha o campo"
+          }
+        }
+      }
+    },
+    "IdentificationPageCpfInvalid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPF inválido!"
+          }
+        }
+      }
+    },
     "IdentificationPageGreetings" : {
       "extractionState" : "manual",
       "localizations" : {

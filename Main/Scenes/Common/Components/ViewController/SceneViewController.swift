@@ -27,3 +27,16 @@ class SceneViewController<View: UIView>: UIViewController, ViewCodable {
   func additionalConfigurations() {}
 }
 
+extension SceneViewController {
+  func updateUI<S: State>(
+    with stateSubject: AnyPublisher<S, Never>,
+    _ completion: @escaping (S) -> ()
+  ) -> AnyCancellable {
+    stateSubject
+      .receive(on: DispatchQueue.main)
+      .sink { state in
+        completion(state)
+      }
+  }
+}
+

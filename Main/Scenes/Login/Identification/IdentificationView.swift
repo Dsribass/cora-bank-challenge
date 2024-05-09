@@ -32,6 +32,14 @@ class IdentificationView: UIViewCodable {
     return tf
   }()
 
+  lazy var textFieldErrorMessage: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.coraFont(for: .body1, weight: .bold)
+    label.textColor = .red
+
+    return label
+  }()
+
   lazy var nextStepButton: CoraButton = {
     CoraButton(
       title: LocalizedStrings.loginNextStepButton,
@@ -53,6 +61,8 @@ class IdentificationView: UIViewCodable {
     content.addArrangedSubview(identificationQuestion)
     content.setCustomSpacing(Constants.largeSpacing, after: identificationQuestion)
     content.addArrangedSubview(textField)
+    content.setCustomSpacing(Constants.smallSpacing, after: textField)
+    content.addArrangedSubview(textFieldErrorMessage)
 
     addSubview(nextStepButton)
   }
