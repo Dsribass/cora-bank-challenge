@@ -9,10 +9,9 @@ class LoginCoordinator: Coordinator {
   }
 
   func start() {
-    navigationController.pushViewController(IdentificationViewController(
-      viewModel: IdentificationViewModel(validateCpf: ValidateCpfUseCase()),
-      router: self
-    ), animated: true)
+    navigationController.pushViewController(
+      Factory.ViewController.makeIdentificationVC(router: self),
+      animated: true)
   }
 }
 

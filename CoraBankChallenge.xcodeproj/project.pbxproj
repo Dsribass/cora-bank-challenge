@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7152BED7043006563CD /* PasswordViewController.swift */; };
 		9518D7182BED705E006563CD /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7172BED705E006563CD /* PasswordView.swift */; };
+		9518D71A2BED9A78006563CD /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7192BED9A78006563CD /* Factory.swift */; };
 		954AF8E42BE46A21007299F5 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954AF8D12BE46A21007299F5 /* Data.framework */; };
 		954AF8F02BE46BFE007299F5 /* IdentificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8EF2BE46BFE007299F5 /* IdentificationView.swift */; };
 		954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AF8F12BE46C04007299F5 /* IdentificationViewController.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		9518D7152BED7043006563CD /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		9518D7172BED705E006563CD /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		9518D7192BED9A78006563CD /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		954AF8D12BE46A21007299F5 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954AF8EF2BE46BFE007299F5 /* IdentificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationView.swift; sourceTree = "<group>"; };
 		954AF8F12BE46C04007299F5 /* IdentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				95B433A92BE29AC8007B238C /* Coordinator.swift */,
+				9518D7192BED9A78006563CD /* Factory.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
 				954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
+				9518D71A2BED9A78006563CD /* Factory.swift in Sources */,
 				9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */,
 				95B4339C2BE288F2007B238C /* Extensions.swift in Sources */,
 				95B433802BE07AAE007B238C /* IntroViewController.swift in Sources */,

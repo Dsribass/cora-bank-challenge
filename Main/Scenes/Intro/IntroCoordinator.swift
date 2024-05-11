@@ -9,7 +9,7 @@ class IntroCoordinator: Coordinator {
 
   func start() {
     navigationController.setViewControllers([
-      IntroViewController(router: self)
+      Factory.makeIntroVC(router: self)
     ], animated: false)
   }
 }
