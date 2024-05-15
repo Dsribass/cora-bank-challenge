@@ -2,8 +2,8 @@ import Domain
 
 enum Factory {
   enum Domain {
-    static func makeValidateCpfUC() -> ValidateCpfUseCase {
-      ValidateCpfUseCase()
+    static func makeValidateCpfUC() -> ValidateCpf {
+      ValidateCpf()
     }
   }
 

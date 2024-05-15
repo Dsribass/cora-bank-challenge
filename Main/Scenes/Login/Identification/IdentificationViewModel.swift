@@ -4,11 +4,11 @@ import Combine
 
 class IdentificationViewModel: ViewModel {
   // MARK: - Initializer
-  init(validateCpf: ValidateCpfUseCase) {
+  init(validateCpf: ValidateCpf) {
     self.validateCpf = validateCpf
   }
 
-  private let validateCpf: ValidateCpfUseCase
+  private let validateCpf: ValidateCpf
 
   // MARK: - Publisher and Subscriptions
   private(set) var subscriptions: Set<AnyCancellable> = .init()
@@ -50,7 +50,7 @@ extension IdentificationViewModel {
       actionSubject.send(.goToNextStep)
     }
 
-    validateCpf.execute(ValidateCpfUseCase.Request(cpf: value))
+    validateCpf.execute(ValidateCpf.Request(cpf: value))
       .sink { completion in
         switch completion {
         case .failure(let error): handleFailure(error)

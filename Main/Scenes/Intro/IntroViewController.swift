@@ -1,4 +1,5 @@
 import UIKit
+import Infra
 
 final class IntroViewController: SceneViewController<IntroView> {
   init(router: IntroViewRouter) {
@@ -13,13 +14,13 @@ final class IntroViewController: SceneViewController<IntroView> {
   let router: IntroViewRouter
 
   override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      navigationController?.setNavigationBarHidden(true, animated: animated)
+    super.viewWillAppear(animated)
+    navigationController?.setNavigationBarHidden(true, animated: animated)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-      navigationController?.setNavigationBarHidden(false, animated: animated)
+    super.viewWillDisappear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: animated)
   }
 
   override func viewDidLoad() {
@@ -29,7 +30,7 @@ final class IntroViewController: SceneViewController<IntroView> {
       self.router.navigateToLoginView()
     }
   }
-
+  
   override func setupLayout() {
     super.setupLayout()
   }

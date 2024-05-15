@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-public final class ValidateCpfUseCase {
+public final class ValidateCpf {
   public struct Request {
     public init(cpf: String) {
       self.cpf = cpf
@@ -51,8 +51,4 @@ public final class ValidateCpfUseCase {
       promise(.failure(.invalid))
     }
   }
-}
-
-public enum ValidationError: Error {
-  case empty, invalid
 }
