@@ -12,7 +12,7 @@ class IdentificationViewModel: ViewModel {
 
   // MARK: - Publisher and Subscriptions
   private(set) var subscriptions: Set<AnyCancellable> = .init()
-  private(set) var stateSubject: CurrentValueSubject<IdentificationState, Never> = .init(Idle())
+  private(set) var stateSubject: CurrentValueSubject<IdentificationState, Never> = .init(IdentificationState())
   private(set) var actionSubject: PassthroughSubject<A, Never> = .init()
 
   private var currentState: IdentificationState { stateSubject.value }
@@ -39,7 +39,7 @@ class IdentificationViewModel: ViewModel {
 extension IdentificationViewModel {
   private func validateCpfInput(_ value: String) {
     func handleFailure(_ error: ValidationError) {
-      let newState = (currentState as! Idle).copyWith(
+      let newState = currentState.copyWith(
         cpfValidation: error == .empty ? .empty : .invalid,
         shouldEnableNextStepButton: false)
 
@@ -75,7 +75,7 @@ extension IdentificationViewModel {
     }
 
     stateSubject.send(
-      (currentState as! Idle).copyWith(
+      currentState.copyWith(
         cpfValidation: .valid,
         shouldEnableNextStepButton: formattedCPF.count == cpfMaxLenght,
         cpfValue: formattedCPF
@@ -103,16 +103,14 @@ extension IdentificationViewModel {
   }
 
   // MARK: - State
-  class IdentificationState: State {}
-
-  class Idle: IdentificationState {
+  class IdentificationState: State {
     init(cpfValidation: CpfValidation, shouldEnableNextStepButton: Bool, cpfValue: String) {
       self.cpfValidation = cpfValidation
       self.shouldEnableNextStepButton = shouldEnableNextStepButton
       self.cpfValue = cpfValue
     }
 
-    convenience override init() {
+    convenience init() {
       self.init(cpfValidation: .valid, shouldEnableNextStepButton: false, cpfValue: "")
     }
 
@@ -128,8 +126,8 @@ extension IdentificationViewModel {
       cpfValidation: CpfValidation? = nil,
       shouldEnableNextStepButton: Bool? = nil,
       cpfValue: String? = nil
-    ) -> Idle {
-      Idle(
+    ) -> IdentificationState {
+      IdentificationState(
         cpfValidation: cpfValidation ?? self.cpfValidation,
         shouldEnableNextStepButton: shouldEnableNextStepButton ?? self.shouldEnableNextStepButton,
         cpfValue: cpfValue ?? self.cpfValue

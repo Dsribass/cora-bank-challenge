@@ -30,7 +30,7 @@ final class IntroViewController: SceneViewController<IntroView> {
       self.router.navigateToLoginView()
     }
   }
-  
+
   override func setupLayout() {
     super.setupLayout()
   }

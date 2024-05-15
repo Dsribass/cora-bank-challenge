@@ -48,17 +48,13 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
       listenState(
         of: viewModel.stateSubject.eraseToAnyPublisher()
       ) { [weak contentView] state in
-        if state is VM.Idle {
-          let idle = state as! VM.Idle
-
-          contentView?.nextStepButton.isEnabled = idle.shouldEnableNextStepButton
-          contentView?.textField.text = idle.cpfValue
-          contentView?.textFieldErrorMessage.isHidden = idle.cpfValidation == .valid
-          contentView?.textFieldErrorMessage.text = switch idle.cpfValidation {
-          case .empty: LocalizedStrings.identificationCpfEmpty
-          case .invalid: LocalizedStrings.identificationCpfInvalid
-          default: ""
-          }
+        contentView?.nextStepButton.isEnabled = state.shouldEnableNextStepButton
+        contentView?.textField.text = state.cpfValue
+        contentView?.textFieldErrorMessage.isHidden = state.cpfValidation == .valid
+        contentView?.textFieldErrorMessage.text = switch state.cpfValidation {
+        case .empty: LocalizedStrings.identificationCpfEmpty
+        case .invalid: LocalizedStrings.identificationCpfInvalid
+        default: ""
         }
       }
       .store(in: &bindings)
