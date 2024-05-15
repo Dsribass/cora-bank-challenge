@@ -1,5 +1,6 @@
 import Combine
 
+// TODO(any): Implement authenticate usecase
 public final class AuthenticateUser {
   public struct Request {
     public init(cpf: String, password: String) {
@@ -11,7 +12,7 @@ public final class AuthenticateUser {
     public let password: String
   }
 
-  public func execute(_ req: Request) {
-    
-  }
+  public init() {}
+
+  public func execute(_ req: Request) {}
 }

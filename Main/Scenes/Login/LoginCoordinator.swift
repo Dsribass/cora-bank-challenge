@@ -17,6 +17,8 @@ class LoginCoordinator: Coordinator {
 
 extension LoginCoordinator: IdentificationViewRouter {
   func navigateToPasswordView() {
-    navigationController.pushViewController(PasswordViewController(), animated: true)
+    navigationController.pushViewController(
+      Factory.ViewController.makePasswordVC(),
+      animated: true)
   }
 }

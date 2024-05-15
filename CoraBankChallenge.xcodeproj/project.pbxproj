@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950D2EB82BF53E6100F9022B /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D2EB72BF53E6100F9022B /* PasswordViewModel.swift */; };
+		950D2EBA2BF54B7300F9022B /* FormValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D2EB92BF54B7300F9022B /* FormValidation.swift */; };
 		9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7152BED7043006563CD /* PasswordViewController.swift */; };
 		9518D7182BED705E006563CD /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7172BED705E006563CD /* PasswordView.swift */; };
 		9518D71A2BED9A78006563CD /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7192BED9A78006563CD /* Factory.swift */; };
@@ -95,6 +97,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		950D2EB72BF53E6100F9022B /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		950D2EB92BF54B7300F9022B /* FormValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidation.swift; sourceTree = "<group>"; };
 		9518D7152BED7043006563CD /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		9518D7172BED705E006563CD /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		9518D7192BED9A78006563CD /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -172,6 +176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		950D2EBB2BF54B7700F9022B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				950D2EB92BF54B7300F9022B /* FormValidation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		954AF8D22BE46A21007299F5 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,8 +208,9 @@
 		954AF8EE2BE46BEF007299F5 /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				9518D7152BED7043006563CD /* PasswordViewController.swift */,
 				9518D7172BED705E006563CD /* PasswordView.swift */,
+				9518D7152BED7043006563CD /* PasswordViewController.swift */,
+				950D2EB72BF53E6100F9022B /* PasswordViewModel.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -300,6 +313,7 @@
 		95628AC62BDC574C0088519C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				950D2EBB2BF54B7700F9022B /* Models */,
 				95B433962BE19757007B238C /* Components */,
 				95B4336D2BDD4152007B238C /* Theme */,
 				95B433832BE08B70007B238C /* Constants.swift */,
@@ -647,6 +661,7 @@
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
 				954AF9042BE695A6007299F5 /* ViewModel.swift in Sources */,
 				95B433B12BE3328A007B238C /* NavigationController.swift in Sources */,
+				950D2EB82BF53E6100F9022B /* PasswordViewModel.swift in Sources */,
 				95B433822BE07AB2007B238C /* IntroView.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
 				95B433A72BE29A3A007B238C /* ApplicationCoordinator.swift in Sources */,
@@ -661,6 +676,7 @@
 				9518D71A2BED9A78006563CD /* Factory.swift in Sources */,
 				9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */,
 				95B4339C2BE288F2007B238C /* Extensions.swift in Sources */,
+				950D2EBA2BF54B7300F9022B /* FormValidation.swift in Sources */,
 				95B433802BE07AAE007B238C /* IntroViewController.swift in Sources */,
 				95B4338C2BE1676C007B238C /* Assets.swift in Sources */,
 				95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */,
@@ -719,7 +735,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = GQM2834P54;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -728,6 +744,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -741,7 +758,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -749,6 +766,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -761,7 +779,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = GQM2834P54;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -770,6 +788,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -783,13 +802,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -996,6 +1016,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1009,12 +1030,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1036,6 +1058,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1049,11 +1072,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

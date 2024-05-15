@@ -2,10 +2,6 @@ import UIKit
 import Combine
 
 class IdentificationViewController: SceneViewController<IdentificationView> {
-  private typealias VM =  IdentificationViewModel
-  private let viewModel: IdentificationViewModel
-  private let router: IdentificationViewRouter
-
   init(viewModel: IdentificationViewModel, router: IdentificationViewRouter) {
     self.viewModel = viewModel
     self.router = router
@@ -13,6 +9,9 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
   }
 
   required init?(coder: NSCoder) { nil }
+
+  private let viewModel: IdentificationViewModel
+  private let router: IdentificationViewRouter
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,12 +33,12 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
       contentView.nextStepButton.publisher(for: .touchUpInside).map { [weak contentView] _ in
         contentView?.textField.text ?? ""
       }
-      .map { cpf -> VM.E in .submitCpfValue(value: cpf) }
+      .map { .submitCpfValue(value: $0) }
       .eraseToAnyPublisher()
       .sendEvent(to: viewModel)
 
       contentView.textField.textPublisher(for: UITextField.textDidChangeNotification)
-        .map { cpf -> VM.E in .changeCpfValue(value: cpf) }
+        .map {.changeCpfValue(value: $0) }
         .eraseToAnyPublisher()
         .sendEvent(to: viewModel)
     }

@@ -2,14 +2,17 @@ import Domain
 
 enum Factory {
   enum Domain {
-    static func makeValidateCpfUC() -> ValidateCpf {
-      ValidateCpf()
-    }
+    static func makeValidateCpf() -> ValidateCpf { ValidateCpf() }
+    static func makeAuthenticateUser() -> AuthenticateUser { AuthenticateUser() }
   }
 
   enum ViewModel {
     static func makeIdentificationVM() -> IdentificationViewModel {
-      IdentificationViewModel(validateCpf: Domain.makeValidateCpfUC())
+      IdentificationViewModel(validateCpf: Domain.makeValidateCpf())
+    }
+
+    static func makePasswordVM() -> PasswordViewModel {
+      PasswordViewModel(authenticate: Domain.makeAuthenticateUser())
     }
   }
 
@@ -23,7 +26,7 @@ enum Factory {
     }
 
     static func makePasswordVC() -> PasswordViewController {
-      PasswordViewController()
+      PasswordViewController(viewModel: ViewModel.makePasswordVM())
     }
   }
 }

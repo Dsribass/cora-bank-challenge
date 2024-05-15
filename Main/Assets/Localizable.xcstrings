@@ -133,6 +133,17 @@
         }
       }
     },
+    "PasswordPageInvalidInput" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senha ou CPF inválidos!"
+          }
+        }
+      }
+    },
     "PasswordPageTitle" : {
       "extractionState" : "manual",
       "localizations" : {

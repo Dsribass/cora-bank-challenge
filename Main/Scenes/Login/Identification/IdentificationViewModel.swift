@@ -2,48 +2,37 @@ import Foundation
 import Domain
 import Combine
 
+// MARK: - ViewModel
 class IdentificationViewModel: ViewModel {
-  // MARK: - Initializer
+  typealias S = IdentificationState
+  typealias E = IdentificationEvent
+  typealias A = IdentificationAction
+
   init(validateCpf: ValidateCpf) {
     self.validateCpf = validateCpf
   }
 
   private let validateCpf: ValidateCpf
 
-  // MARK: - Publisher and Subscriptions
-  private(set) var subscriptions: Set<AnyCancellable> = .init()
   private(set) var stateSubject: CurrentValueSubject<IdentificationState, Never> = .init(IdentificationState())
   private(set) var actionSubject: PassthroughSubject<A, Never> = .init()
-
+  var subscriptions: Set<AnyCancellable> = .init()
   private var currentState: IdentificationState { stateSubject.value }
 
   func sendEvent(_ event: IdentificationEvent) {
     switch event {
-    case .submitCpfValue(let cpf): validateCpfInput(cpf)
-    case .changeCpfValue(let cpf): formatCpf(cpf)
+    case .submitCpfValue(let cpf): onSubmitCpfValue(cpf)
+    case .changeCpfValue(let cpf): onChangeCpfValue(cpf)
     }
   }
 
-  func sendEvent(by publisher: () -> AnyPublisher<IdentificationEvent, Never>) {
-    publisher().sink { [weak self] event in self?.sendEvent(event) }
-      .store(in: &subscriptions)
-  }
-
-  func sendEvent(by publisher: AnyPublisher<IdentificationEvent, Never>) {
-    publisher.sink { [weak self] event in self?.sendEvent(event) }
-      .store(in: &subscriptions)
-  }
-}
-
-// MARK: - Methods
-extension IdentificationViewModel {
-  private func validateCpfInput(_ value: String) {
+  private func onSubmitCpfValue(_ value: String) {
     func handleFailure(_ error: ValidationError) {
-      let newState = currentState.copyWith(
-        cpfValidation: error == .empty ? .empty : .invalid,
-        shouldEnableNextStepButton: false)
+      var updatedState = currentState
+      updatedState.cpfValidation  = error == .empty ? .empty : .invalid
+      updatedState.shouldEnableNextStepButton = false
 
-      stateSubject.send(newState)
+      stateSubject.send(updatedState)
     }
 
     func handleSuccess() {
@@ -60,7 +49,7 @@ extension IdentificationViewModel {
       .store(in: &subscriptions)
   }
 
-  private func formatCpf(_ value: String) {
+  private func onChangeCpfValue(_ value: String) {
     let dot = "."
     let hyphen = "-"
     let cleanedCpf = value.filter { $0.isNumber }
@@ -74,13 +63,12 @@ extension IdentificationViewModel {
       formattedCPF.append(char)
     }
 
-    stateSubject.send(
-      currentState.copyWith(
-        cpfValidation: .valid,
-        shouldEnableNextStepButton: formattedCPF.count == cpfMaxLenght,
-        cpfValue: formattedCPF
-      )
-    )
+    var updatedState = currentState
+    updatedState.cpfValidation = .valid
+    updatedState.shouldEnableNextStepButton = formattedCPF.count == cpfMaxLenght
+    updatedState.cpfValue = formattedCPF
+
+    stateSubject.send(updatedState)
   }
 
   var cpfMaxLenght: Int { 14 }
@@ -88,50 +76,27 @@ extension IdentificationViewModel {
 
 // MARK: - Events, States and Actions
 extension IdentificationViewModel {
-  typealias S = IdentificationState
-  typealias E = IdentificationEvent
-  typealias A = IdentificationAction
-
-  // MARK: - Action
   enum IdentificationAction: Action {
     case goToNextStep
   }
 
-  // MARK: - Event
   enum IdentificationEvent: Event {
     case submitCpfValue(value: String), changeCpfValue(value: String)
   }
 
-  // MARK: - State
-  class IdentificationState: State {
-    init(cpfValidation: CpfValidation, shouldEnableNextStepButton: Bool, cpfValue: String) {
+  struct IdentificationState: State {
+    init(
+      cpfValidation: FormValidation = .valid,
+      shouldEnableNextStepButton: Bool = false,
+      cpfValue: String = ""
+    ) {
       self.cpfValidation = cpfValidation
       self.shouldEnableNextStepButton = shouldEnableNextStepButton
       self.cpfValue = cpfValue
     }
 
-    convenience init() {
-      self.init(cpfValidation: .valid, shouldEnableNextStepButton: false, cpfValue: "")
-    }
-
-    enum CpfValidation {
-      case invalid, valid, empty
-    }
-
-    let cpfValidation: CpfValidation
-    let cpfValue: String
-    let shouldEnableNextStepButton: Bool
-
-    func copyWith(
-      cpfValidation: CpfValidation? = nil,
-      shouldEnableNextStepButton: Bool? = nil,
-      cpfValue: String? = nil
-    ) -> IdentificationState {
-      IdentificationState(
-        cpfValidation: cpfValidation ?? self.cpfValidation,
-        shouldEnableNextStepButton: shouldEnableNextStepButton ?? self.shouldEnableNextStepButton,
-        cpfValue: cpfValue ?? self.cpfValue
-      )
-    }
+    fileprivate(set) var cpfValidation: FormValidation
+    fileprivate(set) var cpfValue: String
+    fileprivate(set) var shouldEnableNextStepButton: Bool
   }
 }

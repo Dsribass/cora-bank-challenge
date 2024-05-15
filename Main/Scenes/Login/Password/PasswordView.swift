@@ -31,7 +31,7 @@ class PasswordView: UIViewCodable {
     tf.textColor = .Cora.offBlack
     tf.font = UIFont.coraFont(for: .title2, weight: .regular)
     tf.keyboardType = .numberPad
-
+    tf.isSecureTextEntry = true
     return tf
   }()
 

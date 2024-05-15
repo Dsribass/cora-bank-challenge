@@ -16,7 +16,7 @@ protocol Action {}
 /// A protocol representing a view model, which mediates between the view and the model(s), handling user inputs and updating the UI.
 ///
 /// View models encapsulate the presentation logic of your application. They manage the state of the UI and handle user interactions, abstracting away the details of data manipulation and business logic.
-protocol ViewModel {
+protocol ViewModel: AnyObject {
   /// The associated type representing the state of the view model.
   associatedtype S: State
 
@@ -39,7 +39,7 @@ protocol ViewModel {
   /// A set to keep track of subscriptions to Combine publishers.
   ///
   /// Add subscriptions to this set to manage the lifecycle of Combine publishers used within the view model. Ensure to cancel these subscriptions when they are no longer needed to prevent memory leaks.
-  var subscriptions: Set<AnyCancellable> { get }
+  var subscriptions: Set<AnyCancellable> { get set }
 
   /// Sends the given event to the view model for handling.
   ///
@@ -61,4 +61,16 @@ protocol ViewModel {
   ///
   /// Use this method to listen for events emitted by a Combine publisher and handle them within the view model. Subscribe directly to a publisher emitting events of the associated event type (`E`) to handle events from external sources.
   func sendEvent(by publisher: AnyPublisher<E, Never>)
+}
+
+extension ViewModel {
+  func sendEvent(by publisher: () -> AnyPublisher<E, Never>) {
+    publisher().sink { [weak self] event in self?.sendEvent(event) }
+      .store(in: &subscriptions)
+  }
+
+  func sendEvent(by publisher: AnyPublisher<E, Never>) {
+    publisher.sink { [weak self] event in self?.sendEvent(event) }
+      .store(in: &subscriptions)
+  }
 }
