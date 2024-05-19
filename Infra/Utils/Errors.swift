@@ -29,10 +29,10 @@ extension AnyPublisher where Failure == Error {
         case .noConnectivity:
           return .noConnection
         default:
-          return .unexpected(baseError: error)
+          return .unexpected
         }
       } else {
-        return .unexpected(baseError: error)
+        return .unexpected
       }
     }
     .eraseToAnyPublisher()

@@ -60,8 +60,8 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
 
       listenAction(of: viewModel.actionSubject.eraseToAnyPublisher()) { [weak self] action in
         switch action {
-        case .goToNextStep:
-          self?.router.navigateToPasswordView()
+        case .goToNextStep(let cpf):
+          self?.router.navigateToPasswordView(cpf: cpf)
         }
       }
       .store(in: &bindings)
@@ -82,5 +82,5 @@ extension IdentificationViewController: UITextFieldDelegate {
 }
 
 protocol IdentificationViewRouter {
-  func navigateToPasswordView()
+  func navigateToPasswordView(cpf: String)
 }

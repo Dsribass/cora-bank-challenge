@@ -15,10 +15,16 @@ class LoginCoordinator: Coordinator {
   }
 }
 
-extension LoginCoordinator: IdentificationViewRouter {
-  func navigateToPasswordView() {
+extension LoginCoordinator: IdentificationViewRouter, PasswordViewRouter {
+  func navigateToPasswordView(cpf: String) {
     navigationController.pushViewController(
-      Factory.ViewController.makePasswordVC(),
+      Factory.ViewController.makePasswordVC(cpf: cpf, router: self),
+      animated: true)
+  }
+
+  func navigateToInitialPage() {
+    navigationController.setViewControllers(
+      [BankStatementViewController()],
       animated: true)
   }
 }

@@ -36,7 +36,7 @@ class IdentificationViewModel: ViewModel {
     }
 
     func handleSuccess() {
-      actionSubject.send(.goToNextStep)
+      actionSubject.send(.goToNextStep(cpf: value))
     }
 
     validateCpf.execute(ValidateCpf.Request(cpf: value))
@@ -77,7 +77,7 @@ class IdentificationViewModel: ViewModel {
 // MARK: - Events, States and Actions
 extension IdentificationViewModel {
   enum IdentificationAction: Action {
-    case goToNextStep
+    case goToNextStep(cpf: String)
   }
 
   enum IdentificationEvent: Event {

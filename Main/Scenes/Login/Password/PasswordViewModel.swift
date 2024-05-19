@@ -3,10 +3,12 @@ import Domain
 
 // MARK: - ViewModel
 class PasswordViewModel: ViewModel {
-  init(authenticate: AuthenticateUser) {
+  init(authenticate: AuthenticateUser, cpf: String) {
     self.authenticate = authenticate
+    self.cpf = cpf
   }
-
+  
+  private let cpf: String
   private let authenticate: AuthenticateUser
 
   var stateSubject: CurrentValueSubject<PasswordState, Never> = .init(PasswordState())
@@ -29,8 +31,28 @@ class PasswordViewModel: ViewModel {
     stateSubject.send(updatedState)
   }
 
-  // TODO(any): Implement this method
-  func onSubmitPassword(_ value: String) {}
+  func onSubmitPassword(_ value: String) {
+    func handleFailure(_ error: DomainError) {
+      var updatedState = currentState
+      updatedState.passwordValidation = error == .notAuthorized ? .invalid : .error
+      updatedState.shouldEnableSubmitButton = false
+      updatedState.submitButtonIsLoading = false
+      stateSubject.send(updatedState)
+    }
+
+    func handleSuccess() {
+      actionSubject.send(.signInSuccessfully)
+    }
+
+    authenticate.execute(AuthenticateUser.Request(cpf: cpf, password: value))
+      .sink { completion in
+        switch completion {
+        case .failure(let error): handleFailure(error)
+        case .finished: break
+        }
+      } receiveValue: { handleSuccess() }
+      .store(in: &subscriptions)
+  }
 }
 
 // MARK: - Events, States and Actions
@@ -39,7 +61,9 @@ extension PasswordViewModel {
   typealias E = PasswordEvent
   typealias S = PasswordState
 
-  enum PasswordAction: Action {}
+  enum PasswordAction: Action {
+    case signInSuccessfully
+  }
 
   enum PasswordEvent: Event {
     case changePassword(value: String)
@@ -49,13 +73,16 @@ extension PasswordViewModel {
   struct PasswordState: State {
     init(
       shouldEnableSubmitButton: Bool = false,
-      passwordValidation: FormValidation = .valid
+      passwordValidation: FormValidation = .valid,
+      submitButtonIsLoading: Bool = false
     ) {
       self.shouldEnableSubmitButton = shouldEnableSubmitButton
       self.passwordValidation = passwordValidation
+      self.submitButtonIsLoading = submitButtonIsLoading
     }
 
     fileprivate(set) var shouldEnableSubmitButton: Bool
     fileprivate(set) var passwordValidation: FormValidation
+    fileprivate(set) var submitButtonIsLoading: Bool
   }
 }

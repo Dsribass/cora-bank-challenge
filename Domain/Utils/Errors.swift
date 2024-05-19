@@ -1,7 +1,9 @@
-public enum DomainError: Error {
+import Foundation
+
+public enum DomainError: Error, Equatable {
   case notAuthorized
   case noConnection
-  case unexpected(baseError: Error?)
+  case unexpected
 }
 
 public enum ValidationError: Error {

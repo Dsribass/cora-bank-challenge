@@ -12,7 +12,13 @@ public final class AuthenticateUser {
     public let password: String
   }
 
-  public init() {}
+  public init(authRepository: AuthRepositoryProtocol) {
+    self.authRepository = authRepository
+  }
 
-  public func execute(_ req: Request) {}
+  private let authRepository: AuthRepositoryProtocol
+
+  public func execute(_ req: Request) -> AnyPublisher<(), DomainError> {
+    authRepository.authenticate(user: (cpf: req.cpf, password: req.password))
+  }
 }

@@ -122,6 +122,17 @@
         }
       }
     },
+    "PasswordPageError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desculpe, ocorreu um erro..."
+          }
+        }
+      }
+    },
     "PasswordPageForgotPassword" : {
       "extractionState" : "manual",
       "localizations" : {

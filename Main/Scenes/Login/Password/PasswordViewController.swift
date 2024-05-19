@@ -1,14 +1,16 @@
 import UIKit
 
 class PasswordViewController: SceneViewController<PasswordView> {
-  init(viewModel: PasswordViewModel) {
+  init(viewModel: PasswordViewModel, router: PasswordViewRouter) {
     self.viewModel = viewModel
+    self.router = router
     super.init(nibName: nil, bundle: nil)
   }
 
   required init?(coder: NSCoder) { nil }
 
   private let viewModel: PasswordViewModel
+  private let router: PasswordViewRouter
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,7 +35,7 @@ class PasswordViewController: SceneViewController<PasswordView> {
     }
 
     func bindViewModelToView() {
-      listenState(of: viewModel.stateSubject.eraseToAnyPublisher()) 
+      listenState(of: viewModel.stateSubject.eraseToAnyPublisher())
       { [weak contentView] state in
         guard let view = contentView else {
           return
@@ -43,7 +45,15 @@ class PasswordViewController: SceneViewController<PasswordView> {
         view.textFieldErrorMessage.isHidden = state.passwordValidation == .valid
         view.textFieldErrorMessage.text = switch state.passwordValidation {
         case .invalid: LocalizedStrings.passwordInvalid
+        case .error: LocalizedStrings.loginError
         default: ""
+        }
+      }
+      .store(in: &bindings)
+
+      listenAction(of: viewModel.actionSubject.eraseToAnyPublisher()) { [weak self] action in
+        switch action {
+        case .signInSuccessfully: self?.router.navigateToInitialPage()
         }
       }
       .store(in: &bindings)
@@ -63,4 +73,8 @@ class PasswordViewController: SceneViewController<PasswordView> {
     hideKeyboardWhenTappedAround()
     contentView.textField.becomeFirstResponder()
   }
+}
+
+protocol PasswordViewRouter {
+  func navigateToInitialPage()
 }

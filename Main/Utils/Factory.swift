@@ -1,9 +1,22 @@
+import Foundation
 import Domain
+import Infra
 
 enum Factory {
+  enum Infra {
+    static func makeAuthRDS() -> AuthRemoteDataSource { AuthRemoteDataSource(session: URLSession.shared) }
+
+    static func makeAuthLDS() -> AuthLocalDataSource { AuthLocalDataSource(defaults: UserDefaults.standard) }
+
+    static func makeAuthRepository() -> AuthRepositoryProtocol {
+      AuthRepository(authRDS: makeAuthRDS(), authLDS: makeAuthLDS())
+    }
+  }
+
   enum Domain {
     static func makeValidateCpf() -> ValidateCpf { ValidateCpf() }
-    static func makeAuthenticateUser() -> AuthenticateUser { AuthenticateUser() }
+
+    static func makeAuthenticateUser() -> AuthenticateUser { AuthenticateUser(authRepository: Infra.makeAuthRepository()) }
   }
 
   enum ViewModel {
@@ -11,8 +24,8 @@ enum Factory {
       IdentificationViewModel(validateCpf: Domain.makeValidateCpf())
     }
 
-    static func makePasswordVM() -> PasswordViewModel {
-      PasswordViewModel(authenticate: Domain.makeAuthenticateUser())
+    static func makePasswordVM(cpf: String) -> PasswordViewModel {
+      PasswordViewModel(authenticate: Domain.makeAuthenticateUser(), cpf: cpf)
     }
   }
 
@@ -25,8 +38,8 @@ enum Factory {
       IdentificationViewController(viewModel: ViewModel.makeIdentificationVM(), router: router)
     }
 
-    static func makePasswordVC() -> PasswordViewController {
-      PasswordViewController(viewModel: ViewModel.makePasswordVM())
+    static func makePasswordVC(cpf: String, router: PasswordViewRouter) -> PasswordViewController {
+      PasswordViewController(viewModel: ViewModel.makePasswordVM(cpf: cpf), router: router)
     }
   }
 }

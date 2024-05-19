@@ -15,4 +15,5 @@ enum LocalizedStrings {
   static let passwordTitle = String(localized: "PasswordPageTitle")
   static let passwordForgotPassword = String(localized: "PasswordPageForgotPassword")
   static let passwordInvalid = String(localized: "PasswordPageInvalidInput")
+  static let loginError = String(localized: "PasswordPageError")
 }

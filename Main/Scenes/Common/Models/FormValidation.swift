@@ -1,3 +1,3 @@
 enum FormValidation {
-  case valid, invalid, empty
+  case valid, invalid, empty, error
 }

@@ -30,6 +30,8 @@
 		95628AC82BDC57830088519C /* UIViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628AC72BDC57830088519C /* UIViewCodable.swift */; };
 		95628ACA2BDC57870088519C /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628AC92BDC57870088519C /* ViewCodable.swift */; };
 		95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628ACB2BDC58CB0088519C /* SceneViewController.swift */; };
+		956D4AC62BFA502300114791 /* BankStatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956D4AC52BFA502300114791 /* BankStatementViewController.swift */; };
+		956D4AC82BFA503700114791 /* BankStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956D4AC72BFA503700114791 /* BankStatementView.swift */; };
 		95A5BBAE2BF132A700E7CBFD /* AuthenticateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBAD2BF132A700E7CBFD /* AuthenticateUser.swift */; };
 		95A5BBB12BF1335B00E7CBFD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBB02BF1335B00E7CBFD /* Errors.swift */; };
 		95A5BBB42BF1366800E7CBFD /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBB32BF1366800E7CBFD /* AuthRepository.swift */; };
@@ -122,6 +124,8 @@
 		95628AC72BDC57830088519C /* UIViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewCodable.swift; sourceTree = "<group>"; };
 		95628AC92BDC57870088519C /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		95628ACB2BDC58CB0088519C /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		956D4AC52BFA502300114791 /* BankStatementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankStatementViewController.swift; sourceTree = "<group>"; };
+		956D4AC72BFA503700114791 /* BankStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankStatementView.swift; sourceTree = "<group>"; };
 		95A5BBAD2BF132A700E7CBFD /* AuthenticateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateUser.swift; sourceTree = "<group>"; };
 		95A5BBB02BF1335B00E7CBFD /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		95A5BBB32BF1366800E7CBFD /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 		95628AC52BDC57450088519C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				956D4AC42BFA501400114791 /* BankStatement */,
 				95B433A02BE299AD007B238C /* Login */,
 				95B4337E2BE07A99007B238C /* Intro */,
 				95628AC62BDC574C0088519C /* Common */,
@@ -323,6 +328,15 @@
 				954AF9052BE7E1D0007299F5 /* CombineExtensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		956D4AC42BFA501400114791 /* BankStatement */ = {
+			isa = PBXGroup;
+			children = (
+				956D4AC52BFA502300114791 /* BankStatementViewController.swift */,
+				956D4AC72BFA503700114791 /* BankStatementView.swift */,
+			);
+			path = BankStatement;
 			sourceTree = "<group>";
 		};
 		95A5BBB22BF1362900E7CBFD /* Repository */ = {
@@ -670,6 +684,7 @@
 				95B433842BE08B70007B238C /* Constants.swift in Sources */,
 				95B433982BE1C110007B238C /* Button.swift in Sources */,
 				95B433952BE19442007B238C /* LocalizedStrings.swift in Sources */,
+				956D4AC62BFA502300114791 /* BankStatementViewController.swift in Sources */,
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
 				954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
@@ -681,6 +696,7 @@
 				95B4338C2BE1676C007B238C /* Assets.swift in Sources */,
 				95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */,
 				95B4339F2BE28970007B238C /* ButtonProperties.swift in Sources */,
+				956D4AC82BFA503700114791 /* BankStatementView.swift in Sources */,
 				95B433AE2BE29CDB007B238C /* IntroCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
