@@ -1,16 +1,14 @@
 import UIKit
 
 class PasswordViewController: SceneViewController<PasswordView> {
-  init(viewModel: PasswordViewModel, router: PasswordViewRouter) {
+  init(viewModel: PasswordViewModel) {
     self.viewModel = viewModel
-    self.router = router
     super.init(nibName: nil, bundle: nil)
   }
 
   required init?(coder: NSCoder) { nil }
 
   private let viewModel: PasswordViewModel
-  private let router: PasswordViewRouter
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -50,13 +48,6 @@ class PasswordViewController: SceneViewController<PasswordView> {
         }
       }
       .store(in: &bindings)
-
-      listenAction(of: viewModel.actionSubject.eraseToAnyPublisher()) { [weak self] action in
-        switch action {
-        case .signInSuccessfully: self?.router.navigateToInitialPage()
-        }
-      }
-      .store(in: &bindings)
     }
 
     (contentView.textField.rightView as? UIButton)?.publisher(for: .touchUpInside)
@@ -73,8 +64,4 @@ class PasswordViewController: SceneViewController<PasswordView> {
     hideKeyboardWhenTappedAround()
     contentView.textField.becomeFirstResponder()
   }
-}
-
-protocol PasswordViewRouter {
-  func navigateToInitialPage()
 }

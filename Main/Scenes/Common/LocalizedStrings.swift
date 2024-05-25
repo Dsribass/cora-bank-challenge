@@ -16,4 +16,9 @@ enum LocalizedStrings {
   static let passwordForgotPassword = String(localized: "PasswordPageForgotPassword")
   static let passwordInvalid = String(localized: "PasswordPageInvalidInput")
   static let loginError = String(localized: "PasswordPageError")
+  static let bankStatementTitle = String(localized: "BankStatementTitle")
+  static let bankStatementFirstFilterTab = String(localized: "BankStatementFilterTabOne")
+  static let bankStatementSecondFilterTab = String(localized: "BankStatementFilterTabTwo")
+  static let bankStatementThirdFilterTab = String(localized: "BankStatementFilterTabThree")
+  static let bankStatementFourthFilterTab = String(localized: "BankStatementFilterTabFour")
 }

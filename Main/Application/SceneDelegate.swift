@@ -15,7 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
 
-    let applicationCoordinator = ApplicationCoordinator(window: window)
+    let applicationCoordinator = ApplicationCoordinator(
+      window: window,
+      authStatePublisher: Factory.authPublisher,
+      getUserToken: Factory.Domain.makeGetUserToken())
     applicationCoordinator.start()
     
     self.applicationCoordinator = applicationCoordinator

@@ -12,13 +12,20 @@ public final class AuthenticateUser {
     public let password: String
   }
 
-  public init(authRepository: AuthRepositoryProtocol) {
+  public init(authRepository: AuthRepositoryProtocol, authPublisher: CurrentValueSubject<AuthState, Never>) {
     self.authRepository = authRepository
+    self.authPublisher = authPublisher
   }
 
   private let authRepository: AuthRepositoryProtocol
+  private let authPublisher: CurrentValueSubject<AuthState, Never>
 
   public func execute(_ req: Request) -> AnyPublisher<(), DomainError> {
     authRepository.authenticate(user: (cpf: req.cpf, password: req.password))
+      .handleEvents(
+        receiveOutput: { [weak self ]_ in
+          self?.authPublisher.send(.loggedIn)
+      })
+      .eraseToAnyPublisher()
   }
 }

@@ -27,7 +27,7 @@ final class IntroViewController: SceneViewController<IntroView> {
     super.viewDidLoad()
 
     contentView.secondaryButton.handleButtonTap { [unowned self] _ in
-      self.router.navigateToLoginView()
+      self.router.navigateToIdentificationView()
     }
   }
 
@@ -37,5 +37,5 @@ final class IntroViewController: SceneViewController<IntroView> {
 }
 
 protocol IntroViewRouter {
-  func navigateToLoginView()
+  func navigateToIdentificationView()
 }

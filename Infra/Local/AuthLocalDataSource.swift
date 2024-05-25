@@ -28,4 +28,12 @@ public final class AuthLocalDataSource {
       promise(.success(token))
     }.eraseToAnyPublisher()
   }
+
+  func deleteUserToken() -> AnyPublisher<(), Error> {
+    Future { [weak defaults] promise in
+      defaults?.removeObject(forKey: Keys.token)
+
+      promise(.success(()))
+    }.eraseToAnyPublisher()
+  }
 }

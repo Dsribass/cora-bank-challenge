@@ -40,9 +40,7 @@ class PasswordViewModel: ViewModel {
       stateSubject.send(updatedState)
     }
 
-    func handleSuccess() {
-      actionSubject.send(.signInSuccessfully)
-    }
+    func handleSuccess() {}
 
     authenticate.execute(AuthenticateUser.Request(cpf: cpf, password: value))
       .sink { completion in

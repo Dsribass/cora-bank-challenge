@@ -1,8 +1,12 @@
 import Foundation
 import Domain
 import Infra
+import Combine
 
 enum Factory {
+  // TODO(any): Refactor
+  static let authPublisher = CurrentValueSubject<AuthState, Never>(.loggedOut)
+
   enum Infra {
     static func makeAuthRDS() -> AuthRemoteDataSource { AuthRemoteDataSource(session: URLSession.shared) }
 
@@ -16,7 +20,21 @@ enum Factory {
   enum Domain {
     static func makeValidateCpf() -> ValidateCpf { ValidateCpf() }
 
-    static func makeAuthenticateUser() -> AuthenticateUser { AuthenticateUser(authRepository: Infra.makeAuthRepository()) }
+    static func makeAuthenticateUser() -> AuthenticateUser {
+      AuthenticateUser(
+        authRepository: Infra.makeAuthRepository(),
+        authPublisher: Factory.authPublisher)
+    }
+
+    static func makeGetUserToken() -> GetUserToken {
+      GetUserToken(authRepository: Infra.makeAuthRepository())
+    }
+
+    static func makeLogOutUser() -> LogOutUser {
+      LogOutUser(
+        authRepository: Infra.makeAuthRepository(),
+        authPublisher: Factory.authPublisher)
+    }
   }
 
   enum ViewModel {
@@ -38,8 +56,8 @@ enum Factory {
       IdentificationViewController(viewModel: ViewModel.makeIdentificationVM(), router: router)
     }
 
-    static func makePasswordVC(cpf: String, router: PasswordViewRouter) -> PasswordViewController {
-      PasswordViewController(viewModel: ViewModel.makePasswordVM(cpf: cpf), router: router)
+    static func makePasswordVC(cpf: String) -> PasswordViewController {
+      PasswordViewController(viewModel: ViewModel.makePasswordVM(cpf: cpf))
     }
   }
 }

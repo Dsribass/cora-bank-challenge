@@ -18,4 +18,12 @@ public final class AuthRepository: AuthRepositoryProtocol {
     .eraseToAnyPublisher()
     .mapToDomainError()
   }
+
+  public func getUserToken() -> AnyPublisher<String, DomainError> {
+    authLDS.getUserToken().mapToDomainError()
+  }
+
+  public func logOut() -> AnyPublisher<(), DomainError> {
+    authLDS.deleteUserToken().mapToDomainError()
+  }
 }
