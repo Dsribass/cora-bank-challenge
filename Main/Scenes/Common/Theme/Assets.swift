@@ -14,6 +14,7 @@ extension UIImage {
     case icPercentage = "percentage"
     case icShare = "share"
     case icSignOut = "sign.out"
+    case icFilter = "filter"
 
   }
   

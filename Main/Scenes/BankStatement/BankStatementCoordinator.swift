@@ -9,8 +9,8 @@ class BankStatementCoordinator: Coordinator {
   }
 
   func start() {
-    navigationController.pushViewController(
-      StatementListViewController(),
+    navigationController.setViewControllers(
+      [StatementListViewController()],
       animated: true)
   }
 }
