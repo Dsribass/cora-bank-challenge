@@ -15,7 +15,7 @@ enum NetworkError: DataError {
   case notFound
   case serverError
   case noConnectivity
-  case decodingError
+  case encodingError
   case unexpected(baseError: Error?)
 }
 

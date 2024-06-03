@@ -22,10 +22,10 @@ public final class AuthenticateUser {
 
   public func execute(_ req: Request) -> AnyPublisher<(), DomainError> {
     authRepository.authenticate(user: (cpf: req.cpf, password: req.password))
-      .handleEvents(
-        receiveOutput: { [weak self ]_ in
-          self?.authPublisher.send(.loggedIn)
-      })
+      .map { [weak self] value in
+        self?.authPublisher.send(.loggedIn)
+        return value
+      }
       .eraseToAnyPublisher()
   }
 }

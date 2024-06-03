@@ -76,6 +76,13 @@
             ReferencedContainer = "container:CoraBankChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "apikey"
+            value = "7758695dba85f0682c61a4b6b031d1f6"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

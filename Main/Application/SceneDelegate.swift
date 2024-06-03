@@ -18,9 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let applicationCoordinator = ApplicationCoordinator(
       window: window,
       authStatePublisher: Factory.authPublisher,
-      getUserToken: Factory.Domain.makeGetUserToken())
+      getUserToken: Factory.Domain.makeGetUserToken(),
+      refreshToken: Factory.Domain.makeRefreshToken(),
+      logout: Factory.Domain.makeLogOutUser())
     applicationCoordinator.start()
-    
+
     self.applicationCoordinator = applicationCoordinator
   }
 

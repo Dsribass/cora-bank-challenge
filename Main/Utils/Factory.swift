@@ -6,9 +6,12 @@ import Combine
 enum Factory {
   // TODO(any): Refactor
   static let authPublisher = CurrentValueSubject<AuthState, Never>(.loggedOut)
+  private static let networkManager = NetworkManager(
+    session: URLSession.shared,
+    apiKey: EnvironmentVariables.apikey)
 
   enum Infra {
-    static func makeAuthRDS() -> AuthRemoteDataSource { AuthRemoteDataSource(session: URLSession.shared) }
+    static func makeAuthRDS() -> AuthRemoteDataSource { AuthRemoteDataSource(networkManager: networkManager) }
 
     static func makeAuthLDS() -> AuthLocalDataSource { AuthLocalDataSource(defaults: UserDefaults.standard) }
 
@@ -34,6 +37,10 @@ enum Factory {
       LogOutUser(
         authRepository: Infra.makeAuthRepository(),
         authPublisher: Factory.authPublisher)
+    }
+
+    static func makeRefreshToken() -> RefreshToken {
+      RefreshToken(authRepository: Infra.makeAuthRepository())
     }
   }
 

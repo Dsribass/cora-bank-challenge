@@ -27,6 +27,8 @@ class IdentificationViewModel: ViewModel {
   }
 
   private func onSubmitCpfValue(_ value: String) {
+    let cleanedCPF = value.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+
     func handleFailure(_ error: ValidationError) {
       var updatedState = currentState
       updatedState.cpfValidation  = error == .empty ? .empty : .invalid
@@ -36,10 +38,10 @@ class IdentificationViewModel: ViewModel {
     }
 
     func handleSuccess() {
-      actionSubject.send(.goToNextStep(cpf: value))
+      actionSubject.send(.goToNextStep(cpf: cleanedCPF))
     }
 
-    validateCpf.execute(ValidateCpf.Request(cpf: value))
+    validateCpf.execute(ValidateCpf.Request(cpf: cleanedCPF))
       .sink { completion in
         switch completion {
         case .failure(let error): handleFailure(error)

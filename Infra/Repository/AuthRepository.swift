@@ -12,7 +12,7 @@ public final class AuthRepository: AuthRepositoryProtocol {
 
   public func authenticate(user: (cpf: String, password: String)) -> AnyPublisher<(), DomainError> {
     authRDS.authenticate(
-      request: AuthRemoteDataSource.Request(cpf: user.cpf, password: user.password)
+      request: UserRemoteModel.Request(cpf: user.cpf, password: user.password)
     )
     .flatMap { self.authLDS.saveUserToken($0) }
     .eraseToAnyPublisher()
@@ -25,5 +25,15 @@ public final class AuthRepository: AuthRepositoryProtocol {
 
   public func logOut() -> AnyPublisher<(), DomainError> {
     authLDS.deleteUserToken().mapToDomainError()
+  }
+
+  public func refreshToken() -> AnyPublisher<(), DomainError> {
+    authLDS.getUserToken()
+      .flatMap {
+        self.authRDS.refreshToken(request: TokenRemoteModel.Request(token: $0))
+      }
+      .flatMap { self.authLDS.saveUserToken($0) }
+      .eraseToAnyPublisher()
+      .mapToDomainError()
   }
 }

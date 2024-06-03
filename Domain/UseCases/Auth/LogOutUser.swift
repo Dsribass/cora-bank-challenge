@@ -11,10 +11,10 @@ public final class LogOutUser {
 
   public func execute(_ req: ()) -> AnyPublisher<(), Never> {
     authRepository.logOut()
-      .handleEvents(
-        receiveCompletion: { [weak self ] _ in
-          self?.authPublisher.send(.loggedOut)
-      })
+      .map { [weak self] value in
+        self?.authPublisher.send(.loggedOut)
+        return value
+      }
       .catch{ _ in Just(()) }
       .eraseToAnyPublisher()
   }

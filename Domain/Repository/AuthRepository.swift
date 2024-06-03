@@ -6,4 +6,6 @@ public protocol AuthRepositoryProtocol {
   func getUserToken() -> AnyPublisher<String, DomainError>
 
   func logOut() -> AnyPublisher<(), DomainError>
+
+  func refreshToken() -> AnyPublisher<(), DomainError>
 }
