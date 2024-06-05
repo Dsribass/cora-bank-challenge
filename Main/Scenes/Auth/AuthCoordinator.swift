@@ -9,8 +9,8 @@ class AuthCoordinator: Coordinator {
   }
 
   func start() {
-    navigationController.pushViewController(
-      Factory.ViewController.makeIntroVC(router: self),
+    navigationController.setViewControllers(
+      [Factory.ViewController.makeIntroVC(router: self)],
       animated: true)
   }
 }

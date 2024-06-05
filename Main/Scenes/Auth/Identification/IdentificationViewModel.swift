@@ -29,9 +29,16 @@ class IdentificationViewModel: ViewModel {
   private func onSubmitCpfValue(_ value: String) {
     let cleanedCPF = value.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
 
-    func handleFailure(_ error: ValidationError) {
+    func handleFailure(_ error: DomainError) {
       var updatedState = currentState
-      updatedState.cpfValidation  = error == .empty ? .empty : .invalid
+      switch error {
+      case .inputEmpty:
+        updatedState.cpfValidation = .empty
+      case .inputInvalid:
+        updatedState.cpfValidation = .invalid
+      default:
+        updatedState.cpfValidation = .invalid
+      }
       updatedState.shouldEnableNextStepButton = false
 
       stateSubject.send(updatedState)

@@ -1,9 +1,9 @@
 import Combine
 
-public protocol AuthRepositoryProtocol {
+public protocol AuthRepository {
   func authenticate(user: (cpf: String, password: String)) -> AnyPublisher<(), DomainError>
   
-  func getUserToken() -> AnyPublisher<String, DomainError>
+  func loadUserToken() -> AnyPublisher<(), DomainError>
 
   func logOut() -> AnyPublisher<(), DomainError>
 

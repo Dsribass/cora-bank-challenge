@@ -1,7 +1,7 @@
 import Domain
 import Combine
 
-public final class AuthRepository: AuthRepositoryProtocol {
+public final class DefaultAuthRepository: AuthRepository {
   public init(authRDS: AuthRemoteDataSource, authLDS: AuthLocalDataSource) {
     self.authRDS = authRDS
     self.authLDS = authLDS
@@ -19,8 +19,10 @@ public final class AuthRepository: AuthRepositoryProtocol {
     .mapToDomainError()
   }
 
-  public func getUserToken() -> AnyPublisher<String, DomainError> {
-    authLDS.getUserToken().mapToDomainError()
+  public func loadUserToken() -> AnyPublisher<(), DomainError> {
+    authLDS.getUserToken()
+      .map { [unowned self] token in authRDS.loadToken(token) }
+      .mapToDomainError()
   }
 
   public func logOut() -> AnyPublisher<(), DomainError> {

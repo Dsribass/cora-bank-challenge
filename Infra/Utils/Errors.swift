@@ -19,9 +19,11 @@ enum NetworkError: DataError {
   case unexpected(baseError: Error?)
 }
 
-extension AnyPublisher where Failure == Error {
+extension Publisher where Failure == Error {
   func mapToDomainError() -> AnyPublisher<Output, DomainError> {
     mapError { error in
+      let errorDescription = "\(error).\n\(error.localizedDescription)"
+
       if let error = error as? NetworkError {
         switch error {
         case .unauthorized:
@@ -29,10 +31,10 @@ extension AnyPublisher where Failure == Error {
         case .noConnectivity:
           return .noConnection
         default:
-          return .unexpected
+          return .unexpected(originalErrorDescription: errorDescription)
         }
       } else {
-        return .unexpected
+        return .unexpected(originalErrorDescription: errorDescription)
       }
     }
     .eraseToAnyPublisher()

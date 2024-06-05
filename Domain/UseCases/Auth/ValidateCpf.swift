@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-public final class ValidateCpf {
+public final class ValidateCpf: UseCase {
   public struct Request {
     public init(cpf: String) {
       self.cpf = cpf
@@ -12,15 +12,15 @@ public final class ValidateCpf {
 
   public init() {}
 
-  public func execute(_ req: Request) -> Future<(), ValidationError> {
-    Future { promise in
-      if req.cpf.isEmpty { return promise(.failure(.empty)) }
+  public func runBlock(_ req: Request) -> AnyPublisher<(), DomainError> {
+    Future<(), DomainError> { promise in
+      if req.cpf.isEmpty { return promise(.failure(.inputEmpty)) }
 
       let numbers = req.cpf.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-      guard numbers.count == 11 else { return promise(.failure(.invalid)) }
+      guard numbers.count == 11 else { return promise(.failure(.inputInvalid)) }
 
       let set = NSCountedSet(array: Array(numbers))
-      guard set.count != 1 else { return promise(.failure(.invalid)) }
+      guard set.count != 1 else { return promise(.failure(.inputInvalid)) }
 
       let i1 = numbers.index(numbers.startIndex, offsetBy: 9)
       let i2 = numbers.index(numbers.startIndex, offsetBy: 10)
@@ -48,7 +48,8 @@ public final class ValidateCpf {
 
       return temp1 == d1 && temp2 == d2 ?
       promise(.success(())) :
-      promise(.failure(.invalid))
+      promise(.failure(.inputInvalid))
     }
+    .eraseToAnyPublisher()
   }
 }

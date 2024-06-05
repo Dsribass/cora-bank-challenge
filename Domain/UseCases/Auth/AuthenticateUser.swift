@@ -1,7 +1,6 @@
 import Combine
 
-// TODO(any): Implement authenticate usecase
-public final class AuthenticateUser {
+public final class AuthenticateUser: UseCase {
   public struct Request {
     public init(cpf: String, password: String) {
       self.cpf = cpf
@@ -12,15 +11,15 @@ public final class AuthenticateUser {
     public let password: String
   }
 
-  public init(authRepository: AuthRepositoryProtocol, authPublisher: CurrentValueSubject<AuthState, Never>) {
+  public init(authRepository: AuthRepository, authPublisher: AuthStatePublisher) {
     self.authRepository = authRepository
     self.authPublisher = authPublisher
   }
 
-  private let authRepository: AuthRepositoryProtocol
-  private let authPublisher: CurrentValueSubject<AuthState, Never>
+  private let authRepository: AuthRepository
+  private let authPublisher: AuthStatePublisher
 
-  public func execute(_ req: Request) -> AnyPublisher<(), DomainError> {
+  public func runBlock(_ req: Request) -> AnyPublisher<(), DomainError> {
     authRepository.authenticate(user: (cpf: req.cpf, password: req.password))
       .map { [weak self] value in
         self?.authPublisher.send(.loggedIn)

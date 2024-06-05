@@ -19,6 +19,9 @@ class StatementListViewController: SceneViewController<StatementListView> {
   @objc private func handleLogoutButtonTap() {
     let logout = Factory.Domain.makeLogOutUser()
 
-    logout.execute(()).sink { _ in }.store(in: &bindings)
+    logout
+      .execute(())
+      .catch { _ in Just(()) }
+      .sink { _ in }.store(in: &bindings)
   }
 }

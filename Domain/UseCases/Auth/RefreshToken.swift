@@ -1,13 +1,13 @@
 import Combine
 
-public final class RefreshToken {
-  public init(authRepository: AuthRepositoryProtocol) {
+public final class RefreshToken: UseCase {
+  public init(authRepository: AuthRepository) {
     self.authRepository = authRepository
   }
 
-  private let authRepository: AuthRepositoryProtocol
+  private let authRepository: AuthRepository
 
-  public func execute(_ req: ()) -> AnyPublisher<(), DomainError> {
+  public func runBlock(_ req: ()) -> AnyPublisher<(), DomainError> {
     authRepository.refreshToken()
   }
 }

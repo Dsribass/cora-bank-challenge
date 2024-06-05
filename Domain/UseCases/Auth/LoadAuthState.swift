@@ -1,6 +1,7 @@
 import Combine
+import Foundation
 
-public final class LogOutUser: UseCase {
+public final class LoadAuthState: UseCase {
   public init(authRepository: AuthRepository, authPublisher: AuthStatePublisher) {
     self.authRepository = authRepository
     self.authPublisher = authPublisher
@@ -10,11 +11,19 @@ public final class LogOutUser: UseCase {
   private let authPublisher: AuthStatePublisher
 
   public func runBlock(_ req: ()) -> AnyPublisher<(), DomainError> {
-    authRepository.logOut()
+    authRepository.loadUserToken()
       .map { [weak self] value in
-        self?.authPublisher.send(.loggedOut)
+        guard let self = self else { return value }
+        authPublisher.send(.loggedIn)
+
         return value
-      }      
+      }
+      .mapError { [weak self] error in
+        guard let self = self else { return error }
+        authPublisher.send(.loggedOut)
+
+        return error
+      }
       .eraseToAnyPublisher()
   }
 }

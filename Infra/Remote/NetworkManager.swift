@@ -36,7 +36,6 @@ public class NetworkManager: NetworkRequest {
 
   func get(for url: URL, shouldWaitForPriorityRequest: Bool = true) -> AnyPublisher<Data, Error> {
     let request = buildDefaultRequest(.get, for: url)
-
     return fetchData(for: request, shouldWaitForPriorityRequest: shouldWaitForPriorityRequest)
   }
 
@@ -81,7 +80,7 @@ public class NetworkManager: NetworkRequest {
     shouldWaitForPriorityRequest: Bool
   ) -> AnyPublisher<Data, Error> {
     taskQueuePublisher
-      .filter { _ in shouldWaitForPriorityRequest ? self.isRequestQueueBlocked() : true }
+      .filter { _ in shouldWaitForPriorityRequest ? !self.isRequestQueueBlocked() : true }
       .first()
       .flatMap { _ in self.session
           .dataTaskPublisher(for: request)

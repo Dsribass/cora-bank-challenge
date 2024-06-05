@@ -3,50 +3,94 @@ import Domain
 import Combine
 
 class ApplicationCoordinator: Coordinator {
-  private var subscriptions = Set<AnyCancellable>()
+  init(
+    window: UIWindow,
+    loadAuthState: LoadAuthState,
+    logOutUser: LogOutUser,
+    refreshToken: RefreshToken,
+    authStatePublisher: AuthStatePublisher
+  ) {
+    self.navigationController = CoraNavigationController()
+    self.window = window
+    self.loadAuthState = loadAuthState
+    self.logOutUser = logOutUser
+    self.refreshToken = refreshToken
+    self.authStatePublisher = authStatePublisher
+
+    loadApplicationState()
+  }
+
+  private let loadAuthState: LoadAuthState
+  private let logOutUser: LogOutUser
+  private let refreshToken: RefreshToken
+  private let authStatePublisher: AuthStatePublisher
 
   var window: UIWindow
   var navigationController: UINavigationController
-  private let refreshToken: RefreshToken
-  private let logout: LogOutUser
-  private let authStatePublisher: CurrentValueSubject<AuthState, Never>
-  private var timerSubscription: AnyCancellable?
-
-  init(
-    window: UIWindow,
-    authStatePublisher: CurrentValueSubject<AuthState, Never>,
-    getUserToken: GetUserToken,
-    refreshToken: RefreshToken,
-    logout: LogOutUser
-  ) {
-    self.navigationController = CoraNavigationController()
-
-    self.window = window
-    self.authStatePublisher = authStatePublisher
-    self.refreshToken = refreshToken
-    self.logout = logout
-
-    loadAuthState(getUserToken)
-  }
-
+  private var subscriptions = Set<AnyCancellable>()
+  
   func start() {
     window.rootViewController = navigationController
     window.makeKeyAndVisible()
+    
+    listenAuthStatePublisher(
+      onIdle: { [unowned self] in
+        showLoadingView()
+      },
+      onLoggedIn: { [unowned self] in
+        startApplicationFlow()
+        timer.resume()
+      },
+      onLoggedOut: { [unowned self] in
+        startAuthenticationFlow()
+        timer.suspend()
+      }
+    )
+  }
 
+  private lazy var timer: DispatchSourceTimer = {
+    let timer = DispatchSource.makeTimerSource(
+      queue: DispatchQueue.global(qos: .background))
+    timer.schedule(deadline: .now(), repeating: 60.0)
+    timer.setEventHandler { [weak self] in
+      guard let self = self else { return }
+      onRefreshToken()
+    }
+
+    return timer
+  }()
+}
+
+extension ApplicationCoordinator {
+  private func listenAuthStatePublisher(
+    onIdle: @escaping () -> (),
+    onLoggedIn: @escaping () -> (),
+    onLoggedOut: @escaping () -> ()
+  ) {
     authStatePublisher
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] state in
+      .sink { state in
+        guard let state = state else {
+          return onIdle()
+        }
+
         switch state {
-        case .loggedIn:
-          self?.startApplicationFlow()
-          self?.startRefreshTokenTimer()
-        case .loggedOut:
-          self?.startAuthenticationFlow()
-          self?.stopRefreshTokenTimer()
-        default: self?.startAuthenticationFlow()
+        case .loggedIn: onLoggedIn()
+        case .loggedOut: onLoggedOut()
+        default: onLoggedOut()
         }
       }
       .store(in: &subscriptions)
+  }
+
+  private func loadApplicationState() {
+    loadAuthState.execute(())
+      .sink { _ in } receiveValue: { _ in }
+      .store(in: &subscriptions)
+  }
+
+  private func showLoadingView() {
+    navigationController.setViewControllers([LoadingViewController()], animated: false)
   }
 
   private func startAuthenticationFlow() {
@@ -58,50 +102,24 @@ class ApplicationCoordinator: Coordinator {
     let bankStatementCoordinator = BankStatementCoordinator(nav: navigationController)
     bankStatementCoordinator.start()
   }
-}
 
-extension ApplicationCoordinator {
-  private func loadAuthState(_ getUserToken: GetUserToken) {
-    getUserToken.execute(())
-      .sink { [weak self] completion in
-        switch completion {
-        case .failure(_): self?.authStatePublisher.send(.loggedOut)
-        case .finished: break
-        }
-      } receiveValue: { [weak self] _ in
-        self?.authStatePublisher.send(.loggedIn)
-        // TODO: Implement loading
-      }
-      .store(in: &subscriptions)
+  private func onRefreshToken() {
+    refreshToken.execute(())
+      .sink(
+        receiveCompletion: { [weak self] completion in
+          guard let self = self else {
+            return
+          }
+
+          if case .failure(_) = completion {
+            self.logOutUser.execute(())
+              .catch { _ in Just(()) }
+              .sink(receiveValue: { _ in})
+              .store(in: &self.subscriptions)
+          }
+        },
+        receiveValue: { _ in }
+      )
+      .store(in: &self.subscriptions)
   }
-
-
-  private func startRefreshTokenTimer() {
-    let interval = 60.0
-    timerSubscription = Timer
-      .publish(every: interval, on: .main, in: .common)
-      .autoconnect()
-      .print("RefreshToken")
-      .sink { [weak self] _ in
-        guard let self = self else { return }
-        refreshToken.execute(())
-          .sink(
-            receiveCompletion: { [weak self] completion in
-              guard let self = self else {
-                return
-              }
-
-              if case .failure(let failure) = completion {
-                self.logout.execute(())
-                  .sink(receiveValue: { _ in})
-                  .store(in: &self.subscriptions)
-              }
-            },
-            receiveValue: { _ in }
-          )
-          .store(in: &self.subscriptions)
-      }
-  }
-
-  private func stopRefreshTokenTimer() { timerSubscription?.cancel() }
 }

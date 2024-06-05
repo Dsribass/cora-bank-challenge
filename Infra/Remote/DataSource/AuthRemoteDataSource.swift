@@ -8,6 +8,10 @@ public final class AuthRemoteDataSource {
 
   private let networkManager: NetworkManager
 
+  func loadToken(_ token: String) {
+    networkManager.setToken(token)
+  }
+
   func authenticate(request: UserRemoteModel.Request) -> AnyPublisher<String, Error> {
     networkManager.unlockQueue()
     networkManager.unsetToken()

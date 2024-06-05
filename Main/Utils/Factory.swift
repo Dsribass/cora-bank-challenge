@@ -5,7 +5,7 @@ import Combine
 
 enum Factory {
   // TODO(any): Refactor
-  static let authPublisher = CurrentValueSubject<AuthState, Never>(.loggedOut)
+  static let authPublisher = AuthStatePublisher(nil)
   private static let networkManager = NetworkManager(
     session: URLSession.shared,
     apiKey: EnvironmentVariables.apikey)
@@ -13,10 +13,16 @@ enum Factory {
   enum Infra {
     static func makeAuthRDS() -> AuthRemoteDataSource { AuthRemoteDataSource(networkManager: networkManager) }
 
+    static func makeStatementRDS() -> StatementRemoteDataSource { StatementRemoteDataSource(networkManager: networkManager) }
+
     static func makeAuthLDS() -> AuthLocalDataSource { AuthLocalDataSource(defaults: UserDefaults.standard) }
 
-    static func makeAuthRepository() -> AuthRepositoryProtocol {
-      AuthRepository(authRDS: makeAuthRDS(), authLDS: makeAuthLDS())
+    static func makeAuthRepository() -> AuthRepository {
+      DefaultAuthRepository(authRDS: makeAuthRDS(), authLDS: makeAuthLDS())
+    }
+
+    static func makeStatementRepository() -> StatementRepository {
+      DefaultStatementRepository(statementRDS: makeStatementRDS())
     }
   }
 
@@ -29,8 +35,10 @@ enum Factory {
         authPublisher: Factory.authPublisher)
     }
 
-    static func makeGetUserToken() -> GetUserToken {
-      GetUserToken(authRepository: Infra.makeAuthRepository())
+    static func makeLoadAuthState() -> LoadAuthState {
+      LoadAuthState(
+        authRepository: Infra.makeAuthRepository(),
+        authPublisher: Factory.authPublisher)
     }
 
     static func makeLogOutUser() -> LogOutUser {
@@ -41,6 +49,10 @@ enum Factory {
 
     static func makeRefreshToken() -> RefreshToken {
       RefreshToken(authRepository: Infra.makeAuthRepository())
+    }
+
+    static func makeGetStatementList() -> GetStatementList {
+      GetStatementList(statementRepository: Infra.makeStatementRepository())
     }
   }
 
