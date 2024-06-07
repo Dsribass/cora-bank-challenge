@@ -52,14 +52,18 @@ class StatementCell: UITableViewCell {
   }()
 
   func config(statement: Statement, icon: UIImage) {
-    amount.text = "\(statement.amount)"
     transctionDescription.text = statement.description
     name.text = statement.name
     leadingIcon.image = icon
 
-    let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm"
-    date.text = formatter.string(from: statement.dateEvent)
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .currency
+    amount.text = numberFormatter.string(from: NSNumber(value: statement.amount))
+
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    date.text = dateFormatter.string(from: statement.dateEvent)
   }
 }
 

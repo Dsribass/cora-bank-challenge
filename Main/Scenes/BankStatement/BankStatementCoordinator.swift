@@ -10,7 +10,7 @@ class BankStatementCoordinator: Coordinator {
 
   func start() {
     navigationController.setViewControllers(
-      [StatementListViewController()],
+      [Factory.ViewController.makeStatementListVC()],
       animated: true)
   }
 }

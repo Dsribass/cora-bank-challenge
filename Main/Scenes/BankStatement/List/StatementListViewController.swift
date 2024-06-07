@@ -3,6 +3,49 @@ import Domain
 import Combine
 
 class StatementListViewController: SceneViewController<StatementListView> {
+  init(viewModel: StatementListViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) { nil }
+
+  private let viewModel: StatementListViewModel
+
+  private lazy var skeletonTableViewLoader = {
+    SkeletonTableViewLoader(tableView: contentView.tableView)
+  }()
+
+  private lazy var statementTableViewLoader = {
+    StatementsTableViewLoader(tableView: contentView.tableView)
+  }()
+
+  override func setupBindings() {
+    func bindViewModelToView() {
+      listenState(of: viewModel.stateSubject.eraseToAnyPublisher()) { [weak self] state in
+        guard let self = self else { return }
+
+        switch state {
+        case .loaded(let statements): handleSuccessState(statements)
+        case .loading: handleLoadingState()
+        case .error: handleErrorState()
+        }
+      }
+      .store(in: &bindings)
+    }
+
+
+    bindViewModelToView()
+  }
+
+  override func additionalConfigurations() {
+    navigationItem.title = LocalizedStrings.bankStatementTitle
+    navigationItem.rightBarButtonItem = logoutButton
+
+    contentView.tableView.delegate = skeletonTableViewLoader
+    contentView.tableView.dataSource = skeletonTableViewLoader
+  }
+
   private lazy var logoutButton = {
     UIBarButtonItem(
       image: UIImage(named: .icSignOut),
@@ -11,43 +54,6 @@ class StatementListViewController: SceneViewController<StatementListView> {
       action: #selector(handleLogoutButtonTap))
   }()
 
-  private let statementsByDate: [StatementsByDate] = [
-    (
-      statements: [
-        Domain.Statement(id: "1", description: "Hello World", label: "Hello World", entry: .debit, amount: 43, name: "Hello World", dateEvent: .now, status: .completed
-
-                        ),
-        Domain.Statement(id: "2", description: "Hello World", label: "Hello World", entry: .debit, amount: 12, name: "Hello World", dateEvent: .now, status: .completed
-
-                        )
-      ],
-      date: .now
-    ),
-    (
-      statements: [
-        Domain.Statement(id: "3", description: "Hello World", label: "Hello World", entry: .debit, amount: 54, name: "Hello World", dateEvent: .now, status: .completed
-
-                        ),
-        Domain.Statement(id: "4", description: "Hello World", label: "Hello World", entry: .debit, amount: 66, name: "Hello World", dateEvent: .now, status: .completed
-
-                        )
-      ],
-      date: .now
-    )
-  ]
-
-  private lazy var flattenStatements = statementsByDate.flatMap { $0.statements }
-
-  override func additionalConfigurations() {
-    navigationItem.title = LocalizedStrings.bankStatementTitle
-    navigationItem.rightBarButtonItem = logoutButton
-
-    contentView.tableView.register(StatementCell.self, forCellReuseIdentifier: StatementCell.identifier)
-    contentView.tableView.delegate = self
-    contentView.tableView.dataSource = self
-  }
-
-  // TODO: Refactor
   @objc private func handleLogoutButtonTap() {
     let logout = Factory.Domain.makeLogOutUser()
 
@@ -58,33 +64,22 @@ class StatementListViewController: SceneViewController<StatementListView> {
   }
 }
 
-extension StatementListViewController: UITableViewDelegate, UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    statementsByDate[section].statements.count
+extension StatementListViewController {
+  func handleLoadingState() {
+    contentView.tableView.delegate = skeletonTableViewLoader
+    contentView.tableView.dataSource = skeletonTableViewLoader
+    contentView.tableView.reloadData()
   }
 
-  func numberOfSections(in tableView: UITableView) -> Int {
-    statementsByDate.count
+  func handleSuccessState(_ statements: [StatementsByDate]) {
+    statementTableViewLoader.statementsByDate = statements
+    contentView.tableView.delegate = statementTableViewLoader
+    contentView.tableView.dataSource = statementTableViewLoader
+    contentView.tableView.reloadData()
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: StatementCell.identifier, for: indexPath) as? StatementCell ?? StatementCell()
-
-    let statement = flattenStatements[indexPath.row]
-    cell.config(statement: statement, icon: UIImage(named: .icArrowDownIn)!)
-
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    Constants.largeSpacing
-  }
-
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    0
-  }
-
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return StatementHeaderCell(date: self.statementsByDate[section].date)
+  func handleErrorState() {
+    // TODO(any): Implement error layout
+    print("StatementListViewController: State error")
   }
 }

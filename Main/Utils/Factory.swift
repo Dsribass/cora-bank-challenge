@@ -64,6 +64,10 @@ enum Factory {
     static func makePasswordVM(cpf: String) -> PasswordViewModel {
       PasswordViewModel(authenticate: Domain.makeAuthenticateUser(), cpf: cpf)
     }
+
+    static func makeStatementListVM() -> StatementListViewModel {
+      StatementListViewModel(getStatementList: Domain.makeGetStatementList())
+    }
   }
 
   enum ViewController {
@@ -77,6 +81,10 @@ enum Factory {
 
     static func makePasswordVC(cpf: String) -> PasswordViewController {
       PasswordViewController(viewModel: ViewModel.makePasswordVM(cpf: cpf))
+    }
+
+    static func makeStatementListVC() -> StatementListViewController {
+      StatementListViewController(viewModel: ViewModel.makeStatementListVM())
     }
   }
 }
