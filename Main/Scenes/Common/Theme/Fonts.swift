@@ -3,6 +3,7 @@ import UIKit.UIFont
 enum CoraFont {
   case title1, title2
   case body1, body2
+  case small
 
   static let fontName = "Avenir"
 
@@ -14,6 +15,7 @@ enum CoraFont {
     case .title2: UIFont(name: buildFontName(weight: weight), size: 22.0)
     case .body1: UIFont(name: buildFontName(weight: weight), size: 16.0)
     case .body2: UIFont(name: buildFontName(weight: weight), size: 14.0)
+    case .small: UIFont(name: buildFontName(weight: weight), size: 12.0)
     }
   }
 }

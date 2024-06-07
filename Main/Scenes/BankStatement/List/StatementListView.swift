@@ -42,6 +42,13 @@ class StatementListView: UIViewCodable {
     return button
   }()
 
+  lazy var tableView: UITableView = {
+    let tableView = UITableView()
+    tableView.separatorStyle = .none
+    tableView.contentInset = .zero
+    tableView.sectionHeaderTopPadding = 0
+    return tableView
+  }()
 
   override func setupLayout() {
     backgroundColor = .Cora.white
@@ -50,6 +57,7 @@ class StatementListView: UIViewCodable {
   override func setupSubviews() {
     addSubview(menuBar)
     addSubview(filterConfigurations)
+    addSubview(tableView)
   }
 
   override func setupConstraints() {
@@ -63,10 +71,19 @@ class StatementListView: UIViewCodable {
 
     menuBar.makeConstraints { view in
       [
-        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Constants.mediumSpacing),
+        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Constants.smallSpacing),
         view.leadingAnchor.constraint(equalTo: leadingAnchor),
         view.trailingAnchor.constraint(equalTo: filterConfigurations.trailingAnchor, constant: -Constants.largeSpacing),
         view.heightAnchor.constraint(equalToConstant: 24)
+      ]
+    }
+
+    tableView.makeConstraints { view in
+      [
+        view.topAnchor.constraint(equalTo: menuBar.bottomAnchor, constant: Constants.smallSpacing),
+        view.leadingAnchor.constraint(equalTo: leadingAnchor),
+        view.trailingAnchor.constraint(equalTo: trailingAnchor),
+        view.bottomAnchor.constraint(equalTo: bottomAnchor),
       ]
     }
   }

@@ -50,6 +50,9 @@
 		9589BE282C0F66D000C2D7C3 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE272C0F66D000C2D7C3 /* UseCase.swift */; };
 		9589BE2A2C0FCDAA00C2D7C3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE292C0FCDAA00C2D7C3 /* LoadingViewController.swift */; };
 		9589BE302C0FD21C00C2D7C3 /* Observables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE2F2C0FD21C00C2D7C3 /* Observables.swift */; };
+		9589BE322C0FEC6B00C2D7C3 /* StatementListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE312C0FEC6B00C2D7C3 /* StatementListViewModel.swift */; };
+		9589BE372C114EA100C2D7C3 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE362C114EA100C2D7C3 /* StatementCell.swift */; };
+		959E66232C129F590085827D /* StatementHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959E66222C129F590085827D /* StatementHeaderCell.swift */; };
 		95A5BBAE2BF132A700E7CBFD /* AuthenticateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBAD2BF132A700E7CBFD /* AuthenticateUser.swift */; };
 		95A5BBB12BF1335B00E7CBFD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBB02BF1335B00E7CBFD /* Errors.swift */; };
 		95A5BBB42BF1366800E7CBFD /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBB32BF1366800E7CBFD /* AuthRepository.swift */; };
@@ -162,6 +165,9 @@
 		9589BE272C0F66D000C2D7C3 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		9589BE292C0FCDAA00C2D7C3 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		9589BE2F2C0FD21C00C2D7C3 /* Observables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observables.swift; sourceTree = "<group>"; };
+		9589BE312C0FEC6B00C2D7C3 /* StatementListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListViewModel.swift; sourceTree = "<group>"; };
+		9589BE362C114EA100C2D7C3 /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
+		959E66222C129F590085827D /* StatementHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementHeaderCell.swift; sourceTree = "<group>"; };
 		95A5BBAD2BF132A700E7CBFD /* AuthenticateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateUser.swift; sourceTree = "<group>"; };
 		95A5BBB02BF1335B00E7CBFD /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		95A5BBB32BF1366800E7CBFD /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -229,6 +235,9 @@
 			children = (
 				956D4AC52BFA502300114791 /* StatementListViewController.swift */,
 				956D4AC72BFA503700114791 /* StatementListView.swift */,
+				9589BE312C0FEC6B00C2D7C3 /* StatementListViewModel.swift */,
+				9589BE362C114EA100C2D7C3 /* StatementCell.swift */,
+				959E66222C129F590085827D /* StatementHeaderCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -805,6 +814,7 @@
 				95B433822BE07AB2007B238C /* IntroView.swift in Sources */,
 				95628AAE2BDC4FB70088519C /* AppDelegate.swift in Sources */,
 				95B433A72BE29A3A007B238C /* ApplicationCoordinator.swift in Sources */,
+				959E66232C129F590085827D /* StatementHeaderCell.swift in Sources */,
 				954AF9002BE659F5007299F5 /* IdentificationViewModel.swift in Sources */,
 				9546784C2C017A3E007BB1A6 /* BankStatementCoordinator.swift in Sources */,
 				95B433AA2BE29AC8007B238C /* Coordinator.swift in Sources */,
@@ -814,12 +824,14 @@
 				956D4AC62BFA502300114791 /* StatementListViewController.swift in Sources */,
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
 				954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */,
+				9589BE322C0FEC6B00C2D7C3 /* StatementListViewModel.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
 				9518D71A2BED9A78006563CD /* Factory.swift in Sources */,
 				9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */,
 				95B4339C2BE288F2007B238C /* Extensions.swift in Sources */,
 				950D2EBA2BF54B7300F9022B /* FormValidation.swift in Sources */,
 				95B433802BE07AAE007B238C /* IntroViewController.swift in Sources */,
+				9589BE372C114EA100C2D7C3 /* StatementCell.swift in Sources */,
 				95B4338C2BE1676C007B238C /* Assets.swift in Sources */,
 				95628AB02BDC4FB70088519C /* SceneDelegate.swift in Sources */,
 				95B4339F2BE28970007B238C /* ButtonProperties.swift in Sources */,
