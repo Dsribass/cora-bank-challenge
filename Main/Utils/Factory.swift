@@ -54,6 +54,10 @@ enum Factory {
     static func makeGetStatementList() -> GetStatementList {
       GetStatementList(statementRepository: Infra.makeStatementRepository())
     }
+
+    static func makeGetStatementDetail() -> GetStatementDetail {
+      GetStatementDetail(statementRepository: Infra.makeStatementRepository())
+    }
   }
 
   enum ViewModel {

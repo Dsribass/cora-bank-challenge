@@ -51,7 +51,7 @@ class StatementCell: UITableViewCell {
     return label
   }()
 
-  func config(statement: Statement, icon: UIImage) {
+  func config(statement: StatementSummary, icon: UIImage) {
     transctionDescription.text = statement.description
     name.text = statement.name
     leadingIcon.image = icon

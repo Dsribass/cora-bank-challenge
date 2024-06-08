@@ -14,4 +14,11 @@ public class DefaultStatementRepository: StatementRepository {
       .mapToDomainError()
       .eraseToAnyPublisher()
   }
+
+  public func getStatementDetail(id: String) -> AnyPublisher<Statement, DomainError> {
+    statementRDS.getStatementDetail(id: id)
+      .tryMap { response in try response.toDM() }
+      .mapToDomainError()
+      .eraseToAnyPublisher()
+  }
 }

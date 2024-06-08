@@ -1,55 +1,66 @@
 import Foundation
 import Domain
 
-struct StatementRemoteModel {
+struct StatementRemoteModel{
   struct Response: Decodable {
-    struct Result: Decodable {
-      let items: [Item]
-      let date: String
+    init(description: String, label: String, amount: Int, counterPartyName: String, id: String, dateEvent: Date, recipient: Party, sender: Party, status: String) {
+      self.description = description
+      self.label = label
+      self.amount = amount
+      self.counterPartyName = counterPartyName
+      self.id = id
+      self.dateEvent = dateEvent
+      self.recipient = recipient
+      self.sender = sender
+      self.status = status
     }
 
-    struct Item: Decodable {
-      let id: String
-      let description: String
-      let label: String
-      let entry: String
-      let amount: Int
+    let description: String
+    let label: String
+    let amount: Int
+    let counterPartyName: String
+    let id: String
+    let dateEvent: Date
+    let recipient: Party
+    let sender: Party
+    let status: String
+
+    struct Party: Decodable {
+      let bankName: String
+      let bankNumber: String
+      let documentNumber: String
+      let documentType: String
+      let accountNumberDigit: String
+      let agencyNumberDigit: String
+      let agencyNumber: String
       let name: String
-      let dateEvent: Date
-      let status: String
+      let accountNumber: String
     }
-
-    let results: [Result]
-    let itemsTotal: Int
   }
 }
 
 extension StatementRemoteModel.Response {
-  func toDM() throws -> [StatementsByDate] {
-    try results.map { result in
-      StatementsByDate(
-        statements: try result.items.map { item in
-          guard let entry = Statement.Entry.from(string: item.entry),
-                  let status = Statement.Status.from(string: item.status) else {
-            throw DomainError.nonexistentItem
-          }
-
-          return Statement(
-            id: item.id, 
-            description: item.description,
-            label: item.label,
-            entry: entry,
-            amount: Double(item.amount),
-            name: item.name,
-            dateEvent: item.dateEvent,
-            status: status)
-        },
-        date: {
-          let isoDateFormatter = ISO8601DateFormatter()
-          isoDateFormatter.formatOptions = [.withFullDate]
-          return isoDateFormatter.date(from: result.date)!
-        }()
-      )
+  func toDM() throws -> Statement {
+    guard let status = StatementStatus.from(string: status) else {
+      throw DomainError.nonexistentItem
     }
+
+    return Statement(
+      description: description,
+      label: label,
+      amount: Double(amount),
+      counterPartyName: counterPartyName,
+      id: id,
+      dateEvent: dateEvent,
+      recipient: recipient.toDM(),
+      sender: sender.toDM(),
+      status: status
+    )
+  }
+}
+
+extension StatementRemoteModel.Response.Party {
+  func toDM() -> Statement.Party {
+    Statement.Party(bankName: bankName, bankNumber: bankNumber, documentNumber: documentNumber, documentType: documentType, accountNumberDigit: accountNumberDigit, agencyNumberDigit: agencyNumberDigit, agencyNumber: agencyNumber, name: name, accountNumber: accountNumber)
   }
 }
