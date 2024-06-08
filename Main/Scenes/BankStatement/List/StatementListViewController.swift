@@ -3,14 +3,16 @@ import Domain
 import Combine
 
 class StatementListViewController: SceneViewController<StatementListView> {
-  init(viewModel: StatementListViewModel) {
+  init(viewModel: StatementListViewModel, router: StatementListRouter) {
     self.viewModel = viewModel
+    self.router = router
     super.init(nibName: nil, bundle: nil)
   }
 
   required init?(coder: NSCoder) { nil }
 
   private let viewModel: StatementListViewModel
+  private let router: StatementListRouter
 
   private lazy var skeletonTableViewLoader = {
     SkeletonTableViewLoader(tableView: contentView.tableView)
@@ -34,8 +36,26 @@ class StatementListViewController: SceneViewController<StatementListView> {
       .store(in: &bindings)
     }
 
+    func bindViewToViewModel() {
+      statementTableViewLoader
+        .didTapCell
+        .receive(on: DispatchQueue.main)
+        .sink { [weak self] statement in
+          guard let self = self else { return }
+          if let selectedIndexPath = contentView.tableView.indexPathForSelectedRow {
+            contentView
+              .tableView
+              .deselectRow(at: selectedIndexPath, animated: true)
+          }
+          
+          router.navigateToDetails(id: statement.id)
+        }
+        .store(in: &bindings)
+    }
+
 
     bindViewModelToView()
+    bindViewToViewModel()
   }
 
   override func additionalConfigurations() {
@@ -82,4 +102,8 @@ extension StatementListViewController {
     // TODO(any): Implement error layout
     print("StatementListViewController: State error")
   }
+}
+
+protocol StatementListRouter {
+  func navigateToDetails(id: String)
 }

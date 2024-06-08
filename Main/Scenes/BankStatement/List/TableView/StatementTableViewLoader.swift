@@ -1,5 +1,6 @@
 import UIKit
 import Domain
+import Combine
 
 class StatementsTableViewLoader: NSObject, UITableViewDelegate, UITableViewDataSource {
   init(tableView: UITableView) {
@@ -7,6 +8,12 @@ class StatementsTableViewLoader: NSObject, UITableViewDelegate, UITableViewDataS
   }
 
   var statementsByDate: [StatementsByDate] = []
+
+  let didTapCell = PassthroughSubject<StatementSummary, Never>()
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    didTapCell.send(statementsByDate[indexPath.section].statements[indexPath.row])
+  }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     statementsByDate[section].statements.count

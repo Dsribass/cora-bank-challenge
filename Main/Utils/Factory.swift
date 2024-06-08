@@ -87,8 +87,8 @@ enum Factory {
       PasswordViewController(viewModel: ViewModel.makePasswordVM(cpf: cpf))
     }
 
-    static func makeStatementListVC() -> StatementListViewController {
-      StatementListViewController(viewModel: ViewModel.makeStatementListVM())
+    static func makeStatementListVC(router: StatementListRouter) -> StatementListViewController {
+      StatementListViewController(viewModel: ViewModel.makeStatementListVM(), router: router)
     }
   }
 }

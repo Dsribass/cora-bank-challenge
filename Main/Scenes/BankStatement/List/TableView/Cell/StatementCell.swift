@@ -65,10 +65,17 @@ class StatementCell: UITableViewCell {
     dateFormatter.dateFormat = "HH:mm"
     date.text = dateFormatter.string(from: statement.dateEvent)
   }
+
+  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    super.setHighlighted(highlighted, animated: animated)
+    backgroundColor = highlighted ? .Cora.gray4 : .Cora.white
+  }
 }
 
 extension StatementCell: ViewCodable {
-  func setupLayout() {}
+  func setupLayout() {
+    selectionStyle = .none
+  }
 
   func setupSubviews() {
     addSubview(topSpacer)

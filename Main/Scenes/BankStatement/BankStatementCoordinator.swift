@@ -10,7 +10,17 @@ class BankStatementCoordinator: Coordinator {
 
   func start() {
     navigationController.setViewControllers(
-      [Factory.ViewController.makeStatementListVC()],
+      [Factory.ViewController.makeStatementListVC(
+        router: self
+      )],
+      animated: true)
+  }
+}
+
+extension BankStatementCoordinator: StatementListRouter {
+  func navigateToDetails(id: String) {
+    navigationController.pushViewController(
+      StatementDetailViewController(id: id),
       animated: true)
   }
 }

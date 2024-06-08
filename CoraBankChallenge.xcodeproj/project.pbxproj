@@ -58,6 +58,8 @@
 		9589BE372C114EA100C2D7C3 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE362C114EA100C2D7C3 /* StatementCell.swift */; };
 		958C823E2C13CEDF00B9A411 /* StatementStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C823D2C13CEDF00B9A411 /* StatementStatus.swift */; };
 		958C82402C13D22200B9A411 /* StatementRemoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C823F2C13D22200B9A411 /* StatementRemoteModel.swift */; };
+		958C82422C14B15800B9A411 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C82412C14B15800B9A411 /* StatementDetailViewController.swift */; };
+		958C82442C14B16200B9A411 /* StatementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C82432C14B16200B9A411 /* StatementDetailView.swift */; };
 		959E66232C129F590085827D /* StatementHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959E66222C129F590085827D /* StatementHeaderCell.swift */; };
 		959E66282C12B4400085827D /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959E66272C12B4400085827D /* SkeletonCell.swift */; };
 		95A5BBAE2BF132A700E7CBFD /* AuthenticateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5BBAD2BF132A700E7CBFD /* AuthenticateUser.swift */; };
@@ -180,6 +182,8 @@
 		9589BE362C114EA100C2D7C3 /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
 		958C823D2C13CEDF00B9A411 /* StatementStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementStatus.swift; sourceTree = "<group>"; };
 		958C823F2C13D22200B9A411 /* StatementRemoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRemoteModel.swift; sourceTree = "<group>"; };
+		958C82412C14B15800B9A411 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
+		958C82432C14B16200B9A411 /* StatementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailView.swift; sourceTree = "<group>"; };
 		959E66222C129F590085827D /* StatementHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementHeaderCell.swift; sourceTree = "<group>"; };
 		959E66272C12B4400085827D /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		95A5BBAD2BF132A700E7CBFD /* AuthenticateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateUser.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 		9546784A2C0179E4007BB1A6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				958C82412C14B15800B9A411 /* StatementDetailViewController.swift */,
+				958C82432C14B16200B9A411 /* StatementDetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -846,6 +852,7 @@
 				95B433AC2BE29CD6007B238C /* AuthCoordinator.swift in Sources */,
 				954AF9062BE7E1D0007299F5 /* CombineExtensions.swift in Sources */,
 				954AF8F02BE46BFE007299F5 /* IdentificationView.swift in Sources */,
+				958C82442C14B16200B9A411 /* StatementDetailView.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
 				954B3C7B2C0A7BF300AF5CF7 /* Environment.swift in Sources */,
 				954AF9042BE695A6007299F5 /* ViewModel.swift in Sources */,
@@ -864,6 +871,7 @@
 				953047CF2C13C9A90017DDF9 /* StatementTableViewLoader.swift in Sources */,
 				956D4AC62BFA502300114791 /* StatementListViewController.swift in Sources */,
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
+				958C82422C14B15800B9A411 /* StatementDetailViewController.swift in Sources */,
 				954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */,
 				9589BE322C0FEC6B00C2D7C3 /* StatementListViewModel.swift in Sources */,
 				95B433712BDD44D2007B238C /* Colors.swift in Sources */,
