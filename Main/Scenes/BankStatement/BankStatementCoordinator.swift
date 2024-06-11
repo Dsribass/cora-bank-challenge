@@ -20,7 +20,7 @@ class BankStatementCoordinator: Coordinator {
 extension BankStatementCoordinator: StatementListRouter {
   func navigateToDetails(id: String) {
     navigationController.pushViewController(
-      StatementDetailViewController(id: id),
+      Factory.ViewController.makeStatementDetailVC(id: id),
       animated: true)
   }
 }

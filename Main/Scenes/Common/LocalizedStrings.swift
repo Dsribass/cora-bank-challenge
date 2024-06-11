@@ -20,5 +20,18 @@ enum LocalizedStrings {
   static let bankStatementFirstFilterTab = String(localized: "BankStatementFilterTabOne")
   static let bankStatementSecondFilterTab = String(localized: "BankStatementFilterTabTwo")
   static let bankStatementThirdFilterTab = String(localized: "BankStatementFilterTabThree")
-  static let bankStatementFourthFilterTab = String(localized: "BankStatementFilterTabFour")
+  static let bankStatementFourthFilterTab
+  = String(localized: "BankStatementFilterTabFour")
+  static let statementDetailNavBarTitle = String(localized: "StatementDetailNavBarTitle")
+  static let statementDetailTitle = String(localized: "StatementDetailTitle")
+  static let statementDetailAmountSection = String(localized: "StatementDetailAmountSection")
+  static let statementDetailDateSection = String(localized: "StatementDetailDateSection")
+  static let statementDetailSenderSection = String(localized: "StatementDetailSenderSection")
+  static let statementDetailReceiverSection = String(localized: "StatementDetailReceiverSection")
+  static let statementDetailDescriptionSection = String(localized: "StatementDetailDescriptionSection")
+  static let statementDetailButton = String(localized: "StatementDetailButton")
+
+  static func statementDetailBankInfo(agency: String, account: String) -> String {
+    "\(String(localized: "StatementDetailAgency")) \(agency) - \(String(localized: "StatementDetailAccount")) \(account)"
+  }
 }

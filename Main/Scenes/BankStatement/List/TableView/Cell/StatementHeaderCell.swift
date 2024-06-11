@@ -9,9 +9,7 @@ class StatementHeaderCell: UIViewCodable {
   required init?(coder: NSCoder) { nil }
   
   private func config(date: Date) {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "EEEE - d 'de' MMMM"
-    label.text = dateFormatter.string(from: date)
+    label.text = date.weekdayAndMonth()
   }
 
   private lazy var label: UILabel = {

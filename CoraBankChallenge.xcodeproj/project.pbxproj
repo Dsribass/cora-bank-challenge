@@ -12,6 +12,8 @@
 		9518D7162BED7043006563CD /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7152BED7043006563CD /* PasswordViewController.swift */; };
 		9518D7182BED705E006563CD /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7172BED705E006563CD /* PasswordView.swift */; };
 		9518D71A2BED9A78006563CD /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518D7192BED9A78006563CD /* Factory.swift */; };
+		951E55102C17EA3F00860F72 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E550F2C17EA3F00860F72 /* Utils.swift */; };
+		951E55122C17F6C700860F72 /* StatementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E55112C17F6C700860F72 /* StatementDetailViewModel.swift */; };
 		95264E792BF3E0140025E253 /* AuthLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95264E782BF3E0140025E253 /* AuthLocalDataSource.swift */; };
 		953047CD2C13C8C60017DDF9 /* SkeletonTableViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953047CC2C13C8C60017DDF9 /* SkeletonTableViewLoader.swift */; };
 		953047CF2C13C9A90017DDF9 /* StatementTableViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953047CE2C13C9A90017DDF9 /* StatementTableViewLoader.swift */; };
@@ -134,6 +136,8 @@
 		9518D7152BED7043006563CD /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		9518D7172BED705E006563CD /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		9518D7192BED9A78006563CD /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		951E550F2C17EA3F00860F72 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		951E55112C17F6C700860F72 /* StatementDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewModel.swift; sourceTree = "<group>"; };
 		95264E782BF3E0140025E253 /* AuthLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLocalDataSource.swift; sourceTree = "<group>"; };
 		953047CC2C13C8C60017DDF9 /* SkeletonTableViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTableViewLoader.swift; sourceTree = "<group>"; };
 		953047CE2C13C9A90017DDF9 /* StatementTableViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewLoader.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 			children = (
 				958C82412C14B15800B9A411 /* StatementDetailViewController.swift */,
 				958C82432C14B16200B9A411 /* StatementDetailView.swift */,
+				951E55112C17F6C700860F72 /* StatementDetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				95B4339B2BE288F2007B238C /* Extensions.swift */,
 				954AF9032BE695A6007299F5 /* ViewModel.swift */,
 				954AF9052BE7E1D0007299F5 /* CombineExtensions.swift */,
+				951E550F2C17EA3F00860F72 /* Utils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -864,6 +870,7 @@
 				959E66232C129F590085827D /* StatementHeaderCell.swift in Sources */,
 				954AF9002BE659F5007299F5 /* IdentificationViewModel.swift in Sources */,
 				9546784C2C017A3E007BB1A6 /* BankStatementCoordinator.swift in Sources */,
+				951E55122C17F6C700860F72 /* StatementDetailViewModel.swift in Sources */,
 				95B433AA2BE29AC8007B238C /* Coordinator.swift in Sources */,
 				95B433842BE08B70007B238C /* Constants.swift in Sources */,
 				95B433982BE1C110007B238C /* Button.swift in Sources */,
@@ -871,6 +878,7 @@
 				953047CF2C13C9A90017DDF9 /* StatementTableViewLoader.swift in Sources */,
 				956D4AC62BFA502300114791 /* StatementListViewController.swift in Sources */,
 				95B433752BDDC145007B238C /* Fonts.swift in Sources */,
+				951E55102C17EA3F00860F72 /* Utils.swift in Sources */,
 				958C82422C14B15800B9A411 /* StatementDetailViewController.swift in Sources */,
 				954AF8F22BE46C04007299F5 /* IdentificationViewController.swift in Sources */,
 				9589BE322C0FEC6B00C2D7C3 /* StatementListViewModel.swift in Sources */,

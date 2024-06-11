@@ -10,10 +10,23 @@ class StatementListView: UIViewCodable {
   lazy var menuBar: UISegmentedControl = {
     let segmentedControl = UISegmentedControl()
 
-    segmentedControl.insertSegment(withTitle: "Tudo", at: 0, animated: true)
-    segmentedControl.insertSegment(withTitle: "Entrada", at: 1, animated: true)
-    segmentedControl.insertSegment(withTitle: "Saída", at: 2, animated: true)
-    segmentedControl.insertSegment(withTitle: "Futuro", at: 3, animated: true)
+    segmentedControl.insertSegment(
+      withTitle: LocalizedStrings.bankStatementFirstFilterTab,
+      at: 0, 
+      animated: true)
+    segmentedControl.insertSegment(
+      withTitle: LocalizedStrings.bankStatementSecondFilterTab,
+      at: 1, 
+      animated: true)
+    segmentedControl.insertSegment(
+      withTitle: LocalizedStrings.bankStatementThirdFilterTab,
+      at: 2, 
+      animated: true)
+    segmentedControl.insertSegment(
+      withTitle: LocalizedStrings.bankStatementFourthFilterTab,
+      at: 3, 
+      animated: true)
+
     segmentedControl.selectedSegmentIndex = 0
 
     segmentedControl.selectedSegmentTintColor = .clear
@@ -24,13 +37,13 @@ class StatementListView: UIViewCodable {
     segmentedControl.setTitleTextAttributes([
       NSAttributedString.Key.font : UIFont.coraFont(for: .body2, weight: .regular),
       NSAttributedString.Key.foregroundColor: UIColor.Cora.gray1
-        ], for: .normal)
+    ], for: .normal)
 
     segmentedControl.setTitleTextAttributes([
       NSAttributedString.Key.font : UIFont.coraFont(for: .body2, weight: .bold),
       NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue,
       NSAttributedString.Key.foregroundColor: UIColor.Cora.primaryColor
-        ], for: .selected)
+    ], for: .selected)
 
     return segmentedControl
   }()

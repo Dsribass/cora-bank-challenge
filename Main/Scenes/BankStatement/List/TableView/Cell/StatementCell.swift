@@ -55,15 +55,8 @@ class StatementCell: UITableViewCell {
     transctionDescription.text = statement.description
     name.text = statement.name
     leadingIcon.image = icon
-
-    let numberFormatter = NumberFormatter()
-    numberFormatter.numberStyle = .currency
-    amount.text = numberFormatter.string(from: NSNumber(value: statement.amount))
-
-
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
-    date.text = dateFormatter.string(from: statement.dateEvent)
+    amount.text = statement.amount.convertToCurrencyFormat()
+    date.text = statement.dateEvent.hourMinuteFormat()
   }
 
   override func setHighlighted(_ highlighted: Bool, animated: Bool) {

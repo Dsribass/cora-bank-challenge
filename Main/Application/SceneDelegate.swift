@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   private func createUIWindow(scene: UIScene) -> UIWindow? {
     guard let windowScene = (scene as? UIWindowScene) else { return nil }
     let window = UIWindow(windowScene: windowScene)
+    window.backgroundColor = .systemBackground
     window.frame = UIScreen.main.bounds
 
     return window

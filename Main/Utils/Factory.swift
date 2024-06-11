@@ -71,6 +71,12 @@ enum Factory {
 
     static func makeStatementListVM() -> StatementListViewModel {
       StatementListViewModel(getStatementList: Domain.makeGetStatementList())
+    } 
+
+    static func makeStatementDetailVM(id: String) -> StatementDetailViewModel {
+      StatementDetailViewModel(
+        id: id,
+        getStatementDetail: Domain.makeGetStatementDetail())
     }
   }
 
@@ -89,6 +95,10 @@ enum Factory {
 
     static func makeStatementListVC(router: StatementListRouter) -> StatementListViewController {
       StatementListViewController(viewModel: ViewModel.makeStatementListVM(), router: router)
+    }
+
+    static func makeStatementDetailVC(id: String) -> StatementDetailViewController {
+      StatementDetailViewController(viewModel: ViewModel.makeStatementDetailVM(id: id))
     }
   }
 }
