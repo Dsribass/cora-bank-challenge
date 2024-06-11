@@ -33,8 +33,8 @@ class StatementHeaderCell: UIViewCodable {
     label.makeConstraints { view in
       [
         view.centerYAnchor.constraint(equalTo: centerYAnchor),
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
-        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mediumSpacing)
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium)
       ]
     }
   }

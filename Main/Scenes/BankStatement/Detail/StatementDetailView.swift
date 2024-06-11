@@ -33,7 +33,7 @@ class StatementDetailView: UIViewCodable {
   private lazy var transactionDescription = DetailSection()
 
   private lazy var shareButton: CoraButton = {
-    let button = CoraButton(title: LocalizedStrings.statementDetailButton, size: .medium, variation: .primary, color: .brand)
+    let button = CoraButton(title: Strings.StatementDetail.button, size: .medium, variation: .primary, color: .brand)
 
     button.image = UIImage(named: .icShare)
     return button
@@ -43,21 +43,21 @@ class StatementDetailView: UIViewCodable {
     setTitle(statement.label, image: UIImage(named: .icArrowDownIn)!)
 
     amountSection.config(
-      label: LocalizedStrings.statementDetailAmountSection,
+      label: Strings.StatementDetail.amountSection,
       title: statement.amount.convertToCurrencyFormat())
 
     dateSection.config(
-      label: LocalizedStrings.statementDetailDateSection,
+      label: Strings.StatementDetail.dateSection,
       title: statement.dateEvent.weekdayAndFullDate())
 
     let sender = statement.sender
     senderSection.config(
-      label: LocalizedStrings.statementDetailSenderSection,
+      label: Strings.StatementDetail.senderSection,
       title: sender.name,
       descriptionList: [
         "\(sender.documentType) \(sender.documentNumber)",
         sender.bankName,
-        LocalizedStrings.statementDetailBankInfo(
+        Strings.StatementDetail.bankInfo(
           agency: sender.agencyNumber,
           account: sender.accountNumber)
       ]
@@ -65,21 +65,25 @@ class StatementDetailView: UIViewCodable {
 
     let receiver = statement.recipient
     receiverSection.config(
-      label: LocalizedStrings.statementDetailReceiverSection,
+      label: Strings.StatementDetail.receiverSection,
       title: receiver.name,
       descriptionList: [
         "\(receiver.documentType) \(receiver.documentNumber)",
         receiver.bankName,
-        LocalizedStrings.statementDetailBankInfo(
+        Strings.StatementDetail.bankInfo(
           agency: receiver.agencyNumber,
           account: receiver.accountNumber)
       ]
     )
 
     transactionDescription.config(
-      label: LocalizedStrings.statementDetailDescriptionSection,
+      label: Strings.StatementDetail.descriptionSection,
       title: nil,
       descriptionList: [statement.description])
+  }
+
+  override func setupLayout() {
+    backgroundColor = .Cora.white
   }
 
   private func setTitle(_ title: String, image: UIImage) {
@@ -104,17 +108,17 @@ class StatementDetailView: UIViewCodable {
     scrollView.addSubview(stackView)
 
     stackView.addArrangedSubview(title)
-    stackView.setCustomSpacing(Constants.mediumSpacing, after: title)
+    stackView.setCustomSpacing(Spacing.medium, after: title)
     stackView.addArrangedSubview(amountSection)
-    stackView.setCustomSpacing(Constants.mediumSpacing, after: amountSection)
+    stackView.setCustomSpacing(Spacing.medium, after: amountSection)
     stackView.addArrangedSubview(dateSection)
-    stackView.setCustomSpacing(Constants.mediumSpacing, after: dateSection)
+    stackView.setCustomSpacing(Spacing.medium, after: dateSection)
     stackView.addArrangedSubview(senderSection)
-    stackView.setCustomSpacing(Constants.mediumSpacing, after: senderSection)
+    stackView.setCustomSpacing(Spacing.medium, after: senderSection)
     stackView.addArrangedSubview(receiverSection)
-    stackView.setCustomSpacing(Constants.mediumSpacing, after: receiverSection)
+    stackView.setCustomSpacing(Spacing.medium, after: receiverSection)
     stackView.addArrangedSubview(transactionDescription)
-    stackView.setCustomSpacing(Constants.largeSpacing, after: transactionDescription)
+    stackView.setCustomSpacing(Spacing.large, after: transactionDescription)
     stackView.addArrangedSubview(shareButton)
   }
 
@@ -127,11 +131,11 @@ class StatementDetailView: UIViewCodable {
     ]}
 
     stackView.makeConstraints {[
-      $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Constants.mediumSpacing),
-      $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Constants.mediumSpacing),
-      $0.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Constants.largeSpacing),
-      $0.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Constants.mediumSpacing),
-      $0.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -2 * Constants.mediumSpacing)
+      $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Spacing.medium),
+      $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Spacing.medium),
+      $0.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Spacing.large),
+      $0.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Spacing.medium),
+      $0.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -2 * Spacing.medium)
     ]}
   }
 }

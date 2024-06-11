@@ -12,7 +12,7 @@ class StatementDetailViewController: SceneViewController<StatementDetailView> {
   private let viewModel: StatementDetailViewModel
 
   override func setupLayout() {
-    navigationItem.title = LocalizedStrings.statementDetailNavBarTitle
+    navigationItem.title = Strings.StatementDetail.navBarTitle
   }
 
   override func setupBindings() {

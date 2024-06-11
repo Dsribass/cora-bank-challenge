@@ -57,15 +57,15 @@ extension SkeletonCell: ViewCodable {
 
   func setupConstraints() {
     topSpacer.makeConstraints {[
-      $0.heightAnchor.constraint(equalToConstant: 12),
+      $0.heightAnchor.constraint(equalToConstant: Spacing.tiny),
     ]}
 
     stack.setContentHuggingPriority(.defaultLow, for: .horizontal)
     stack.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     stack.makeConstraints {[
       $0.topAnchor.constraint(equalTo: topAnchor),
-      $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
-      $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mediumSpacing),
+      $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
+      $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium),
       $0.bottomAnchor.constraint(equalTo: bottomAnchor),
     ]}
 
@@ -84,7 +84,7 @@ extension SkeletonCell: ViewCodable {
     ]}
 
     bottomSpacer.makeConstraints {[
-      $0.heightAnchor.constraint(equalToConstant: 12),
+      $0.heightAnchor.constraint(equalToConstant: Spacing.tiny),
     ]}
   }
 

@@ -9,7 +9,7 @@ class PasswordView: UIViewCodable {
 
   lazy var passwordQuestion: UILabel = {
     let label = UILabel()
-    label.text = LocalizedStrings.passwordTitle
+    label.text = Strings.Password.title
     label.font = UIFont.coraFont(for: .title2, weight: .bold)
     label.textColor = .Cora.black
     return label
@@ -45,7 +45,7 @@ class PasswordView: UIViewCodable {
 
   lazy var forgotPasswordButton: UIButton = {
     let btn = UIButton(configuration: .plain())
-    btn.setTitle(LocalizedStrings.passwordForgotPassword, for: .normal)
+    btn.setTitle(Strings.Password.forgotPassword, for: .normal)
     btn.tintColor = .Cora.primaryColor
     btn.contentHorizontalAlignment = .leading
     btn.titleLabel?.font = UIFont.coraFont(for: .body2, weight: .regular)
@@ -56,7 +56,7 @@ class PasswordView: UIViewCodable {
 
   lazy var nextStepButton: CoraButton = {
     CoraButton(
-      title: LocalizedStrings.loginNextStepButton,
+      title: Strings.Login.nextStepButton,
       size: .small,
       variation: .primary,
       color: .brand,
@@ -71,12 +71,12 @@ class PasswordView: UIViewCodable {
     addSubview(content)
 
     content.addArrangedSubview(passwordQuestion)
-    content.setCustomSpacing(Constants.largeSpacing, after: passwordQuestion)
+    content.setCustomSpacing(Spacing.large, after: passwordQuestion)
     content.addArrangedSubview(textField)
-    content.setCustomSpacing(Constants.smallSpacing, after: textField)
-    content.setCustomSpacing(Constants.smallSpacing, after: textField)
+    content.setCustomSpacing(Spacing.small, after: textField)
+    content.setCustomSpacing(Spacing.small, after: textField)
     content.addArrangedSubview(textFieldErrorMessage)
-    content.setCustomSpacing(Constants.largeSpacing, after: textFieldErrorMessage)
+    content.setCustomSpacing(Spacing.large, after: textFieldErrorMessage)
     content.addArrangedSubview(forgotPasswordButton)
 
     addSubview(nextStepButton)
@@ -85,17 +85,17 @@ class PasswordView: UIViewCodable {
   override func setupConstraints() {
     content.makeConstraints { view in
       [
-        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Constants.mediumSpacing),
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
-        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mediumSpacing)
+        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.medium),
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium)
       ]
     }
 
     nextStepButton.makeConstraints { view in
       [
-        view.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor, constant: -Constants.smallSpacing),
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
-        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mediumSpacing)
+        view.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor, constant: -Spacing.small),
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium)
       ]
     }
   }

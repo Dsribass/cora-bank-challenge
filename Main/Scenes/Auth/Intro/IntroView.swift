@@ -25,7 +25,7 @@ class IntroView: UIViewCodable {
     let label = UILabel()
     label.font = UIFont.coraFont(for: .title1, weight: .bold)
     label.textColor = .Cora.white
-    label.text = LocalizedStrings.introTitle
+    label.text = Strings.Intro.title
 
     return label
   }()
@@ -34,7 +34,7 @@ class IntroView: UIViewCodable {
     let label = UILabel()
     label.font = UIFont.coraFont(for: .title1, weight: .regular)
     label.textColor = .Cora.white
-    label.text = LocalizedStrings.introSubtitle
+    label.text = Strings.Intro.subtitle
 
     return label
   }()
@@ -45,14 +45,14 @@ class IntroView: UIViewCodable {
     label.numberOfLines = 0
     label.font = UIFont.coraFont(for: .body1, weight: .regular)
     label.textColor = .Cora.white
-    label.text = LocalizedStrings.introDescription
+    label.text = Strings.Intro.description
 
     return label
   }()
 
   lazy var primaryButton: CoraButton = {
     CoraButton(
-      title: LocalizedStrings.introPrimaryButton,
+      title: Strings.Intro.primaryButton,
       size: .medium,
       variation: .primary,
       color: .white,
@@ -61,7 +61,7 @@ class IntroView: UIViewCodable {
 
   lazy var secondaryButton: CoraButton = {
     CoraButton(
-      title: LocalizedStrings.introSecondaryButton,
+      title: Strings.Intro.secondaryButton,
       size: .small,
       variation: .primary,
       color: .brand)
@@ -79,37 +79,31 @@ class IntroView: UIViewCodable {
 
     content.addArrangedSubview(title)
     content.addArrangedSubview(subtitle)
-    content.setCustomSpacing(Constants.smallSpacing, after: subtitle)
+    content.setCustomSpacing(Spacing.small, after: subtitle)
     content.addArrangedSubview(information)
-    content.setCustomSpacing(Constants.mediumSpacing, after: information)
+    content.setCustomSpacing(Spacing.medium, after: information)
     content.addArrangedSubview(primaryButton)
-    content.setCustomSpacing(Constants.smallSpacing, after: primaryButton)
+    content.setCustomSpacing(Spacing.small, after: primaryButton)
     content.addArrangedSubview(secondaryButton)
   }
 
   override func setupConstraints() {
-    backgroundImage.makeConstraints { view in
-      [
-        view.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.48),
-        view.leftAnchor.constraint(equalTo: leftAnchor),
-        view.rightAnchor.constraint(equalTo: rightAnchor),
-        view.topAnchor.constraint(equalTo: topAnchor)
-      ]
-    }
+    backgroundImage.makeConstraints {[
+      $0.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.48),
+      $0.leftAnchor.constraint(equalTo: leftAnchor),
+      $0.rightAnchor.constraint(equalTo: rightAnchor),
+      $0.topAnchor.constraint(equalTo: topAnchor)
+    ]}
 
-    logo.makeConstraints { view in
-      [
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
-        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
-      ]
-    }
+    logo.makeConstraints {[
+      $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
+      $0.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+    ]}
 
-    content.makeConstraints { view in
-      [
-        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
-        view.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.mediumSpacing),
-        view.topAnchor.constraint(equalTo: centerYAnchor, constant: Constants.smallSpacing)
-      ]
-    }
+    content.makeConstraints {[
+      $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
+      $0.rightAnchor.constraint(equalTo: rightAnchor, constant: -Spacing.medium),
+      $0.topAnchor.constraint(equalTo: centerYAnchor, constant: Spacing.small)
+    ]}
   }
 }

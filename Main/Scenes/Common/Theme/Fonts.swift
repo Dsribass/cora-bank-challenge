@@ -1,6 +1,14 @@
 import UIKit.UIFont
 
 enum CoraFont {
+  enum Size {
+    static let extraLarge = 28.0
+    static let large = 22.0
+    static let medium = 16.0
+    static let small = 14.0
+    static let tiny = 12.0
+  }
+
   case title1, title2
   case body1, body2
   case small
@@ -11,11 +19,21 @@ enum CoraFont {
 
   fileprivate func buildFont(weight: Weight) -> UIFont? {
     switch self {
-    case .title1: UIFont(name: buildFontName(weight: weight), size: 28.0)
-    case .title2: UIFont(name: buildFontName(weight: weight), size: 22.0)
-    case .body1: UIFont(name: buildFontName(weight: weight), size: 16.0)
-    case .body2: UIFont(name: buildFontName(weight: weight), size: 14.0)
-    case .small: UIFont(name: buildFontName(weight: weight), size: 12.0)
+    case .title1: UIFont(
+      name: buildFontName(weight: weight),
+      size: Size.extraLarge)
+    case .title2: UIFont(
+      name: buildFontName(weight: weight),
+      size: Size.large)
+    case .body1: UIFont(
+      name: buildFontName(weight: weight),
+      size: Size.medium)
+    case .body2: UIFont(
+      name: buildFontName(weight: weight),
+      size: Size.small)
+    case .small: UIFont(
+      name: buildFontName(weight: weight),
+      size: Size.tiny)
     }
   }
 }

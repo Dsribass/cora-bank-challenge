@@ -1,4 +1,5 @@
 import Combine
+import Foundation
 import Domain
 
 class StatementDetailViewModel: ViewModel {

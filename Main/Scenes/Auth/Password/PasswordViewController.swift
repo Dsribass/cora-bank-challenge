@@ -12,7 +12,7 @@ class PasswordViewController: SceneViewController<PasswordView> {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = LocalizedStrings.loginNavBarTitle
+    title = Strings.Login.navBarTitle
   }
 
   override func setupBindings() {
@@ -42,8 +42,8 @@ class PasswordViewController: SceneViewController<PasswordView> {
         view.nextStepButton.isEnabled = state.shouldEnableSubmitButton
         view.textFieldErrorMessage.isHidden = state.passwordValidation == .valid
         view.textFieldErrorMessage.text = switch state.passwordValidation {
-        case .invalid: LocalizedStrings.passwordInvalid
-        case .error: LocalizedStrings.loginError
+        case .invalid: Strings.Password.invalid
+        case .error: Strings.Password.error
         default: ""
         }
       }

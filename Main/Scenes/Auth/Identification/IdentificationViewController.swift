@@ -19,7 +19,7 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
 
   override func setupLayout() {
     super.setupLayout()
-    title = LocalizedStrings.loginNavBarTitle
+    title = Strings.Login.navBarTitle
   }
 
   override func additionalConfigurations() {
@@ -51,8 +51,8 @@ class IdentificationViewController: SceneViewController<IdentificationView> {
         contentView?.textField.text = state.cpfValue
         contentView?.textFieldErrorMessage.isHidden = state.cpfValidation == .valid
         contentView?.textFieldErrorMessage.text = switch state.cpfValidation {
-        case .empty: LocalizedStrings.identificationCpfEmpty
-        case .invalid: LocalizedStrings.identificationCpfInvalid
+        case .empty: Strings.Identification.cpfEmpty
+        case .invalid: Strings.Identification.cpfInvalid
         default: ""
         }
       }

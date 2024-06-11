@@ -19,7 +19,7 @@ class SkeletonTableViewLoader: NSObject, UITableViewDelegate, UITableViewDataSou
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    Constants.largeSpacing
+    Spacing.large
   }
 
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

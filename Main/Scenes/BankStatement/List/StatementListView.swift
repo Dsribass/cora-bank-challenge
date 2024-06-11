@@ -11,20 +11,20 @@ class StatementListView: UIViewCodable {
     let segmentedControl = UISegmentedControl()
 
     segmentedControl.insertSegment(
-      withTitle: LocalizedStrings.bankStatementFirstFilterTab,
-      at: 0, 
+      withTitle: Strings.BankStatement.firstFilterTab,
+      at: 0,
       animated: true)
     segmentedControl.insertSegment(
-      withTitle: LocalizedStrings.bankStatementSecondFilterTab,
-      at: 1, 
+      withTitle: Strings.BankStatement.secondFilterTab,
+      at: 1,
       animated: true)
     segmentedControl.insertSegment(
-      withTitle: LocalizedStrings.bankStatementThirdFilterTab,
-      at: 2, 
+      withTitle: Strings.BankStatement.thirdFilterTab,
+      at: 2,
       animated: true)
     segmentedControl.insertSegment(
-      withTitle: LocalizedStrings.bankStatementFourthFilterTab,
-      at: 3, 
+      withTitle: Strings.BankStatement.fourthFilterTab,
+      at: 3,
       animated: true)
 
     segmentedControl.selectedSegmentIndex = 0
@@ -74,30 +74,24 @@ class StatementListView: UIViewCodable {
   }
 
   override func setupConstraints() {
-    filterConfigurations.makeConstraints { view in
-      [
-        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mediumSpacing),
-        view.centerYAnchor.constraint(equalTo: menuBar.centerYAnchor)
-      ]
-    }
+    filterConfigurations.makeConstraints {[
+      $0.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+      $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium),
+      $0.centerYAnchor.constraint(equalTo: menuBar.centerYAnchor)
+    ]}
 
-    menuBar.makeConstraints { view in
-      [
-        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Constants.smallSpacing),
-        view.leadingAnchor.constraint(equalTo: leadingAnchor),
-        view.trailingAnchor.constraint(equalTo: filterConfigurations.trailingAnchor, constant: -Constants.largeSpacing),
-        view.heightAnchor.constraint(equalToConstant: 24)
-      ]
-    }
+    menuBar.makeConstraints {[
+      $0.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.small),
+      $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+      $0.trailingAnchor.constraint(equalTo: filterConfigurations.trailingAnchor, constant: -Spacing.large),
+      $0.heightAnchor.constraint(equalToConstant: 24)
+    ]}
 
-    tableView.makeConstraints { view in
-      [
-        view.topAnchor.constraint(equalTo: menuBar.bottomAnchor, constant: Constants.smallSpacing),
-        view.leadingAnchor.constraint(equalTo: leadingAnchor),
-        view.trailingAnchor.constraint(equalTo: trailingAnchor),
-        view.bottomAnchor.constraint(equalTo: bottomAnchor),
-      ]
-    }
+    tableView.makeConstraints {[
+      $0.topAnchor.constraint(equalTo: menuBar.bottomAnchor, constant: Spacing.small),
+      $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+      $0.trailingAnchor.constraint(equalTo: trailingAnchor),
+      $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+    ]}
   }
 }

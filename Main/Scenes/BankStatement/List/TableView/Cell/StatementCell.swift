@@ -92,20 +92,20 @@ extension StatementCell: ViewCodable {
     ] }
 
     leadingIcon.makeConstraints {[
-      $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mediumSpacing),
+      $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium),
       $0.topAnchor.constraint(equalTo: topSpacer.bottomAnchor),
-      $0.widthAnchor.constraint(equalToConstant: Constants.mediumSpacing),
-      $0.heightAnchor.constraint(equalToConstant: Constants.mediumSpacing),
+      $0.widthAnchor.constraint(equalToConstant: Spacing.medium),
+      $0.heightAnchor.constraint(equalToConstant: Spacing.medium),
     ]}
 
     stackView.makeConstraints {[
-      $0.leadingAnchor.constraint(equalTo: leadingIcon.trailingAnchor, constant: Constants.smallSpacing),
+      $0.leadingAnchor.constraint(equalTo: leadingIcon.trailingAnchor, constant: Spacing.small),
       $0.topAnchor.constraint(equalTo: topSpacer.bottomAnchor),
       $0.bottomAnchor.constraint(equalTo: bottomSpacer.topAnchor)
     ]}
 
     date.makeConstraints {[
-      $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mediumSpacing),
+      $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium),
       $0.centerYAnchor.constraint(equalTo: centerYAnchor),
       $0.widthAnchor.constraint(equalToConstant: 32)
     ]}

@@ -59,7 +59,7 @@ class StatementListViewController: SceneViewController<StatementListView> {
   }
 
   override func additionalConfigurations() {
-    navigationItem.title = LocalizedStrings.bankStatementTitle
+    navigationItem.title = Strings.BankStatement.title
     navigationItem.rightBarButtonItem = logoutButton
 
     contentView.tableView.delegate = skeletonTableViewLoader
