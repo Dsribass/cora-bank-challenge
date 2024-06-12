@@ -14,7 +14,7 @@ class StatementDetailView: UIViewCodable {
     return stack
   }()
 
-  private lazy var title: UILabel = {
+  lazy var title: UILabel = {
     let label = UILabel()
     label.font = .coraFont(for: .body1, weight: .bold)
     label.textColor = .Cora.black
@@ -22,17 +22,17 @@ class StatementDetailView: UIViewCodable {
     return label
   }()
 
-  private lazy var amountSection = DetailSection()
+  lazy var amountSection = TextGroup()
 
-  private lazy var dateSection = DetailSection()
+  lazy var dateSection = TextGroup()
 
-  private lazy var senderSection = DetailSection()
+  lazy var senderSection = TextGroup()
 
-  private lazy var receiverSection = DetailSection()
+  lazy var receiverSection = TextGroup()
 
-  private lazy var transactionDescription = DetailSection()
+  lazy var transactionDescription = TextGroup()
 
-  private lazy var shareButton: CoraButton = {
+  lazy var shareButton: CoraButton = {
     let button = CoraButton(title: Strings.StatementDetail.button, size: .medium, variation: .primary, color: .brand)
 
     button.image = UIImage(named: .icShare)
@@ -140,61 +140,53 @@ class StatementDetailView: UIViewCodable {
   }
 }
 
-private class DetailSection: UIViewCodable {
-  private lazy var stackView: UIStackView = {
-    let stack = UIStackView()
-    stack.axis = .vertical
-    return stack
-  }()
-
-  private lazy var label: UILabel = {
-    let label = UILabel()
-    label.font = .coraFont(for: .body2, weight: .regular)
-    label.textColor = .Cora.offBlack
-    return label
-  }()
-
-  private lazy var title: UILabel = {
-    let label = UILabel()
-    label.font = .coraFont(for: .body1, weight: .bold)
-    label.textColor = .Cora.offBlack
-    return label
-  }()
-
-  private lazy var descriptionList: UILabel = {
-    let label = UILabel()
-    label.numberOfLines = 0
-    label.font = .coraFont(for: .body2, weight: .regular)
-    label.textColor = .Cora.gray1
-    return label
-  }()
-
-  func config(label: String, title: String?, descriptionList: [String] = []) {
-    if title == nil {
-      self.title.isHidden = true
-    }
-
-    self.label.text = label
-    self.title.text = title
-    self.descriptionList.text = descriptionList.joined(separator: "\n")
+extension StatementDetailView: ViewState {
+  func showSuccess(_ data: Statement) {
+    config(statement: data)
+    shareButton.isHidden = false
   }
 
-  override func setupSubviews() {
-    addSubview(stackView)
+  func showError(message: String) {}
 
-    stackView.addArrangedSubview(label)
-    stackView.setCustomSpacing(4, after: label)
-    stackView.addArrangedSubview(title)
-    stackView.setCustomSpacing(4, after: title)
-    stackView.addArrangedSubview(descriptionList)
-  }
+  func showLoading() {
+    let placeholderSender = Statement.Party(
+      bankName: "Loading...",
+      bankNumber: "",
+      documentNumber: "",
+      documentType: "",
+      accountNumberDigit: "",
+      agencyNumberDigit: "",
+      agencyNumber: "",
+      name: "Loading...",
+      accountNumber: ""
+    )
 
-  override func setupConstraints() {
-    stackView.makeConstraints {[
-      $0.leadingAnchor.constraint(equalTo: leadingAnchor),
-      $0.trailingAnchor.constraint(equalTo: trailingAnchor),
-      $0.topAnchor.constraint(equalTo: topAnchor),
-      $0.bottomAnchor.constraint(equalTo: bottomAnchor),
-    ]}
+    let placeholderRecipient = Statement.Party(
+      bankName: "Loading...",
+      bankNumber: "",
+      documentNumber: "",
+      documentType: "",
+      accountNumberDigit: "",
+      agencyNumberDigit: "",
+      agencyNumber: "",
+      name: "Loading...",
+      accountNumber: ""
+    )
+
+    let placeholderStatement = Statement(
+      description: "Loading...",
+      label: "Loading...",
+      amount: 0.0,
+      counterPartyName: "Loading...",
+      id: "",
+      dateEvent: Date(),
+      recipient: placeholderRecipient,
+      sender: placeholderSender,
+      status: .completed
+    )
+
+    config(statement: placeholderStatement)
+    shareButton.isHidden = true
   }
 }
+

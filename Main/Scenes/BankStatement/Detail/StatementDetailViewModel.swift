@@ -35,6 +35,7 @@ class StatementDetailViewModel: ViewModel {
 extension StatementDetailViewModel {
   func onLoadStatement() {
     getStatementDetail.execute(.init(id: id))
+      .delay(for: 10.0, scheduler: RunLoop.main)
       .sink { [weak self] completion in
         if case .failure(_) = completion {
           self?.stateSubject.send(.error)

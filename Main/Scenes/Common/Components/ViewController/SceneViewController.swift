@@ -1,7 +1,8 @@
 import UIKit
 import Combine
 
-class SceneViewController<View: UIView>: UIViewController, ViewCodable {
+class SceneViewController<View: UIView>: UIViewController, ViewCodable, SkeletonHandler {
+  var skeletonViews: [(view: UIView, layer: CAGradientLayer)] = .init()
   var contentView: View { view as! View }
   var bindings = Set<AnyCancellable>()
 

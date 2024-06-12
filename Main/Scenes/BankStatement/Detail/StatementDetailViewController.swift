@@ -13,6 +13,14 @@ class StatementDetailViewController: SceneViewController<StatementDetailView> {
 
   override func setupLayout() {
     navigationItem.title = Strings.StatementDetail.navBarTitle
+    setupSkeletonViews([
+      contentView.title,
+      contentView.amountSection,
+      contentView.dateSection,
+      contentView.senderSection,
+      contentView.receiverSection,
+      contentView.transactionDescription
+    ])
   }
 
   override func setupBindings() {
@@ -21,13 +29,18 @@ class StatementDetailViewController: SceneViewController<StatementDetailView> {
 
       switch state {
       case .loaded(let statement):
-        contentView.config(statement: statement)
+        contentView.showSuccess(statement)
+        hideSkeleton()
       case .loading:
-        print("Loading")
+        contentView.showLoading()
+        showSkeleton()
       case .error:
-        print("Error")
+        contentView.showError(message: "Error")
+        hideSkeleton()
       }
     }
     .store(in: &bindings)
   }
 }
+
+
