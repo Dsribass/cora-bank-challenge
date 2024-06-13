@@ -56,6 +56,39 @@
         }
       }
     },
+    "ErrorButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tentar novamente"
+          }
+        }
+      }
+    },
+    "ErrorMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocorreu um erro ao carregar as informações. Por favor, tente novamente."
+          }
+        }
+      }
+    },
+    "ErrorTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desculpe, ocorreu um erro!"
+          }
+        }
+      }
+    },
     "IdentificationPageCpf" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -1,6 +1,12 @@
 import UIKit
 
 enum Strings {
+  enum Error {
+    static let title = String(localized: "ErrorTitle")
+    static let message = String(localized: "ErrorMessage")
+    static let button = String(localized: "ErrorButton")
+  }
+
   enum Intro {
     static let title = String(localized: "IntroPageTitle")
     static let subtitle = String(localized: "IntroPageSubtitle")

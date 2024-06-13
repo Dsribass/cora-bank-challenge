@@ -16,6 +16,7 @@
 		951E55152C189C3200860F72 /* SkeletonHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E55142C189C3200860F72 /* SkeletonHandler.swift */; };
 		951E551A2C193A2300860F72 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E55192C193A2300860F72 /* ViewState.swift */; };
 		951E551D2C193A8500860F72 /* TextGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E551C2C193A8500860F72 /* TextGroup.swift */; };
+		951E55202C1A944D00860F72 /* GenericErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E551F2C1A944D00860F72 /* GenericErrorView.swift */; };
 		95264E792BF3E0140025E253 /* AuthLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95264E782BF3E0140025E253 /* AuthLocalDataSource.swift */; };
 		953047CD2C13C8C60017DDF9 /* SkeletonTableViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953047CC2C13C8C60017DDF9 /* SkeletonTableViewLoader.swift */; };
 		953047CF2C13C9A90017DDF9 /* StatementTableViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953047CE2C13C9A90017DDF9 /* StatementTableViewLoader.swift */; };
@@ -142,6 +143,7 @@
 		951E55142C189C3200860F72 /* SkeletonHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonHandler.swift; sourceTree = "<group>"; };
 		951E55192C193A2300860F72 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		951E551C2C193A8500860F72 /* TextGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGroup.swift; sourceTree = "<group>"; };
+		951E551F2C1A944D00860F72 /* GenericErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorView.swift; sourceTree = "<group>"; };
 		95264E782BF3E0140025E253 /* AuthLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLocalDataSource.swift; sourceTree = "<group>"; };
 		953047CC2C13C8C60017DDF9 /* SkeletonTableViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTableViewLoader.swift; sourceTree = "<group>"; };
 		953047CE2C13C9A90017DDF9 /* StatementTableViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewLoader.swift; sourceTree = "<group>"; };
@@ -279,6 +281,14 @@
 				951E551C2C193A8500860F72 /* TextGroup.swift */,
 			);
 			path = TextGroup;
+			sourceTree = "<group>";
+		};
+		951E551E2C1A943F00860F72 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				951E551F2C1A944D00860F72 /* GenericErrorView.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		953047CB2C13C8B60017DDF9 /* TableView */ = {
@@ -588,6 +598,7 @@
 		95B433962BE19757007B238C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				951E551E2C1A943F00860F72 /* Error */,
 				951E551B2C193A7D00860F72 /* TextGroup */,
 				951E55132C189C1F00860F72 /* Skeleton */,
 				95B433B22BE33400007B238C /* ViewController */,
@@ -888,6 +899,7 @@
 				95B433AC2BE29CD6007B238C /* AuthCoordinator.swift in Sources */,
 				954AF9062BE7E1D0007299F5 /* CombineExtensions.swift in Sources */,
 				954AF8F02BE46BFE007299F5 /* IdentificationView.swift in Sources */,
+				951E55202C1A944D00860F72 /* GenericErrorView.swift in Sources */,
 				958C82442C14B16200B9A411 /* StatementDetailView.swift in Sources */,
 				95628ACC2BDC58CB0088519C /* SceneViewController.swift in Sources */,
 				954B3C7B2C0A7BF300AF5CF7 /* Environment.swift in Sources */,

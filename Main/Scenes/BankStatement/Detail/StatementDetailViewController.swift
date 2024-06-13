@@ -35,7 +35,9 @@ class StatementDetailViewController: SceneViewController<StatementDetailView> {
         contentView.showLoading()
         showSkeleton()
       case .error:
-        contentView.showError(message: "Error")
+        contentView.showError { [weak self] in
+          self?.viewModel.sendEvent(.loadStatement)
+        }
         hideSkeleton()
       }
     }

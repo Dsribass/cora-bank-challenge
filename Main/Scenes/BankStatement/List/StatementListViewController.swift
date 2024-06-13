@@ -99,8 +99,7 @@ extension StatementListViewController {
   }
 
   func handleErrorState() {
-    // TODO(any): Implement error layout
-    print("StatementListViewController: State error")
+    contentView.showErrorView { [weak self] in self?.viewModel.sendEvent(.load) }
   }
 }
 

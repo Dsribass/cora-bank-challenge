@@ -146,7 +146,9 @@ extension StatementDetailView: ViewState {
     shareButton.isHidden = false
   }
 
-  func showError(message: String) {}
+  func showError(message: String? = nil, _ onRetry: @escaping () -> Void) {
+    showErrorView(onRetry)
+  }
 
   func showLoading() {
     let placeholderSender = Statement.Party(
