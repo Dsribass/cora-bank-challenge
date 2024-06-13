@@ -34,6 +34,7 @@ class StatementDetailViewModel: ViewModel {
 
 extension StatementDetailViewModel {
   func onLoadStatement() {
+    stateSubject.send(.loading)
     getStatementDetail.execute(.init(id: id))
       .sink { [weak self] completion in
         if case .failure(_) = completion {

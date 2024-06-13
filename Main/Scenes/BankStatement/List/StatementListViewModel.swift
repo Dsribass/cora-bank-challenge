@@ -32,6 +32,7 @@ class StatementListViewModel: ViewModel {
 
 extension StatementListViewModel {
   func onLoad() {
+    stateSubject.send(.loading)
     getStatementList.execute(())
       .sink { [weak self] completion in
         if case .failure(_) = completion {

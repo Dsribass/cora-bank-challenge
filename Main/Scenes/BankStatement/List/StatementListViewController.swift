@@ -13,6 +13,7 @@ class StatementListViewController: SceneViewController<StatementListView> {
 
   private let viewModel: StatementListViewModel
   private let router: StatementListRouter
+  private let refreshController = UIRefreshControl()
 
   private lazy var skeletonTableViewLoader = {
     SkeletonTableViewLoader(tableView: contentView.tableView)
@@ -37,6 +38,13 @@ class StatementListViewController: SceneViewController<StatementListView> {
     }
 
     func bindViewToViewModel() {
+      refreshController
+        .publisher(for: .valueChanged)
+        .map { .load }
+        .eraseToAnyPublisher()
+        .sendEvent(to: viewModel)
+
+
       statementTableViewLoader
         .didTapCell
         .receive(on: DispatchQueue.main)
@@ -64,6 +72,7 @@ class StatementListViewController: SceneViewController<StatementListView> {
 
     contentView.tableView.delegate = skeletonTableViewLoader
     contentView.tableView.dataSource = skeletonTableViewLoader
+    contentView.tableView.refreshControl = refreshController
   }
 
   private lazy var logoutButton = {
@@ -88,7 +97,6 @@ extension StatementListViewController {
   func handleLoadingState() {
     contentView.tableView.delegate = skeletonTableViewLoader
     contentView.tableView.dataSource = skeletonTableViewLoader
-    contentView.tableView.reloadData()
   }
 
   func handleSuccessState(_ statements: [StatementsByDate]) {
@@ -96,6 +104,7 @@ extension StatementListViewController {
     contentView.tableView.delegate = statementTableViewLoader
     contentView.tableView.dataSource = statementTableViewLoader
     contentView.tableView.reloadData()
+    refreshController.endRefreshing()
   }
 
   func handleErrorState() {
