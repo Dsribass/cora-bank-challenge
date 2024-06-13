@@ -24,6 +24,19 @@ class StatementDetailViewController: SceneViewController<StatementDetailView> {
   }
 
   override func setupBindings() {
+    contentView.shareButton.publisher(for: .touchUpInside)
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
+        guard let self = self else { return }
+
+        let activityViewController = UIActivityViewController(
+          activityItems: [Strings.StatementDetail.button],
+          applicationActivities: nil)
+
+        present(activityViewController, animated: true, completion: nil)
+      }
+      .store(in: &bindings)
+
     listenState(of: viewModel.stateSubject.eraseToAnyPublisher()) { [weak self] state in
       guard let self = self else { return }
 
@@ -44,5 +57,3 @@ class StatementDetailViewController: SceneViewController<StatementDetailView> {
     .store(in: &bindings)
   }
 }
-
-
