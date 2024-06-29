@@ -27,7 +27,10 @@ public final class AuthRemoteDataSource {
         shouldWaitForPriorityRequest: false
       )
       .decode(type: UserRemoteModel.Response.self, decoder: JSONDecoder())
-      .map { $0.token }
+      .map { [unowned self] response in
+        networkManager.setToken(response.token)
+        return response.token
+      }
       .eraseToAnyPublisher()
   }
 
