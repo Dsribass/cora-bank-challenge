@@ -2,38 +2,69 @@ import Foundation
 import Combine
 
 public final class AuthLocalDataSource {
-  public init(defaults: UserDefaults) {
-    self.defaults = defaults
-  }
-
-  private let defaults: UserDefaults
+  public init() {}
 
   private struct Keys {
     static let token = "token"
   }
 
   func saveUserToken(_ token: String) -> AnyPublisher<(), Error> {
-    Future { [weak defaults] promise in
-      defaults?.set(token, forKey: Keys.token)
-      promise(.success(()))
+    Future { promise in
+      let data = Data(token.utf8)
+      let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: Keys.token,
+        kSecValueData as String: data
+      ]
+
+      SecItemDelete(query as CFDictionary)
+
+      let status = SecItemAdd(query as CFDictionary, nil)
+      if status == errSecSuccess {
+        promise(.success(()))
+      } else {
+        promise(.failure(CommonError.unexpected))
+      }
     }.eraseToAnyPublisher()
   }
 
   func getUserToken() -> AnyPublisher<String, Error> {
-    Future { [weak defaults] promise in
-      guard let token = defaults?.string(forKey: Keys.token) else {
-        return promise(.failure(CommonError.itemNotFound))
-      }
+    Future { promise in
+      let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: Keys.token,
+        kSecReturnData as String: kCFBooleanTrue!,
+        kSecMatchLimit as String: kSecMatchLimitOne
+      ]
 
-      promise(.success(token))
+      var item: CFTypeRef?
+      let status = SecItemCopyMatching(query as CFDictionary, &item)
+
+      if status == errSecSuccess {
+        if let data = item as? Data, let token = String(data: data, encoding: .utf8) {
+          promise(.success(token))
+        } else {
+          promise(.failure(CommonError.itemNotFound))
+        }
+      } else {
+        promise(.failure(CommonError.itemNotFound))
+      }
     }.eraseToAnyPublisher()
   }
 
   func deleteUserToken() -> AnyPublisher<(), Error> {
-    Future { [weak defaults] promise in
-      defaults?.removeObject(forKey: Keys.token)
+    Future { promise in
+      let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: Keys.token
+      ]
 
-      promise(.success(()))
+      let status = SecItemDelete(query as CFDictionary)
+      if status == errSecSuccess || status == errSecItemNotFound {
+        promise(.success(()))
+      } else {
+        promise(.failure(CommonError.itemNotFound))
+      }
     }.eraseToAnyPublisher()
   }
 }

@@ -6,6 +6,7 @@ protocol DataError: Error {}
 
 enum CommonError: DataError {
   case itemNotFound
+  case unexpected
 }
 
 enum NetworkError: DataError {

@@ -15,7 +15,7 @@ enum Factory {
 
     static func makeStatementRDS() -> StatementRemoteDataSource { StatementRemoteDataSource(networkManager: networkManager) }
 
-    static func makeAuthLDS() -> AuthLocalDataSource { AuthLocalDataSource(defaults: UserDefaults.standard) }
+    static func makeAuthLDS() -> AuthLocalDataSource { AuthLocalDataSource() }
 
     static func makeAuthRepository() -> AuthRepository {
       DefaultAuthRepository(authRDS: makeAuthRDS(), authLDS: makeAuthLDS())
