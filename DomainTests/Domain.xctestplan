@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "ECB8868F-7CED-497A-AE93-D08B4DAEF80B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CoraBankChallenge.xcodeproj",
+        "identifier" : "95E3E1D82C1BC2B2002A58C0",
+        "name" : "DomainTests"
+      }
+    }
+  ],
+  "version" : 1
+}
