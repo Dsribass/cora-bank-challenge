@@ -27,7 +27,7 @@ class StatementsTableViewLoader: NSObject, UITableViewDelegate, UITableViewDataS
     let cell = tableView.dequeueReusableCell(withIdentifier: StatementCell.identifier, for: indexPath) as? StatementCell ?? StatementCell()
 
     let statement = statementsByDate[indexPath.section].statements[indexPath.row]
-    cell.config(statement: statement, icon: UIImage(named: .icArrowDownIn)!)
+    cell.config(statement: statement)
 
     return cell
   }

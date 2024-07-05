@@ -51,12 +51,22 @@ class StatementCell: UITableViewCell {
     return label
   }()
 
-  func config(statement: StatementSummary, icon: UIImage) {
-    transctionDescription.text = statement.description
+  func config(statement: StatementSummary) {
     name.text = statement.name
-    leadingIcon.image = icon
+    transctionDescription.text = statement.description
     amount.text = statement.amount.convertToCurrencyFormat()
     date.text = statement.dateEvent.hourMinuteFormat()
+
+    switch (statement.entry) {
+    case .credit: 
+      leadingIcon.image = UIImage(named: .icArrowDownIn)?.withTintColor(.Cora.secondaryColor)
+      transctionDescription.textColor = .Cora.secondaryColor
+      amount.textColor = .Cora.secondaryColor
+    case .debit:
+      leadingIcon.image = UIImage(named: .icArrowUpOut)
+    default:
+      break
+    }
   }
 
   override func setHighlighted(_ highlighted: Bool, animated: Bool) {
