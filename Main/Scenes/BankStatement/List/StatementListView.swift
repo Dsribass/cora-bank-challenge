@@ -1,32 +1,29 @@
 import UIKit
+import Domain
 
 class StatementListView: UIViewCodable {
+  enum MenuItem {
+    case deposit, withdraw, all, forthcoming
+  }
+
   private lazy var stackView: UIStackView = {
     let stackView = UIStackView()
     stackView.axis = .vertical
     return stackView
   }()
 
+  let menuItems: [(item: MenuItem, title: String, index: Int)] = [
+    (item: .all, title: Strings.BankStatement.firstFilterTab, index: 0),
+    (item: .deposit, title: Strings.BankStatement.secondFilterTab, index: 1),
+    (item: .withdraw, title: Strings.BankStatement.thirdFilterTab, index: 2),
+    (item: .forthcoming, title: Strings.BankStatement.fourthFilterTab, index: 3),
+  ]
+
   lazy var menuBar: UISegmentedControl = {
     let segmentedControl = UISegmentedControl()
-
-    segmentedControl.insertSegment(
-      withTitle: Strings.BankStatement.firstFilterTab,
-      at: 0,
-      animated: true)
-    segmentedControl.insertSegment(
-      withTitle: Strings.BankStatement.secondFilterTab,
-      at: 1,
-      animated: true)
-    segmentedControl.insertSegment(
-      withTitle: Strings.BankStatement.thirdFilterTab,
-      at: 2,
-      animated: true)
-    segmentedControl.insertSegment(
-      withTitle: Strings.BankStatement.fourthFilterTab,
-      at: 3,
-      animated: true)
-
+    menuItems.forEach { (item: MenuItem, title: String, index: Int) in
+      segmentedControl.insertSegment(withTitle: title, at: index, animated: true)
+    }
     segmentedControl.selectedSegmentIndex = 0
 
     segmentedControl.selectedSegmentTintColor = .clear

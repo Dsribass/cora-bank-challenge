@@ -63,7 +63,9 @@ class StatementCell: UITableViewCell {
       transctionDescription.textColor = .Cora.secondaryColor
       amount.textColor = .Cora.secondaryColor
     case .debit:
-      leadingIcon.image = UIImage(named: .icArrowUpOut)
+      leadingIcon.image = UIImage(named: .icArrowUpOut)?.withTintColor(.Cora.offBlack)
+      transctionDescription.textColor = .Cora.offBlack
+      amount.textColor = .Cora.offBlack
     default:
       break
     }

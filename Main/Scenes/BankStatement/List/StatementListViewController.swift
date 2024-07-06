@@ -23,6 +23,10 @@ class StatementListViewController: SceneViewController<StatementListView> {
     StatementsTableViewLoader(tableView: contentView.tableView)
   }()
 
+  var selectedMenuItem: StatementListView.MenuItem {
+    contentView.menuItems[contentView.menuBar.selectedSegmentIndex].item
+  }
+
   override func setupBindings() {
     func bindViewModelToView() {
       listenState(of: viewModel.stateSubject.eraseToAnyPublisher()) { [weak self] state in
@@ -35,15 +39,31 @@ class StatementListViewController: SceneViewController<StatementListView> {
         }
       }
       .store(in: &bindings)
+
+      listenAction(of: viewModel.actionSubject.eraseToAnyPublisher()) { [weak self] action in
+        guard let self = self else { return }
+
+        switch action {
+        case .updateStatements(let filteredList):
+          statementTableViewLoader.statementsByDate = filteredList
+          contentView.tableView.reloadData()
+        }
+      }
+      .store(in: &bindings)
     }
 
     func bindViewToViewModel() {
+      contentView.menuBar.publisher(for: .valueChanged)
+        .map { [unowned self] _ in self.selectedMenuItem }
+        .map { .filterBy(entry: $0) }
+        .eraseToAnyPublisher()
+        .sendEvent(to: viewModel)
+
       refreshController
         .publisher(for: .valueChanged)
         .map { .load }
         .eraseToAnyPublisher()
         .sendEvent(to: viewModel)
-
 
       statementTableViewLoader
         .didTapCell
