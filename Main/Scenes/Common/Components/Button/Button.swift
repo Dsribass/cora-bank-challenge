@@ -1,5 +1,36 @@
 import UIKit.UIButton
 
+/// The `CoraButton` class is designed to be used for creating custom buttons with a consistent design style.
+///
+/// The button's visual appearance can be customized by setting the `size`, `variation`, and `color` properties, which are defined as enums:
+/// - `Size`: The size of the button, which can be `.small`, `.medium`, or `.large`.
+/// - `Variation`: The variation style of the button, which can be `.primary` or `.secondary`.
+/// - `Color`: The color theme of the button, which can be `.brand` or `.white`.
+///
+/// You can handle button taps by calling the `handleButtonTap(:)` method with a completion block.
+/// Additionally, you can show and hide a loading indicator by calling the `showLoading()` and `stopLoading()` methods, respectively.
+///
+/// ## Example Usage
+/// ```swift
+/// // Define a custom button instance
+/// let customButton = CoraButton(
+///     title: "Click Me",
+///     size: .medium,
+///     variation: .primary,
+///     color: .brand,
+///     image: UIImage(named: "exampleIcon")
+/// )
+///
+/// customButton.handleButtonTap { action in
+///     print("Button tapped!")
+/// }
+///
+/// // Show loading indicator
+/// customButton.showLoading()
+///
+/// // Stop loading indicator
+/// customButton.stopLoading()
+/// ```
 class CoraButton: UIButton {
   init(title: String, size: Size, variation: Variation, color: Color, image: UIImage? = nil) {
     self.title = title
