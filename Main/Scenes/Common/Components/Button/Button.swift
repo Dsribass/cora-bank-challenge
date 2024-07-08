@@ -22,6 +22,12 @@ class CoraButton: UIButton {
   var color: Color
   var image: UIImage?
 
+  private lazy var activityIndicator: UIActivityIndicatorView = {
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
+    activityIndicator.color = .Cora.gray1
+    return activityIndicator
+  }()
+
   func handleButtonTap(_ completion: @escaping UIActionHandler) {
     addAction(UIAction(title: "", handler: completion), for: .touchUpInside)
   }
@@ -86,5 +92,27 @@ class CoraButton: UIButton {
 
       return updatedAttributes
     }
+  }
+}
+
+extension CoraButton {
+  func stopLoading() {
+    activityIndicator.stopAnimating()
+    activityIndicator.removeFromSuperview()
+    imageView?.alpha = 1
+  }
+
+  func showLoading() {
+    imageView?.alpha = 0
+    addSubview(activityIndicator)
+    setupConstraint(activityIndicator)
+    activityIndicator.startAnimating()
+  }
+
+  private func setupConstraint(_ activityIndicator: UIActivityIndicatorView) {
+    activityIndicator.makeConstraints {[
+      $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -size.insets().horizontal),
+      $0.centerYAnchor.constraint(equalTo: centerYAnchor)
+    ]}
   }
 }

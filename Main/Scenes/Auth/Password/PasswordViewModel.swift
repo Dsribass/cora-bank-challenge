@@ -32,6 +32,12 @@ class PasswordViewModel: ViewModel {
   }
 
   func onSubmitPassword(_ value: String) {
+    func handleLoading() {
+      var updatedState = currentState
+      updatedState.submitButtonIsLoading = true
+      stateSubject.send(updatedState)
+    }
+
     func handleFailure(_ error: DomainError) {
       var updatedState = currentState
       updatedState.passwordValidation = error == .notAuthorized ? .invalid : .error
@@ -40,8 +46,13 @@ class PasswordViewModel: ViewModel {
       stateSubject.send(updatedState)
     }
 
-    func handleSuccess() {}
+    func handleSuccess() {
+      var updatedState = currentState
+      updatedState.submitButtonIsLoading = false
+      stateSubject.send(updatedState)
+    }
 
+    handleLoading()
     authenticate.execute(AuthenticateUser.Request(cpf: cpf, password: value))
       .sink { completion in
         switch completion {

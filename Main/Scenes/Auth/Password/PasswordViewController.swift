@@ -41,10 +41,18 @@ class PasswordViewController: SceneViewController<PasswordView> {
 
         view.nextStepButton.isEnabled = state.shouldEnableSubmitButton
         view.textFieldErrorMessage.isHidden = state.passwordValidation == .valid
+
         view.textFieldErrorMessage.text = switch state.passwordValidation {
-        case .invalid: Strings.Password.invalid
-        case .error: Strings.Password.error
-        default: ""
+          case .invalid: Strings.Password.invalid
+          case .error: Strings.Password.error
+          default: ""
+        }
+
+        if state.submitButtonIsLoading {
+          contentView?.nextStepButton.showLoading()
+          view.nextStepButton.isEnabled = false
+        } else {
+          contentView?.nextStepButton.stopLoading()
         }
       }
       .store(in: &bindings)
