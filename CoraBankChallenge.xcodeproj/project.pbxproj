@@ -49,6 +49,9 @@
 		95738B052C08F083003F3E6A /* TokenRemoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95738B042C08F083003F3E6A /* TokenRemoteModel.swift */; };
 		95738B072C08F23A003F3E6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95738B062C08F23A003F3E6A /* NetworkManager.swift */; };
 		95738B092C093381003F3E6A /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95738B082C093381003F3E6A /* RefreshToken.swift */; };
+		9581E1D12C5B25B400F35B26 /* LoadAuthStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581E1D02C5B25B400F35B26 /* LoadAuthStateTest.swift */; };
+		9581E1D42C5B2CEF00F35B26 /* GetStatementListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581E1D32C5B2CEF00F35B26 /* GetStatementListTest.swift */; };
+		9581E1D62C5B2D8E00F35B26 /* MockStatementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581E1D52C5B2D8E00F35B26 /* MockStatementRepository.swift */; };
 		9589BE192C0E8C7800C2D7C3 /* StatementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE182C0E8C7800C2D7C3 /* StatementSummary.swift */; };
 		9589BE1B2C0E8EC100C2D7C3 /* StatementsByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE1A2C0E8EC100C2D7C3 /* StatementsByDate.swift */; };
 		9589BE1D2C0E8EE600C2D7C3 /* StatementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BE1C2C0E8EE600C2D7C3 /* StatementRepository.swift */; };
@@ -93,6 +96,7 @@
 		95B433B12BE3328A007B238C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B433B02BE3328A007B238C /* NavigationController.swift */; };
 		95B433D52BE33E1D007B238C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B433B82BE33C83007B238C /* Domain.framework */; };
 		95C542F52C02C2A700CE5D8F /* LoadAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C542F42C02C2A700CE5D8F /* LoadAuthState.swift */; };
+		95D394ED2C4C0DA50086E048 /* AuthenticateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D394EC2C4C0DA50086E048 /* AuthenticateUserTests.swift */; };
 		95E3E1DD2C1BC2B2002A58C0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B433B82BE33C83007B238C /* Domain.framework */; };
 		95E3E1E92C1BC4C5002A58C0 /* ValidateCpfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3E1E82C1BC4C5002A58C0 /* ValidateCpfTests.swift */; };
 		95E3E1EB2C1D1B67002A58C0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3E1EA2C1D1B67002A58C0 /* Utils.swift */; };
@@ -189,6 +193,9 @@
 		95738B042C08F083003F3E6A /* TokenRemoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRemoteModel.swift; sourceTree = "<group>"; };
 		95738B062C08F23A003F3E6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		95738B082C093381003F3E6A /* RefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
+		9581E1D02C5B25B400F35B26 /* LoadAuthStateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAuthStateTest.swift; sourceTree = "<group>"; };
+		9581E1D32C5B2CEF00F35B26 /* GetStatementListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStatementListTest.swift; sourceTree = "<group>"; };
+		9581E1D52C5B2D8E00F35B26 /* MockStatementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStatementRepository.swift; sourceTree = "<group>"; };
 		9589BE182C0E8C7800C2D7C3 /* StatementSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementSummary.swift; sourceTree = "<group>"; };
 		9589BE1A2C0E8EC100C2D7C3 /* StatementsByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsByDate.swift; sourceTree = "<group>"; };
 		9589BE1C2C0E8EE600C2D7C3 /* StatementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRepository.swift; sourceTree = "<group>"; };
@@ -231,6 +238,7 @@
 		95B433B02BE3328A007B238C /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		95B433B82BE33C83007B238C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C542F42C02C2A700CE5D8F /* LoadAuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAuthState.swift; sourceTree = "<group>"; };
+		95D394EC2C4C0DA50086E048 /* AuthenticateUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateUserTests.swift; sourceTree = "<group>"; };
 		95E3E1D92C1BC2B2002A58C0 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E3E1E32C1BC36C002A58C0 /* Domain.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Domain.xctestplan; sourceTree = "<group>"; };
 		95E3E1E82C1BC4C5002A58C0 /* ValidateCpfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCpfTests.swift; sourceTree = SOURCE_ROOT; };
@@ -534,6 +542,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9581E1D22C5B2CD600F35B26 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+				9581E1D32C5B2CEF00F35B26 /* GetStatementListTest.swift */,
+			);
+			path = Statement;
+			sourceTree = "<group>";
+		};
 		9589BE142C0E8BE700C2D7C3 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +749,8 @@
 		95E3E1E42C1BC45E002A58C0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				95E3E1EE2C1D266B002A58C0 /* Mock */,
+				9581E1D22C5B2CD600F35B26 /* Statement */,
 				95E3E1E52C1BC46B002A58C0 /* Auth */,
 			);
 			path = UseCases;
@@ -741,8 +759,9 @@
 		95E3E1E52C1BC46B002A58C0 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				95E3E1EE2C1D266B002A58C0 /* Mock */,
 				95E3E1E82C1BC4C5002A58C0 /* ValidateCpfTests.swift */,
+				95D394EC2C4C0DA50086E048 /* AuthenticateUserTests.swift */,
+				9581E1D02C5B25B400F35B26 /* LoadAuthStateTest.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -751,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				95E3E1EF2C1D2679002A58C0 /* MockAuthRepository.swift */,
+				9581E1D52C5B2D8E00F35B26 /* MockStatementRepository.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -1059,8 +1079,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E3E1E92C1BC4C5002A58C0 /* ValidateCpfTests.swift in Sources */,
+				9581E1D62C5B2D8E00F35B26 /* MockStatementRepository.swift in Sources */,
+				9581E1D12C5B25B400F35B26 /* LoadAuthStateTest.swift in Sources */,
 				95E3E1EB2C1D1B67002A58C0 /* Utils.swift in Sources */,
 				95E3E1F02C1D2679002A58C0 /* MockAuthRepository.swift in Sources */,
+				9581E1D42C5B2CEF00F35B26 /* GetStatementListTest.swift in Sources */,
+				95D394ED2C4C0DA50086E048 /* AuthenticateUserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
